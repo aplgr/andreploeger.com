@@ -23,11 +23,6 @@ PROVIDERS = [
     'https://ipgeolocation.io/ip-api/{}/json/',
 ]
 
-print("Content-Type: text/html")
-print("Status: 302 Found")
-print("Location: http://www.andreploeger.com/en/")
-print()
-
 def get_user_language():
     lang = os.environ.get('HTTP_ACCEPT_LANGUAGE', '')
     if lang:
@@ -55,5 +50,8 @@ if not user_language:
     user_language = get_language_from_ip(user_ip)
 
 redirect_url = WEBSITE_URLS.get(user_language, WEBSITE_URLS[DEFAULT_LANGUAGE])
+
+print("Content-Type: text/html")
+print("Status: 302 Found")
 print(f"Location: {redirect_url}")
 print()
