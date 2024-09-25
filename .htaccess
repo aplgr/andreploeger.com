@@ -1,0 +1,5 @@
+Options +ExecCGI -Indexes
+DirectoryIndex redirect.py
+ErrorDocument 404 /redirect.py
+
+XBitHack on
