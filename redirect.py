@@ -7,8 +7,8 @@ from requests.exceptions import RequestException
 TIMEOUT = 0.1
 DEFAULT_LANGUAGE = 'en'
 WEBSITE_URLS = {
-    'de': 'http://www.andreploeger.com/de/',
-    'en': 'http://www.andreploeger.com/en/'
+    'de': 'https://www.andreploeger.com/de/',
+    'en': 'https://www.andreploeger.com/en/'
 }
 
 COUNTRY_LANGUAGE_MAP = {
