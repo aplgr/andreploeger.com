@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Fallstudie – NewStore</title>
+  <meta name="description" content="Importoptimierung & PgBouncer – Go-Service stabilisiert für große Datenmengen.">
+  <meta name="keywords" content="Go, Microservice, PostgreSQL, PgBouncer, Import">
+
+  <link href="/assets/img/favicon.png" rel="icon">
+
+  <script defer src="/assets/js/cases.js"></script>
+  <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <div hx-get="/partials/styles-cases.html" hx-trigger="load" hx-swap="outerHTML"></div>
+</head>
+
+<body class="service-details-page" style="display:none">
+  <div hx-get="/partials/header.html" hx-trigger="load" hx-swap="outerHTML"></div>
+  <main class="main">
+    <div class="page-title text-center">
+      <div class="title-wrapper">
+        <h1>NewStore: Microservice unter Last stabilisiert</h1>
+        <p>PgBouncer & Importoptimierung sichern zuverlässige Verfügbarkeit für große Datenmengen.</p>
+      </div>
+    </div>
+
+    <section id="service-details" class="service-details section">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-4">
+          <div class="col-lg-8">
+            <img src="/assets/img/portfolio/newstore.webp" alt="NewStore" class="img-fluid rounded mb-4">
+            <div class="content">
+              <h3>Ausgangslage</h3>
+              <p>Ein datenintensiver Go-Microservice erzeugte unter Last zu viele Datenbankverbindungen – teils mit Verbindungsabbrüchen und Timeouts in produktiven Systemen.</p>
+
+              <h3>Vorgehen</h3>
+              <p>Ich analysierte das Verhalten, implementierte optimierte Importstrategien, führte Connection Pooling über PgBouncer ein und überarbeitete relevante SQL-Abfragen.</p>
+
+              <h3>Ergebnisse</h3>
+              <ul>
+                <li>Importzeit stabilisiert trotz wachsender Datenmengen</li>
+                <li>Datenbankverbindungslimit eingehalten</li>
+                <li>Verfügbarkeit des Dienstes deutlich verbessert</li>
+              </ul>
+
+              <h3>Learnings</h3>
+              <p>Stabilität bei Microservices beginnt oft mit dem, was zwischen Code und Datenbank passiert – PgBouncer ist ein unterschätzter Gamechanger.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="service-info">
+              <h4>Projektinfos</h4>
+              <div class="info-item">
+                <i class="bi bi-calendar-event"></i>
+                <h5>Dauer</h5>
+                <p>4 Wochen</p>
+              </div>
+              <div class="info-item">
+                <i class="bi bi-tools"></i>
+                <h5>Technologien</h5>
+                <p>Go, PostgreSQL, PgBouncer, AWS</p>
+              </div>
+              <div class="info-item">
+                <i class="bi bi-graph-up"></i>
+                <h5>Impact</h5>
+                <p>Stabile Verfügbarkeit, kein Verbindungsabbruch mehr</p>
+              </div>
+            </div>
+
+            <div x-data="relatedCases()" x-init="init()" class="related-services mt-5">
+              <h4>Weitere Fallstudien</h4>
+
+              <template x-for="item in selectedCases" :key="item.url">
+                <div class="service-item">
+                  <i :class="item.icon"></i>
+                  <h5><a :href="item.url" target="_blank" x-text="item.title"></a></h5>
+                  <p x-text="item.description"></p>
+                </div>
+              </template>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div hx-get="/partials/footer.html" hx-trigger="load" hx-swap="outerHTML"></div>
+  <div hx-get="/partials/footer-scripts.html" hx-trigger="load" hx-swap="outerHTML"></div>
+  <script>window.onload = () => { document.body.style.display = "block"; };</script>
+</body>
+</html>

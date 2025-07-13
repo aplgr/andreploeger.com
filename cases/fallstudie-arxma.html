@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Service Details - EasyFolio Bootstrap Template</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <link href="/assets/img/favicon.png" rel="icon">
+  <script defer src="/assets/js/cases.js"></script>
+  <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <div hx-get="/partials/styles-cases.html" hx-trigger="load" hx-swap="outerHTML"></div>
+
+  <!-- =======================================================
+  * Template Name: EasyFolio
+  * Template URL: https://bootstrapmade.com/easyfolio-bootstrap-portfolio-template/
+  * Updated: Feb 21 2025 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body class="service-details-page" style="display:none">
+  <div hx-get="/partials/header.html" hx-trigger="load" hx-swap="outerHTML"></div>
+<!-- Seiteninhalt -->
+<main class="main">
+  <div class="page-title text-center">
+    <div class="title-wrapper">
+      <h1>Perl-System konsolidiert & modularisiert</h1>
+      <p>12 Varianten zu einem Modul vereint – 250 Unit-Tests für 100 % Coverage – produktiver Rollout ohne Ausfälle.</p>
+    </div>
+  </div>
+
+  <section id="service-details" class="service-details section">
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+
+      <div class="row gy-4">
+          <div class="col-lg-8">
+          <div class="content">
+
+            <!-- Kundeninfo (oben) -->
+            <div class="service-info bg-light border rounded p-4 mb-4">
+              <div class="row gy-4 align-items-center">
+                
+                <!-- Bild links -->
+                <div class="col-sm-4 text-center" style="height: 180; overflow: hidden;">
+                  <img src="/cases/arxma.png" alt="Arxma" class="img-fluid rounded">
+                </div>
+
+                <!-- Infos rechts -->
+                <div class="col-sm-8">
+                  <h3 class="mb-2">Arxma GmbH</h3>
+                  <ul class="list-unstyled mb-0">
+                    <li><strong>Branche:</strong> E-Commerce</li>
+                    <li><strong>Größe:</strong> 20+ Mitarbeitende</li>
+                    <li><strong>Website:</strong> <a href="https://www.arxma.eu" target="_blank">www.arxma.eu</a></li>
+                  </ul>
+                  <br/>
+                  Spezialisiert auf professionellen Onlinehandel in ganz Europa – mit erhöhten Anforderungen an Compliance, Prozesssicherheit und Verfügbarkeit.
+
+                </div>
+              </div>
+            </div>
+
+
+            <h3>Projektüberblick</h3>
+            <p>Das bestehende Preisberechnungs-Modul bestand aus 12 voneinander abweichenden Perl-Skripten – je eines pro Shop. Ziel war es, die Varianten zu vereinheitlichen, wartbar zu machen und durch automatisierte Tests abzusichern – bei stabiler Funktion für über 50.000 Produkte je Shop.</p>
+
+            <h3>Herausforderung</h3>
+            <p>Die parallele Pflege von 12 Skriptversionen führte zu hohem Wartungsaufwand und einem nicht kalkulierbaren Fehlerrisiko. Jede Änderung musste mehrfach umgesetzt und manuell getestet werden – ohne Unit-Tests, ohne Klarheit über Seiteneffekte. Für Shops mit regulatorischem Umfeld war das langfristig nicht tragbar.</p>
+
+            <h3>Vorgehen & Lösung</h3>
+            <p>Ich habe alle Varianten als Blackbox analysiert und über 250 Unit-Tests entwickelt, die ihre Ausgabe bei identischen Eingaben absichern. Darauf aufbauend entstand ein gemeinsames Modul mit klaren Funktionsschnittstellen. Shop-spezifische Unterschiede wurden über Konfiguration abgebildet – mit Defaults für alle und gezielten Overrides pro Shop. Die Codebasis wurde so modular, testbar und robust genug für produktive Rollouts – live und ohne Ausfallzeiten.</p>
+
+            <h3>Ergebnisse</h3>
+            <ul>
+              <li>12 Skripte → 1 modulares Preisberechnungsmodul</li>
+              <li>100 % Testabdeckung mit 250 Testfällen, 500 Vergleichsdurchläufen</li>
+              <li>Reduktion von Code-Duplikaten um über 80 %</li>
+              <li>Stabilere Logik durch gezielte Bugfixes – sogar gegenüber dem bisherigen Stand</li>
+              <li>Deutlich reduzierte Pflege- und Fehlerkosten</li>
+            </ul>
+
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-lg-4">
+
+
+          <!-- Projektfakten -->
+          <div class="service-info">
+            <h4>Kennzahlen</h4>
+            <div class="info-item d-flex align-items-start mb-3">
+              <i class="bi bi-calendar-event me-3 fs-4"></i>
+              <div>
+              <h5>Dauer</h5>
+              <p>6 Wochen (inkl. Test & Rollout)</p>
+              </div>
+            </div>
+            <div class="info-item d-flex align-items-start mb-3">
+              <i class="bi bi-tools me-3 fs-4"></i>
+              <div>
+              <h5>Technologien</h5>
+              <p>Perl, Test::More, Devel::Cover</p>
+              </div>
+            </div>
+            <div class="info-item d-flex align-items-start mb-3">
+              <i class="bi bi-graph-up me-3 fs-4"></i>
+              <div>
+              <h5> Verbesserungen</h5>
+              <p>+100 % Wartbarkeit, -80 % Code-Duplikat, Einfachere Pflege & nachvollziehbare Konfiguration</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Share Links -->
+          <div hx-get="/partials/cases-share-links.html" hx-trigger="load" hx-swap="outerHTML"></div>
+
+          <!-- Weitere Fallstudien -->
+          <div x-data="relatedCases()" x-init="init()" class="related-services mt-5">
+            <h4>Weitere Fallstudien</h4>
+            <template x-for="item in selectedCases" :key="item.url">
+              <div class="service-item">
+                <i :class="item.icon"></i>
+                <h5><a :href="item.url" target="_blank" x-text="item.title"></a></h5>
+                <p x-text="item.description"></p>
+              </div>
+            </template>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+  <div hx-get="/partials/footer.html" hx-trigger="load" hx-swap="outerHTML"></div>
+  <div hx-get="/partials/footer-scripts.html" hx-trigger="load" hx-swap="outerHTML"></div>
+  <script>window.onload = () => { document.body.style.display = "block"; };</script>
+</body>
+</html>

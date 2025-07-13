@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Datenbank-Optimierung",
+    "description": "Query-Zeiten halbiert durch PostgreSQL-Tuning bei thinkproject.",
+    "url": "fallstudie-thinkproject.html",
+    "icon": "bi bi-database-check"
+  },
+  {
+    "title": "Microservice unter Last",
+    "description": "Import-Stabilität für große Datenmengen bei NewStore.",
+    "url": "fallstudie-newstore.html",
+    "icon": "bi bi-box-arrow-in-right"
+  },
+  {
+    "title": "Perl-Codebasis konsolidiert",
+    "description": "Refactoring & Modulbildung bei Arxma – 100 % Unit-Test-Abdeckung.",
+    "url": "fallstudie-arxma.html",
+    "icon": "bi bi-code-slash"
+  }
+]
