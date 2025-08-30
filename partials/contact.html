@@ -18,11 +18,10 @@
                             <div class="col-md-6">
                                 <div class="info-item d-flex mb-3">
                                     <i class="bi bi-envelope-at me-3"></i>
-                                    <a href="mailto:mail@andreploeger.com">mail@andreploeger.com</a>
-                                </div>
-                                <div class="info-item d-flex mb-3">
-                                    <i class="bi bi-telephone me-3"></i>
-                                    <span>+595 981 408660</span>
+                                    <a x-data="{u:'hello', d:'andreploeger.com', s:'Kontakt über Website'}"
+                                        x-text="`${u}@${d}`" :href="`mailto:${u}@${d}?subject=${encodeURIComponent(s)}`"
+                                        rel="nofollow">E-Mail anzeigen
+                                    </a>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -53,8 +52,15 @@
             <div class="col-lg-6">
                 <div class="contact-form card" data-aos="fade-up" data-aos-delay="300">
                     <div class="card-body p-4 p-lg-5">
+                        <form x-data="formGuard()" x-init="init()" hx-post="https://api.andreploeger.com/contact"
+                            hx-ext="json-enc" hx-encoding="json" hx-swap="none"
+                            hx-disabled-elt="button[type=submit], input[type=submit]"
+                            @htmx:configRequest.window="configRequest($event)"
+                            @htmx:beforeRequest.window="beforeRequest($event)"
+                            @htmx:afterRequest.window="afterRequest($event)" action="" method="post"
+                            class="php-email-form">
 
-                        <form action="forms/contact.php" method="post" class="php-email-form">
+
                             <div class="row gy-4">
 
                                 <div class="col-12">
@@ -65,7 +71,10 @@
                                     <input type="email" name="email" class="form-control"
                                         placeholder="Ihre E-Mail-Adresse" required>
                                 </div>
-
+                                <div style="position:absolute; left:-5000px" aria-hidden="true">
+                                    <label>Website <input type="text" name="website" autocomplete="off"
+                                            tabindex="-1"></label>
+                                </div>
                                 <div class="col-12">
                                     <input type="text" name="subject" class="form-control" placeholder="Betreff"
                                         required>
@@ -85,6 +94,7 @@
 
                             </div>
                         </form>
+                        <p class="form-status" x-data x-text="$store.fg.status" role="status" aria-live="polite"></p>
 
                     </div>
                 </div>
