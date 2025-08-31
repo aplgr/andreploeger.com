@@ -12,29 +12,41 @@
 --------------------------------------------------------------*/
 /* Fonts */
 :root {
-  --default-font: "Roboto",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --heading-font: "Questrial",  sans-serif;
-  --nav-font: "Noto Sans",  sans-serif;
+  --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --heading-font: "Questrial", sans-serif;
+  --nav-font: "Noto Sans", sans-serif;
 }
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
-:root { 
-  --background-color: #ffffff; /* Background color for the entire website, including individual sections */
-  --default-color: #0a0f14; /* Default color used for the majority of the text content across the entire website */
-  --heading-color: #0f2943; /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #e87532; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
-  --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
-  --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+:root {
+  --background-color: #ffffff;
+  /* Background color for the entire website, including individual sections */
+  --default-color: #0a0f14;
+  /* Default color used for the majority of the text content across the entire website */
+  --heading-color: #0f2943;
+  /* Color for headings, subheadings and title throughout the website */
+  --accent-color: #e87532;
+  /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+  --surface-color: #ffffff;
+  /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
+  --contrast-color: #ffffff;
+  /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
 }
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
 :root {
-  --nav-color: #0a0f14;  /* The default color of the main navmenu links */
-  --nav-hover-color: #e87532; /* Applied to main navmenu links when they are hovered over or active */
-  --nav-mobile-background-color: #ffffff; /* Used as the background color for mobile navigation menu */
-  --nav-dropdown-background-color: #ffffff; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
-  --nav-dropdown-color: #0a0f14; /* Used for navigation links of the dropdown items in the navigation menu. */
-  --nav-dropdown-hover-color: #e87532; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+  --nav-color: #0a0f14;
+  /* The default color of the main navmenu links */
+  --nav-hover-color: #e87532;
+  /* Applied to main navmenu links when they are hovered over or active */
+  --nav-mobile-background-color: #ffffff;
+  /* Used as the background color for mobile navigation menu */
+  --nav-dropdown-background-color: #ffffff;
+  /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
+  --nav-dropdown-color: #0a0f14;
+  /* Used for navigation links of the dropdown items in the navigation menu. */
+  --nav-dropdown-hover-color: #e87532;
+  /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
 }
 
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
@@ -2012,7 +2024,8 @@ section,
   background-color: #fff;
   color: #6c757d;
   font-size: 1.1rem;
-  border: 1px solid transparent; /* wichtig für Hover-Effekt */
+  border: 1px solid transparent;
+  /* wichtig für Hover-Effekt */
   border-color: #6c757d;
   transition: background-color 0.3s, color 0.3s;
   text-decoration: none;
@@ -2022,4 +2035,156 @@ section,
   /*background-color: color-mix(in srgb, var(--accent-color), transparent 15%);*/
   border-color: color-mix(in srgb, var(--accent-color), transparent 15%);
   color: color-mix(in srgb, var(--accent-color), transparent 15%);
+}
+
+/* Services: compact checklists */
+.services .service-item ul.list-compact {
+  margin-top: .4rem;
+}
+
+.services .service-item ul.list-compact li {
+  display: grid;
+  grid-template-columns: 1rem 1fr;
+  column-gap: .5rem;
+  align-items: start;
+  margin-bottom: .3rem;
+  line-height: 1.35;
+}
+
+.services .service-item ul.list-compact li i {
+  font-size: .9rem;
+  line-height: 1;
+  margin-top: .15rem;
+  color: var(--bs-success);
+  opacity: .9;
+}
+
+.services .service-item ul.list-compact li span {
+  display: block;
+}
+
+.services .service-item {
+  padding: 1rem 1rem;
+  border-radius: .75rem;
+}
+
+.services .service-item h3 {
+  margin-bottom: .25rem;
+  font-size: 1.1rem;
+}
+
+.services .service-item p {
+  margin-bottom: .4rem;
+}
+
+.services.section {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+@media (min-width: 992px) {
+  .services .intro-sticky {
+    position: sticky;
+    top: 7rem;
+    align-self: start;
+  }
+}
+
+/* XS: <576px */
+@media (max-width: 575.98px) {
+  .services.section {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .services .section-title h2 {
+    margin-bottom: .35rem;
+  }
+
+  .services .section-title p {
+    margin-bottom: 1.1rem;
+  }
+
+  .services .title-shape svg {
+    height: 10px;
+  }
+
+  .services .service-item {
+    padding: .875rem .875rem;
+    border-radius: .65rem;
+  }
+
+  .services .service-item h3 {
+    font-size: 1.05rem;
+    margin-bottom: .2rem;
+  }
+
+  .services .service-item p {
+    font-size: .95rem;
+    margin-bottom: .35rem;
+  }
+
+  .services .service-item ul.list-compact li {
+    grid-template-columns: .95rem 1fr;
+    column-gap: .45rem;
+    margin-bottom: .25rem;
+    line-height: 1.3;
+  }
+
+  .services .service-item ul.list-compact li i {
+    font-size: .85rem;
+    margin-top: .18rem;
+  }
+
+  .services .intro-sticky {
+    position: static;
+    top: auto;
+  }
+
+  .services .cta-buttons .btn {
+    width: 100%;
+  }
+
+  .services .intro-sticky .text-muted.small {
+    margin-top: .5rem;
+    display: block;
+  }
+}
+
+/* SM–MD: 576–991px */
+@media (min-width: 576px) and (max-width: 991.98px) {
+  .services.section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .services .service-item {
+    padding: 1rem 1rem;
+  }
+
+  .services .service-item h3 {
+    font-size: 1.1rem;
+  }
+
+  .services .service-item p {
+    font-size: .98rem;
+  }
+
+  .services .service-item ul.list-compact li {
+    grid-template-columns: 1rem 1fr;
+    column-gap: .5rem;
+    margin-bottom: .3rem;
+    line-height: 1.33;
+  }
+
+  .services .service-item ul.list-compact li i {
+    font-size: .9rem;
+    margin-top: .15rem;
+  }
+
+  .services .intro-sticky {
+    position: static;
+    top: auto;
+  }
+
 }
