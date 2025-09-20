@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Fallstudie: Preislogik konsolidiert</title>
+  <meta name="description"
+    content="Von zwölf Skripten zu einem Modul: zentrale Preislogik mit stabiler API, Konfiguration statt Code-Forks und 200+ Tests – schrittweise ausgerollt.">
+  <meta name="keywords"
+    content="Preislogik, Preisregeln, Refactoring, Perl, Tests, Devel::Cover, YAML::XS, E-Commerce, Shadow-Run, API, Konfiguration">
+
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://andreploeger.com/preislogik-konsolidiert">
+
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="André Plöger">
+  <meta property="og:title" content="Fallstudie: Preislogik konsolidiert">
+  <meta property="og:description"
+    content="Von zwölf Skripten zu einem Modul: zentrale Preislogik mit stabiler API, Konfiguration statt Code-Forks und 200+ Tests – schrittweise ausgerollt.">
+  <meta property="og:url" content="https://andreploeger.com/preislogik-konsolidiert">
+  <meta property="og:image" content="https://andreploeger.com/assets/img/cases/preislogik-konsolidiert.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Fallstudie: Preislogik konsolidiert">
+  <meta name="twitter:description"
+    content="Von zwölf Skripten zu einem Modul: zentrale Preislogik mit stabiler API, Konfiguration statt Code-Forks und 200+ Tests – schrittweise ausgerollt.">
+  <meta name="twitter:image" content="https://andreploeger.com/assets/img/cases/preislogik-konsolidiert.webp">
+
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "inLanguage": "de",
+  "headline": "Preislogik konsolidiert",
+  "description": "Von zwölf Skripten zu einem Modul: zentrale Preislogik mit stabiler API, Konfiguration statt Code-Forks und 200+ Tests – schrittweise ausgerollt.",
+  "mainEntityOfPage": {"@type":"WebPage","@id":"https://andreploeger.com/preislogik-konsolidiert"},
+  "image": "https://andreploeger.com/assets/img/cases/preislogik-konsolidiert.webp",
+  "author": {"@type":"Person","name":"André Plöger","url":"https://andreploeger.com/"}
+  }
+  </script>
+
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/assets/img/favicon-512.png" sizes="512x512">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" sizes="180x180">
+
+  <script defer src="/assets/js/cases.js"></script>
+  <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <div hx-get="/partials/styles-cases.html" hx-trigger="load" hx-swap="outerHTML"></div>
+</head>
+
+<body class="service-details-page" style="display:none">
+  <div hx-get="/partials/header.html" hx-trigger="load" hx-swap="outerHTML"></div>
+
+  <main class="main">
+    <section id="service-details" class="service-details section">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-4">
+
+          <div class="col-lg-8">
+            <div class="content">
+
+              <div class="service-info bg-light border rounded p-4 mb-4">
+                <div class="row gy-4 align-items-center">
+                  <div class="col-sm-8">
+                    <h1>Preislogik konsolidiert</h1>
+                    <p class="mb-0">Von zwölf Skripten zu einem Modul – abgesichert durch Tests, eingeführt im laufenden
+                      Betrieb.</p>
+                  </div>
+                  <div class="col-sm-4 text-center" style="height:180px; overflow:hidden;">
+                    <img src="/assets/img/cases/preislogik-konsolidiert.webp" alt="Preislogik konsolidiert"
+                      class="img-fluid rounded" style="object-fit:contain; max-height:100%;">
+                  </div>
+                </div>
+              </div>
+
+              <h3>Ausgangslage</h3>
+              <p>
+                Über die Jahre war die Preislogik für mehrere Shops in getrennten Skripten gewachsen. Viele Regeln
+                ähnelten sich, unterschieden sich aber im Detail. Wer etwas ändern wollte, musste an mehreren Stellen
+                drehen – mit dem
+                Gefühl, stets eine Abzweigung zu übersehen. Tests gab es nur punktuell.
+              </p>
+
+              <h3>Weg zur gemeinsamen Logik</h3>
+              <p>
+                Der erste Schritt war, das bestehende Verhalten festzuhalten, bevor wir es anfassen: Black-box-Tests für
+                die kritischen Pfade, bis die Vielfalt der Fälle abgedeckt war. Danach ließ sich eine öffentliche
+                Schnittstelle definieren, die das Wesentliche ausdrückt: Eingaben klar benannt, Ausgaben eindeutig,
+                keine
+                Seiteneffekte. Auf dieser Basis entstand ein Modul, das die Regeln zentral bündelt; Unterschiede
+                zwischen Shops wandern
+                in Konfigurationsdateien statt in neue Code-Forks.
+              </p>
+
+              <div class="service-info bg-light border rounded p-3 mb-4">
+                <h5 class="mb-2">Konfiguration statt Code-Forks (vereinfacht)</h5>
+                <pre class="mb-0"><code># defaults.yaml
+price_rules:
+  rounding: bankers
+  vat: 19
+  promo:
+    allow_stacking: false
+
+# shop-fr.yaml (nur Abweichungen)
+vat: 20
+promo:
+  allow_stacking: true
+</code></pre>
+              </div>
+
+              <h3>Qualität & Betrieb</h3>
+              <p>
+                Die Tests sind das Sicherheitsnetz – über zweihundert Fälle, die die vorherigen Varianten abdecken. Für
+                die
+                tägliche Arbeit heißt das: Code-Reviews konzentrieren sich auf Regeln, nicht auf Dateisuche. Eingeführt
+                wurde
+                das Modul schrittweise: zunächst als Shadow-Run, dessen Ergebnisse wir mit der Altlogik verglichen
+                haben; danach
+                die Umschaltung je Shop, mit Rückfalloption im Rücken.
+              </p>
+
+              <h3>Was heute anders ist</h3>
+              <p>
+                Die Preislogik liegt an einem Ort und ist über eine stabile API greifbar. Neue Anforderungen lassen sich
+                als
+                Konfiguration ergänzen, ohne Kopien anzulegen. Änderungen bleiben nachvollziehbar – in Tests, im Review
+                und
+                im Betrieb.
+              </p>
+
+              <div hx-get="/partials/cases-cta.html" hx-trigger="load" hx-swap="outerHTML"></div>
+
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="service-info">
+              <h4>Kurzinfo</h4>
+
+              <div class="info-item d-flex align-items-start mb-3">
+                <i class="bi bi-calendar-event me-3 fs-4"></i>
+                <div>
+                  <h5>Dauer</h5>
+                  <p class="mb-0">ca. 6&nbsp;Wochen (inkl. Tests &amp; Rollout)</p>
+                </div>
+              </div>
+
+              <div class="info-item d-flex align-items-start mb-3">
+                <i class="bi bi-person-workspace me-3 fs-4"></i>
+                <div>
+                  <h5>Rolle</h5>
+                  <p class="mb-0">Backend/Refactoring, enge Abstimmung mit Fachseite</p>
+                </div>
+              </div>
+
+              <div class="info-item d-flex align-items-start mb-0">
+                <i class="bi bi-tools me-3 fs-4"></i>
+                <div>
+                  <h5>Werkzeuge</h5>
+                  <p class="mb-0">Perl&nbsp;5, Test::More, Devel::Cover, YAML::XS, Git&nbsp;(CI)</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="related-services mt-5">
+              <h4>Arxma</h4>
+              <ul class="list-unstyled mb-0">
+                <li><strong>Branche:</strong> E‑Commerce</li>
+                <li><strong>Schwerpunkt:</strong> Sortiment & Fulfillment</li>
+              </ul>
+              <br>
+              Professioneller Onlinehandel in Europa mit hohen Anforderungen an Nachvollziehbarkeit und Verfügbarkeit.
+            </div>
+
+            <div hx-get="/partials/cases-share-links.html" hx-trigger="load" hx-swap="outerHTML"></div>
+
+            <div x-data="relatedCases()" x-init="init()" class="related-services mt-5">
+              <h4>Weitere Fallstudien</h4>
+              <template x-for="item in selectedCases" :key="item.url">
+                <div class="service-item">
+                  <div class=" d-flex align-items-center gap-3 mb-2">
+                    <i :class="item.icon"></i>
+                    <h5><a :href="item.url" target="_blank" x-text="item.title" rel="noopener"></a></h5>
+                  </div>
+                  <p x-text="item.description"></p>
+                </div>
+              </template>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div hx-get="/partials/footer.html" hx-trigger="load" hx-swap="outerHTML"></div>
+  <div hx-get="/partials/footer-scripts.html" hx-trigger="load" hx-swap="outerHTML"></div>
+  <script>window.onload = () => { document.body.style.display = "block"; };</script>
+  <div x-data class="ap-toast" x-show="$store.toast.open" x-transition.opacity.duration.150ms role="status"
+    aria-live="polite">
+    <i class="bi" :class="$store.toast.isError ? 'bi-x-circle' : 'bi-check2-circle'"></i>
+    <span x-text="$store.toast.message"></span>
+  </div>
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i>
+  </a>
+</body>
+
+</html>

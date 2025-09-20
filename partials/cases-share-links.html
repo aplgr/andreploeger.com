@@ -2,27 +2,37 @@
   <h4>Teilen</h4>
   <div class="d-flex flex-wrap gap-2">
 
-    <a :href="`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`" target="_blank" class="social-icon" title="Auf LinkedIn teilen">
+    <a :href="`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`" target="_blank"
+      class="social-icon" title="Auf LinkedIn teilen">
       <i class="bi bi-linkedin"></i>
     </a>
-    <a :href="`mailto:?subject=Spannende Referenz von André Plöger&body=Schau dir diese Fallstudie an: ${encodeURIComponent(shareUrl)}`" class="social-icon" title="Per E-Mail teilen">
+    <a :href="`mailto:?subject=Spannende Referenz von André Plöger&body=Schau dir diese Fallstudie an: ${encodeURIComponent(shareUrl)}`"
+      class="social-icon" title="Per E-Mail teilen">
       <i class="bi bi-envelope"></i>
     </a>
 
-    <a class="social-icon" href="#" @click.prevent="navigator.clipboard.writeText(shareUrl).then(() => alert('Link kopiert: ' + shareUrl))" aria-label="Link kopieren">
+    <a class="social-icon" href="#" @click.prevent="$store.toast.copy(shareUrl)" aria-label="Link kopieren">
       <i class="bi bi-link-45deg"></i>
     </a>
 
-    <a :href="`https://www.xing.com/social/share/spi?op=share&url=${encodeURIComponent(shareUrl)}`" class="social-icon" aria-label="Xing" target="_blank" rel="noopener">
-      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/xing.svg" alt="Xing" width="18" height="18" style="filter: grayscale(1); opacity: 0.8;">
+    <a :href="`https://www.xing.com/social/share/spi?op=share&url=${encodeURIComponent(shareUrl)}`" class="social-icon"
+      aria-label="Xing" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false" style="display:block">
+        <path fill="currentColor"
+          d="M18.188 0c-.517 0-.741.325-.927.66 0 0-7.455 13.224-7.702 13.657.015.024 4.919 9.023 4.919 9.023.17.308.436.66.967.66h3.454c.211 0 .375-.078.463-.22.089-.151.089-.346-.009-.536l-4.879-8.916c-.004-.006-.004-.016 0-.022L22.139.756c.095-.191.097-.387.006-.535C22.056.078 21.894 0 21.686 0h-3.498zM3.648 4.74c-.211 0-.385.074-.473.216-.09.149-.078.339.02.531l2.34 4.05c.004.01.004.016 0 .021L1.86 16.051c-.099.188-.093.381 0 .529.085.142.239.234.45.234h3.461c.518 0 .766-.348.945-.667l3.734-6.609-2.378-4.155c-.172-.315-.434-.659-.962-.659H3.648v.016z" />
+      </svg>
     </a>
-    <a href="https://slack.com/app_redirect?channel=general" target="_blank" class="social-icon" aria-label="Share on Slack">
+
+    <a href="https://slack.com/app_redirect?channel=general" target="_blank" class="social-icon"
+      aria-label="Share on Slack">
       <i class="bi bi-slack"></i>
     </a>
-    <a :href="`https://t.me/share/url?url=${encodeURIComponent(shareUrl)}`" target="_blank" class="social-icon" title="Per Telegram teilen">
+    <a :href="`https://t.me/share/url?url=${encodeURIComponent(shareUrl)}`" target="_blank" class="social-icon"
+      title="Per Telegram teilen">
       <i class="bi bi-telegram"></i>
     </a>
-    <a :href="`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=Schau%20dir%20diese%20Fallstudie%20an!`" target="_blank" class="social-icon" aria-label="Share on X">
+    <a :href="`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=Schau%20dir%20diese%20Fallstudie%20an!`"
+      target="_blank" class="social-icon" aria-label="Share on X">
       <i class="bi bi-twitter-x"></i>
     </a>
   </div>

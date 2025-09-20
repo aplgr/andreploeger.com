@@ -1965,13 +1965,8 @@ section,
 }
 
 /*--------------------------------------------------------------
-# Starter Section Section
+# Custom CSS
 --------------------------------------------------------------*/
-.starter-section {
-  /* Add your styles here */
-}
-
-/* Add button to .navmen */
 .navmenu .cta-buttons .btn {
   padding: 0.6rem 1.5rem;
   font-size: 1rem;
@@ -1992,7 +1987,6 @@ section,
   transform: translateY(-2px);
 }
 
-/* Change .services button */
 .services .cta-buttons .btn {
   padding: 0.6rem 1.5rem;
   font-size: 1rem;
@@ -2013,6 +2007,25 @@ section,
   transform: translateY(-2px);
 }
 
+.service-details .cta-buttons .btn {
+  padding: 0.6rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.service-details .cta-buttons .btn.btn-primary {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: var(--contrast-color);
+}
+
+.service-details .cta-buttons .btn.btn-primary:hover {
+  background-color: color-mix(in srgb, var(--accent-color), transparent 15%);
+  border-color: color-mix(in srgb, var(--accent-color), transparent 15%);
+  transform: translateY(-2px);
+}
 
 .social-icon {
   display: inline-flex;
@@ -2025,7 +2038,6 @@ section,
   color: #6c757d;
   font-size: 1.1rem;
   border: 1px solid transparent;
-  /* wichtig für Hover-Effekt */
   border-color: #6c757d;
   transition: background-color 0.3s, color 0.3s;
   text-decoration: none;
@@ -2187,4 +2199,85 @@ section,
     top: auto;
   }
 
+}
+
+/* share link toast */
+.ap-toast {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 1080;
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .6rem .8rem;
+  border-radius: .6rem;
+  background: color-mix(in srgb, var(--bs-body-bg, #0b0b0b) 75%, transparent);
+  color: var(--bs-body-color, #fff);
+  border: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, .2);
+  font-size: .95rem;
+}
+
+.ap-toast .bi {
+  font-size: 1rem;
+}
+
+.ap-toast[x-cloak] {
+  display: none !important;
+}
+
+@media (max-width: 575.98px) {
+  .ap-toast {
+    left: .75rem;
+    right: .75rem;
+    bottom: .75rem;
+    justify-content: center;
+  }
+}
+
+.ap-toast {
+  --ap-ok: var(--bs-success, #28a745);
+  --ap-err: var(--bs-danger, #dc3545);
+}
+
+.ap-toast .bi-check2-circle {
+  color: var(--ap-ok);
+}
+
+.ap-toast .bi-x-circle {
+  color: var(--ap-err);
+}
+
+@media (min-width: 1200px) {
+  .header .header-container {
+    display: grid !important;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+  }
+
+  .header .logo {
+    grid-column: 1;
+  }
+
+  .header .navmenu {
+    grid-column: 2;
+    justify-self: center;
+  }
+}
+
+@media (max-width: 1199px) {
+  .header .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.contact-info .info-item {
+  align-items: center;
+}
+
+.contact-info .info-item a {
+  display: inline-block;
 }
