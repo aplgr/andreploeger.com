@@ -1,0 +1,50 @@
+Dual License Notice for this Repository
+
+This repository contains two categories of material:
+
+1) Code (e.g. HTML templates, CSS, Java Script, build scripts, components)
+   → Licensed under the MIT License (see section “MIT License” below).
+
+2) Non-code content (e.g. website copy/texts, case studies, images/graphics,
+   logos/brand elements, page layouts/visual design assets)
+   → NOT covered by MIT. See section “Non-Code Content License (All Rights Reserved)”.
+
+Third-party components remain under their respective licenses. See:
+- THIRD_PARTY_LICENSE.md
+
+
+MIT License
+
+Copyright (c) 2025 André Plöger
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+Non-Code Content License (All Rights Reserved)
+
+Copyright (c) 2025 André Plöger. All rights reserved.
+
+Scope:
+- Covered as “non-code content”: website copy (texts), case studies, images/graphics,
+  logos/brand elements, page layouts and visual design assets.
+- Not covered: Code (see MIT terms above).
+
+Permissions:
+- Viewing and reading the content is permitted.
+- Any other use (copying, redistribution, commercial use, derivatives) is not permitted without prior written consent.
