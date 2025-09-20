@@ -10,12 +10,30 @@
     <loc>https://andreploeger.com/impressum.html</loc>
     <lastmod>2025-09-20</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
+    <priority>0.3</priority>
   </url>
   <url>
     <loc>https://andreploeger.com/datenschutz.html</loc>
     <lastmod>2025-09-20</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://andreploeger.com/cases/preislogik-konsolidiert.html</loc>
+    <lastmod>2025-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://andreploeger.com/cases/datenbank-entlastet-query-zeiten-halbiert.html</loc>
+    <lastmod>2025-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://andreploeger.com/cases/microservice-unter-last-stabilisiert.html</loc>
+    <lastmod>2025-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>
