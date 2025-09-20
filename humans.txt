@@ -1,0 +1,13 @@
+/* TEAM */
+André Plöger
+Site: https://andreploeger.com
+Location: Paraguay
+
+Diana Plöger
+Location: Paraguay
+
+/* THANKS */
+Built with GitHub Pages, BootstrapMade, htmx, Alpine.js, Python.org
+
+/* TECHNOLOGY */
+Static HTML/CSS/JS, Python 3
