@@ -1,0 +1,35 @@
+/* assets/css/toast.css — neutral toast styles (no framework required) */
+#toaster{
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  display: grid;
+  gap: 10px;
+  z-index: 9999;
+}
+.toast{
+  min-width: 260px;
+  max-width: 420px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.18);
+  font: 14px/1.45 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial;
+  transform: translateY(12px);
+  opacity: 0;
+  transition: transform .25s ease, opacity .25s ease, box-shadow .25s ease;
+  background: #111827; /* neutral dark */
+  color: #f8fafc;
+}
+.toast.is-shown{
+  transform: translateY(0);
+  opacity: 1;
+}
+.toast--success{ background: #065f46; }
+.toast--error{ background: #7f1d1d; }
+.toast--info{ background: #1f2937; }
+@media (prefers-color-scheme: light){
+  .toast{ background:#111827; color:#f8fafc; }
+  .toast--success{ background: #065f46; }
+  .toast--error{ background: #7f1d1d; }
+  .toast--info{ background: #1f2937; }
+}

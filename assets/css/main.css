@@ -2301,8 +2301,3 @@ section,
 .php-email-form[data-status="sent"] .sent-message {
   display: block;
 }
-
-/* Optional a11y: let SR announce updates quickly */
-.form-status[role="status"] {
-  /* your typography */
-}
