@@ -1,35 +1,62 @@
-/* assets/css/toast.css — neutral toast styles (no framework required) */
-#toaster{
+/* toast.css — conflict-safe and cascade-correct */
+/* Container */
+#ap-toaster {
   position: fixed;
   right: 24px;
   bottom: 24px;
   display: grid;
   gap: 10px;
-  z-index: 9999;
+  z-index: 2147483647;
+  /* above overlays */
 }
-.toast{
+
+/* Base toast */
+.ap-toast {
+  display: none;
   min-width: 260px;
   max-width: 420px;
   padding: 12px 14px;
   border-radius: 10px;
-  box-shadow: 0 12px 30px rgba(0,0,0,.18);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .18);
   font: 14px/1.45 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial;
-  transform: translateY(12px);
-  opacity: 0;
-  transition: transform .25s ease, opacity .25s ease, box-shadow .25s ease;
-  background: #111827; /* neutral dark */
+  background: #111827;
   color: #f8fafc;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: transform .25s ease, opacity .25s ease;
 }
-.toast.is-shown{
-  transform: translateY(0);
+
+.ap-toast.ap-shown {
+  display: block;
   opacity: 1;
+  transform: translateY(0);
 }
-.toast--success{ background: #065f46; }
-.toast--error{ background: #7f1d1d; }
-.toast--info{ background: #1f2937; }
-@media (prefers-color-scheme: light){
-  .toast{ background:#111827; color:#f8fafc; }
-  .toast--success{ background: #065f46; }
-  .toast--error{ background: #7f1d1d; }
-  .toast--info{ background: #1f2937; }
+
+/* Light scheme base (keeps neutral dark toast for contrast) */
+@media (prefers-color-scheme: light) {
+  .ap-toast {
+    background: #111827;
+    color: #f8fafc;
+  }
+}
+
+/* Variants LAST to win over any base/background set above */
+.ap-toast--success {
+  background: var(--accent-color) !important;
+  color: #fff !important;
+  font-weight: bold;
+  text-align: center;
+}
+
+.ap-toast--error {
+  background: #df6e6e !important;
+  color: #fff !important;
+  font-weight: bold;
+  text-align: center;
+}
+
+.ap-toast--info {
+  background: var(--surface-color) !important;
+  font-weight: bold;
+  text-align: center;
 }

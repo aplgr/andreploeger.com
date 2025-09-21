@@ -61,14 +61,14 @@ document.addEventListener('alpine:init', () => {
       }
 
       const msg = (data && data.error) ? data.error :
-        (xhr.status ? `Fehler (${xhr.status})` : 'Netzwerkfehler');
+        (xhr.status ? `Error (${xhr.status})` : 'Nertwork error');
       this.setStatus('error', msg);
       if (window.toast) toast(msg, 'error', { duration: 5000 });
     },
 
     sendError(e) {
       if (e.target !== this.$el) return;
-      const msg = 'Netzwerkfehler – bitte später erneut versuchen.';
+      const msg = 'Network error – please retry later.';
       this.setStatus('error', msg);
       if (window.toast) toast(msg, 'error');
     },
@@ -78,9 +78,9 @@ document.addEventListener('alpine:init', () => {
       this.$el.setAttribute('data-status', state || 'idle');
       if (typeof msg === 'string') Alpine.store('fg').status = msg;
       else {
-        if (state === 'loading') Alpine.store('fg').status = 'Nachricht wird gesendet …';
-        else if (state === 'sent') Alpine.store('fg').status = 'Gesendet ✓';
-        else if (state === 'error') Alpine.store('fg').status = 'Fehler';
+        if (state === 'loading') Alpine.store('fg').status = 'Message is beeing sent …';
+        else if (state === 'sent') Alpine.store('fg').status = 'Sent✓';
+        else if (state === 'error') Alpine.store('fg').status = 'Error';
         else Alpine.store('fg').status = '';
       }
       // Mirror error text into explicit error box if present

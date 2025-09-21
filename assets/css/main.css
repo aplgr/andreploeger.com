@@ -2281,23 +2281,3 @@ section,
 .contact-info .info-item a {
   display: inline-block;
 }
-
-/* Contact Form  */
-
-.php-email-form .loading,
-.php-email-form .error-message,
-.php-email-form .sent-message {
-  display: none;
-}
-
-.php-email-form[data-status="loading"] .loading {
-  display: block;
-}
-
-.php-email-form[data-status="error"] .error-message {
-  display: block;
-}
-
-.php-email-form[data-status="sent"] .sent-message {
-  display: block;
-}
