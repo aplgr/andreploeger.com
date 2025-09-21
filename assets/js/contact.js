@@ -51,17 +51,17 @@ document.addEventListener('alpine:init', () => {
       const fd = new FormData(this.$el);
       const trim = v => (v == null ? '' : String(v)).trim();
 
-      const name    = trim(fd.get('name'));
-      const email   = trim(fd.get('email'));
+      const name = trim(fd.get('name'));
+      const email = trim(fd.get('email'));
       const subject = trim(fd.get('subject')) || document.title;
       const message = trim(fd.get('message'));
       const website = trim(fd.get('website') || ''); // honeypot (optional)
 
       // Duplicate guard (hash recent payload)
       const hash = hashStr([name, email, subject, message].join('|'));
-      const now  = Date.now();
+      const now = Date.now();
       const lastHash = localStorage.getItem(this.dupKey);
-      const lastTs   = parseInt(localStorage.getItem(this.cooldownKey) || '0', 10);
+      const lastTs = parseInt(localStorage.getItem(this.cooldownKey) || '0', 10);
       if (hash && lastHash === hash && now - lastTs < this.cooldownMs) {
         e.preventDefault();
         this.hideAll(); this.show(this.boxError(), 'Please wait before sending the same message again.');
@@ -75,7 +75,7 @@ document.addEventListener('alpine:init', () => {
       const p = e.detail.parameters || (e.detail.parameters = {});
       p.name = name; p.email = email; p.subject = subject; p.message = message;
       p.website = website;
-      p._elapsed_ms = String(Math.max(1, elapsed));
+      p._elapsed_ms = Math.max(1, elapsed);
       p._js_challenge = this.challenge;
 
       // UI
@@ -97,7 +97,7 @@ document.addEventListener('alpine:init', () => {
       const status = xhr.status || 0;
 
       let data = null;
-      try { data = JSON.parse(xhr.responseText || ''); } catch(_) {}
+      try { data = JSON.parse(xhr.responseText || ''); } catch (_) { }
 
       if (status >= 200 && status < 300 && data && data.ok) {
         this.show(this.boxOk());
@@ -107,7 +107,7 @@ document.addEventListener('alpine:init', () => {
       }
 
       const msg = (data && data.error) ? data.error :
-                  (status ? `Error (${status})` : 'Network error');
+        (status ? `Error (${status})` : 'Network error');
       this.show(this.boxError(), msg);
     },
 
@@ -119,8 +119,8 @@ document.addEventListener('alpine:init', () => {
 
     // UI helpers
     boxLoading() { return this.$el.querySelector('.loading'); },
-    boxError()   { return this.$el.querySelector('.error-message'); },
-    boxOk()      { return this.$el.querySelector('.sent-message'); },
+    boxError() { return this.$el.querySelector('.error-message'); },
+    boxOk() { return this.$el.querySelector('.sent-message'); },
     hideAll() {
       [this.boxLoading(), this.boxError(), this.boxOk()].forEach(el => {
         if (!el) return;
