@@ -56,10 +56,8 @@
                         <form x-data="formGuard()" x-init="init()" hx-post="https://api.andreploeger.com/contact"
                             hx-ext="json-enc" hx-encoding="json" hx-swap="none"
                             hx-disabled-elt="button[type=submit], input[type=submit]"
-                            @htmx:configRequest.window="configRequest($event)"
-                            @htmx:beforeRequest.window="beforeRequest($event)"
-                            @htmx:afterRequest.window="afterRequest($event)" action="" method="post"
-                            class="php-email-form">
+                            @htmx:configRequest="configRequest($event)" @htmx:beforeRequest="beforeRequest($event)"
+                            @htmx:afterRequest="afterRequest($event)" action="" method="post" class="php-email-form">
 
                             <div class="row gy-4">
 
