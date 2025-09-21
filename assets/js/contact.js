@@ -1,10 +1,10 @@
-// contact.js — robust _elapsed_ms handling (Alpine + htmx + json-enc)
+// contact.js — robust _elapsed_ms (Alpine + htmx + json-enc)
 //
-// Goals:
-// - Always compute `_elapsed_ms` at submit-time and include it in the JSON body.
-// - Mirror the same value into a hidden input (if present) to survive any re-scan.
-// - Avoid Alpine rebinding issues by NOT relying on :value in HTML.
-// - Keep $store.fg.status working for UI messages.
+// Key change:
+// - Sets the hidden `_elapsed_ms` on the native `submit` event with `{capture:true}`
+//   so it runs BEFORE htmx/json-enc collects form values. This avoids ordering issues.
+// - Still updates e.detail.parameters in htmx hooks as a backup.
+// - Restores `$store.fg.status` for UI messages. No jQuery, no vendor scripts.
 
 document.addEventListener('alpine:init', () => {
   Alpine.store('fg', { status: '' });
@@ -19,52 +19,45 @@ document.addEventListener('alpine:init', () => {
       // Quiet initial UI
       this._hide('.loading'); this._hide('.error-message'); this._hide('.sent-message');
 
-      // Harmless compat: copy hx-post to action if action=""
+      // Compat: fill action from hx-post if empty
       if (this.$el.getAttribute('action') === '') {
         const hx = this.$el.getAttribute('hx-post') || this.$el.dataset.action;
         if (hx) this.$el.setAttribute('action', hx);
       }
+
+      // CRITICAL: set _elapsed_ms before htmx/json-enc handles the submit
+      this.$el.addEventListener('submit', (ev) => {
+        const elapsed = Math.max(1, Date.now() - this.start);
+        this.lastElapsed = elapsed;
+        const hidden = this.$el.querySelector('input[name="_elapsed_ms"]');
+        if (hidden) hidden.value = String(elapsed);
+        // Do NOT preventDefault; htmx will handle the submission.
+      }, { capture: true });
     },
 
-    // Runs when htmx configures the request; order may vary with extensions.
+    // htmx:configRequest — backup injection into JSON body
     configRequest(e) {
       if (e.target !== this.$el) return;
-
-      const elapsed = Math.max(1, Date.now() - this.start);
-      this.lastElapsed = elapsed;
-
-      // 1) Force parameter in JSON body
+      const elapsed = this.lastElapsed || Math.max(1, Date.now() - this.start);
       const p = e.detail.parameters || (e.detail.parameters = {});
-      // remove empty/previous value to avoid accidental overwrite
-      if (p._elapsed_ms === '' || p._elapsed_ms == null) delete p._elapsed_ms;
       p._elapsed_ms = elapsed;
-
-      // 2) Mirror into hidden input so any re-scan picks it up
-      const hidden = this.$el.querySelector('input[name="_elapsed_ms"]');
-      if (hidden) hidden.value = String(elapsed);
 
       Alpine.store('fg').status = 'sending…';
       this._hide('.error-message'); this._hide('.sent-message'); this._show('.loading');
     },
 
-    // If json-enc reworks parameters after configRequest, enforce again right before send.
     beforeRequest(e) {
       if (e.target !== this.$el) return;
-
+      // Ensure hidden field still has the value
       const elapsed = this.lastElapsed || Math.max(1, Date.now() - this.start);
-
-      // Update hidden input again (last line of defense)
       const hidden = this.$el.querySelector('input[name="_elapsed_ms"]');
       if (hidden) hidden.value = String(elapsed);
-
-      // And parameters again, in case another listener mutated them
       const p = e.detail.parameters || (e.detail.parameters = {});
       p._elapsed_ms = elapsed;
     },
 
     afterRequest(e) {
       if (e.target !== this.$el) return;
-
       this._hide('.loading');
 
       const xhr = e.detail.xhr;
@@ -75,7 +68,6 @@ document.addEventListener('alpine:init', () => {
         Alpine.store('fg').status = 'sent ✓';
         this._show('.sent-message');
         this.$el.reset();
-        // Restart timing window for next submit
         this.start = Date.now();
         this.lastElapsed = 0;
         return;
@@ -95,7 +87,7 @@ document.addEventListener('alpine:init', () => {
       this._setText('.error-message', msg); this._show('.error-message');
     },
 
-    // --- tiny DOM helpers ---
+    // helpers
     _q(sel) { return this.$el.querySelector(sel); },
     _hide(sel) { const el = this._q(sel); if (el) el.style.display = 'none'; },
     _show(sel) { const el = this._q(sel); if (el) el.style.display = 'block'; },
