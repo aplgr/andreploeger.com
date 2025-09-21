@@ -1,4 +1,4 @@
-// assets/js/contact.js — logic-only; optional toast() UI if present
+// assets/js/contact.js — logic only (no user-facing strings)
 document.addEventListener('alpine:init', () => {
   Alpine.store('fg', { status: '' });
 
@@ -8,37 +8,50 @@ document.addEventListener('alpine:init', () => {
 
     init() {
       this.start = Date.now();
-      this.setStatus('idle');
+      this.setState('idle');
 
-      // Compat: copy hx-post → action if action empty
+      // Ensure _elapsed_ms is set before htmx/json-enc serializes
+      this.$el.addEventListener('submit', () => {
+        const elapsed = Math.max(1, Date.now() - this.start);
+        this.lastElapsed = elapsed;
+        const hidden = this.$el.querySelector('input[name=\"_elapsed_ms\"]');
+        if (hidden) hidden.value = String(elapsed);
+      }, { capture: true });
+
+      // Fallback: copy hx-post into action if empty
       if (this.$el.getAttribute('action') === '') {
         const hx = this.$el.getAttribute('hx-post') || this.$el.dataset.action;
         if (hx) this.$el.setAttribute('action', hx);
       }
 
-      // Capture submit first → set _elapsed_ms before htmx/json-enc serializes
-      this.$el.addEventListener('submit', () => {
-        const elapsed = Math.max(1, Date.now() - this.start);
-        this.lastElapsed = elapsed;
-        const hidden = this.$el.querySelector('input[name="_elapsed_ms"]');
-        if (hidden) hidden.value = String(elapsed);
-      }, { capture: true });
+      // Listen for centralized notifications to update SR text / inline boxes
+      this.$el.addEventListener('ap:notify', (ev) => {
+        const d = ev.detail || {};
+        const type = d.type || '';
+        const msg  = d.message || '';
+        // Screen reader line
+        Alpine.store('fg').status = msg;
+        // Inline error text (if present)
+        if (type === 'error') {
+          const el = this.$el.querySelector('.error-message');
+          if (el) el.textContent = msg;
+        }
+      });
     },
 
+    // htmx hooks (no strings here)
     configRequest(e) {
       if (e.target !== this.$el) return;
       const elapsed = this.lastElapsed || Math.max(1, Date.now() - this.start);
       const p = e.detail.parameters || (e.detail.parameters = {});
       p._elapsed_ms = elapsed;
-
-      this.setStatus('loading', 'Nachricht wird gesendet …');
-      if (window.toast) toast('Nachricht wird gesendet …', 'info', { duration: 2000 });
+      this.setState('loading');
     },
 
     beforeRequest(e) {
       if (e.target !== this.$el) return;
       const elapsed = this.lastElapsed || Math.max(1, Date.now() - this.start);
-      const hidden = this.$el.querySelector('input[name="_elapsed_ms"]');
+      const hidden = this.$el.querySelector('input[name=\"_elapsed_ms\"]');
       if (hidden) hidden.value = String(elapsed);
       const p = e.detail.parameters || (e.detail.parameters = {});
       p._elapsed_ms = elapsed;
@@ -46,48 +59,27 @@ document.addEventListener('alpine:init', () => {
 
     afterRequest(e) {
       if (e.target !== this.$el) return;
-
       const xhr = e.detail.xhr;
       let data = null;
-      try { data = JSON.parse(xhr.responseText || ''); } catch { }
-
+      try { data = JSON.parse(xhr.responseText || ''); } catch {}
       if (xhr.status >= 200 && xhr.status < 300 && data && data.ok) {
-        this.setStatus('sent', 'Vielen Dank! ✓');
-        if (window.toast) toast('Vielen Dank! Ich melde mich schnellstmöglich zurück.', 'success');
+        this.setState('sent');
         this.$el.reset();
         this.start = Date.now();
         this.lastElapsed = 0;
-        return;
+      } else {
+        this.setState('error');
       }
-
-      const msg = (data && data.error) ? data.error :
-        (xhr.status ? `Error (${xhr.status})` : 'Nertwork error');
-      this.setStatus('error', msg);
-      if (window.toast) toast(msg, 'error', { duration: 5000 });
     },
 
     sendError(e) {
       if (e.target !== this.$el) return;
-      const msg = 'Network error – please retry later.';
-      this.setStatus('error', msg);
-      if (window.toast) toast(msg, 'error');
+      this.setState('error');
     },
 
-    // state & SR text
-    setStatus(state, msg) {
+    // visual state for CSS fallbacks
+    setState(state) {
       this.$el.setAttribute('data-status', state || 'idle');
-      if (typeof msg === 'string') Alpine.store('fg').status = msg;
-      else {
-        if (state === 'loading') Alpine.store('fg').status = 'Message is beeing sent …';
-        else if (state === 'sent') Alpine.store('fg').status = 'Sent✓';
-        else if (state === 'error') Alpine.store('fg').status = 'Error';
-        else Alpine.store('fg').status = '';
-      }
-      // Mirror error text into explicit error box if present
-      if (state === 'error') {
-        const el = this.$el.querySelector('.error-message');
-        if (el && typeof msg === 'string') el.textContent = msg;
-      }
     },
   }));
 });

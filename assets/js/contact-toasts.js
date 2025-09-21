@@ -1,32 +1,55 @@
-// assets/js/contact-toasts.js — global htmx listeners for toasts (no Alpine dependency)
+// assets/js/contact-toasts.js — single source of user-facing messages
 (function () {
-  function isForm(e) {
+  if (!window.htmx) return;
+
+  function isContactForm(e) {
     return e && e.target && e.target.matches && e.target.matches('form.php-email-form');
   }
 
+  // Centralized copy (DE)
+  var MSG = {
+    sending: 'Message is being sent...',
+    success: 'Thank you! I will get back to you as soon as possible.',
+    network: 'Network error – please try again later.',
+    error: 'An error has occurred.',
+  };
+
+  function notify(form, type, message, opts) {
+    // Toasts (if available)
+    if (window.toast) {
+      var variant = (type === 'success') ? 'success' : (type === 'error' ? 'error' : 'info');
+      window.toast(message, variant, { duration: (opts && opts.duration) || (type === 'error' ? 5000 : 2000) });
+    }
+    // SR text / inline boxes via custom event (handled by contact.js)
+    if (form && form.dispatchEvent) {
+      form.dispatchEvent(new CustomEvent('ap:notify', { bubbles: true, detail: { type: type, message: message } }));
+    }
+  }
+
   document.addEventListener('htmx:configRequest', function (e) {
-    if (!isForm(e) || !window.toast) return;
-    toast('Message is being sent …', 'info', { duration: 2000 });
+    if (!isContactForm(e)) return;
+    notify(e.target, 'info', MSG.sending, { duration: 1800 });
   });
 
   document.addEventListener('htmx:afterRequest', function (e) {
-    if (!isForm(e) || !window.toast) return;
-
+    if (!isContactForm(e)) return;
     var xhr = e.detail && e.detail.xhr;
     var status = (xhr && xhr.status) || 0;
     var data = null;
     try { data = JSON.parse((xhr && xhr.responseText) || ''); } catch (_) { }
 
     if (status >= 200 && status < 300 && data && data.ok) {
-      toast('Thank you! I\'ll get back to you as soon as possible.', 'success');
-    } else {
-      var msg = (data && data.error) ? data.error : (status ? ('Error (' + status + ')') : 'Network error');
-      toast(msg, 'error', { duration: 5000 });
+      notify(e.target, 'success', MSG.success);
+      return;
     }
+
+    var msg = (data && data.error) ? data.error :
+      (status ? ('Error (' + status + ')') : MSG.network);
+    notify(e.target, 'error', msg, { duration: 5000 });
   });
 
   document.addEventListener('htmx:sendError', function (e) {
-    if (!isForm(e) || !window.toast) return;
-    toast('Network error – please retry later.', 'error');
+    if (!isContactForm(e)) return;
+    notify(e.target, 'error', MSG.network);
   });
 })();
