@@ -56,10 +56,9 @@
                         <form x-data="formGuard()" x-init="init()" hx-post="https://api.andreploeger.com/contact"
                             hx-ext="json-enc" hx-encoding="json" hx-swap="none"
                             hx-disabled-elt="button[type=submit], input[type=submit]"
-                            @htmx:configRequest.window="configRequest($event)"
-                            @htmx:beforeRequest.window="beforeRequest($event)"
-                            @htmx:afterRequest.window="afterRequest($event)" action="" method="post"
-                            class="php-email-form">
+                            @htmx:configRequest="configRequest($event)" @htmx:beforeRequest="beforeRequest($event)"
+                            @htmx:afterRequest="afterRequest($event)" @htmx:sendError="sendError($event)" action=""
+                            method="post" class="contact-form">
 
                             <div class="row gy-4">
 
@@ -86,16 +85,15 @@
                                 </div>
 
                                 <div class="col-12 text-center">
-                                    <div class="loading">Nachricht wird gesendet …</div>
-                                    <div class="error-message"></div>
-                                    <div class="sent-message">Vielen Dank! Ich melde mich schnellstmöglich zurück.</div>
+                                    <input type="hidden" name="_elapsed_ms">
                                     <button type="submit" class="btn btn-submit w-100">Nachricht senden</button>
                                 </div>
 
                             </div>
-                        </form>
-                        <p class="form-status" x-data x-text="$store.fg.status" role="status" aria-live="polite"></p>
+                            <p class="form-status" x-data x-text="$store.fg.status" role="status" aria-live="polite">
+                            </p>
 
+                        </form>
                     </div>
                 </div>
             </div>
