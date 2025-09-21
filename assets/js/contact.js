@@ -1,10 +1,18 @@
-// contact.js — robust _elapsed_ms (Alpine + htmx + json-enc)
+// contact.js — framework-neutral logic (Alpine + htmx)
+// - JS handles logic only: timing, payload, simple state flag on the <form>.
+// - CSS controls presentation via [data-status] selectors (see snippet below).
+// - No Bootstrap classes in JS, no inline styles.
 //
-// Key change:
-// - Sets the hidden `_elapsed_ms` on the native `submit` event with `{capture:true}`
-//   so it runs BEFORE htmx/json-enc collects form values. This avoids ordering issues.
-// - Still updates e.detail.parameters in htmx hooks as a backup.
-// - Restores `$store.fg.status` for UI messages. No jQuery, no vendor scripts.
+// States (set on <form data-status="...">):
+//   idle | loading | sent | error
+//
+// Requirements:
+// - Alpine loaded, htmx + json-enc loaded
+// - Form has x-data="formGuard()" x-init="init()" and htmx event bindings
+// - Hidden input: <input type="hidden" name="_elapsed_ms">
+// - Status boxes exist in markup (any classes); CSS decides visibility using [data-status].
+//
+// Accessibility hint: keep your <p class="form-status" x-text="$store.fg.status"> for SR feedback.
 
 document.addEventListener('alpine:init', () => {
   Alpine.store('fg', { status: '' });
@@ -15,40 +23,37 @@ document.addEventListener('alpine:init', () => {
 
     init() {
       this.start = Date.now();
+      this.setStatus('idle');
 
-      // Quiet initial UI
-      this._hide('.loading'); this._hide('.error-message'); this._hide('.sent-message');
-
-      // Compat: fill action from hx-post if empty
+      // Optional: copy hx-post -> action if action=""
       if (this.$el.getAttribute('action') === '') {
         const hx = this.$el.getAttribute('hx-post') || this.$el.dataset.action;
         if (hx) this.$el.setAttribute('action', hx);
       }
 
-      // CRITICAL: set _elapsed_ms before htmx/json-enc handles the submit
-      this.$el.addEventListener('submit', (ev) => {
+      // Critical: set _elapsed_ms before htmx/json-enc serializes the form
+      this.$el.addEventListener('submit', () => {
         const elapsed = Math.max(1, Date.now() - this.start);
         this.lastElapsed = elapsed;
         const hidden = this.$el.querySelector('input[name="_elapsed_ms"]');
         if (hidden) hidden.value = String(elapsed);
-        // Do NOT preventDefault; htmx will handle the submission.
       }, { capture: true });
     },
 
-    // htmx:configRequest — backup injection into JSON body
     configRequest(e) {
       if (e.target !== this.$el) return;
       const elapsed = this.lastElapsed || Math.max(1, Date.now() - this.start);
+
+      // Ensure JSON gets the timing
       const p = e.detail.parameters || (e.detail.parameters = {});
       p._elapsed_ms = elapsed;
 
-      Alpine.store('fg').status = 'sending…';
-      this._hide('.error-message'); this._hide('.sent-message'); this._show('.loading');
+      this.setStatus('loading');
     },
 
     beforeRequest(e) {
       if (e.target !== this.$el) return;
-      // Ensure hidden field still has the value
+      // Final guard: keep hidden field and params in sync
       const elapsed = this.lastElapsed || Math.max(1, Date.now() - this.start);
       const hidden = this.$el.querySelector('input[name="_elapsed_ms"]');
       if (hidden) hidden.value = String(elapsed);
@@ -58,15 +63,13 @@ document.addEventListener('alpine:init', () => {
 
     afterRequest(e) {
       if (e.target !== this.$el) return;
-      this._hide('.loading');
 
       const xhr = e.detail.xhr;
       let data = null;
       try { data = JSON.parse(xhr.responseText || ''); } catch { }
 
       if (xhr.status >= 200 && xhr.status < 300 && data && data.ok) {
-        Alpine.store('fg').status = 'sent ✓';
-        this._show('.sent-message');
+        this.setStatus('sent', 'Vielen Dank! ✓');
         this.$el.reset();
         this.start = Date.now();
         this.lastElapsed = 0;
@@ -74,23 +77,30 @@ document.addEventListener('alpine:init', () => {
       }
 
       const msg = (data && data.error) ? data.error :
-        (xhr.status ? `Error (${xhr.status})` : 'Network error');
-      Alpine.store('fg').status = msg;
-      this._setText('.error-message', msg); this._show('.error-message');
+        (xhr.status ? `Fehler (${xhr.status})` : 'Netzwerkfehler');
+      this.setStatus('error', msg);
     },
 
     sendError(e) {
       if (e.target !== this.$el) return;
-      this._hide('.loading');
-      const msg = 'Network error — please try again later.';
-      Alpine.store('fg').status = msg;
-      this._setText('.error-message', msg); this._show('.error-message');
+      this.setStatus('error', 'Netzwerkfehler – bitte später erneut versuchen.');
     },
 
-    // helpers
-    _q(sel) { return this.$el.querySelector(sel); },
-    _hide(sel) { const el = this._q(sel); if (el) el.style.display = 'none'; },
-    _show(sel) { const el = this._q(sel); if (el) el.style.display = 'block'; },
-    _setText(sel, txt) { const el = this._q(sel); if (el) el.textContent = txt; },
+    setStatus(state, msg) {
+      this.$el.setAttribute('data-status', state || 'idle');
+      if (typeof msg === 'string') Alpine.store('fg').status = msg;
+      else {
+        if (state === 'loading') Alpine.store('fg').status = 'Nachricht wird gesendet …';
+        else if (state === 'sent') Alpine.store('fg').status = 'Gesendet ✓';
+        else if (state === 'error') Alpine.store('fg').status = 'Fehler';
+        else Alpine.store('fg').status = '';
+      }
+      // Also mirror text into explicit boxes if present
+      const setText = (sel, text) => {
+        const el = this.$el.querySelector(sel);
+        if (el && typeof text === 'string') el.textContent = text;
+      };
+      if (state === 'error') setText('.error-message', msg || '');
+    },
   }));
 });
