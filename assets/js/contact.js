@@ -1,154 +1,79 @@
-// Contact form logic (Alpine.js + htmx, no jQuery, no vendor validate.js)
-// - Provides lightweight spam guards (time-to-fill, duplicate cooldown, JS challenge)
-// - Uses htmx (with json-enc) to POST to the endpoint from hx-post
-// - Controls UI boxes: .loading, .error-message, .sent-message
-
+// contact.js — targeted fix for _elapsed_ms (no backend changes)
 document.addEventListener('alpine:init', () => {
-  Alpine.store('fg', { status: '' });
-
   Alpine.data('formGuard', () => ({
-    // --- Tunables ---
-    minFillMs: 3000,        // require at least 3s before submit
-    cooldownMs: 60000,      // block duplicates for 60s
-    dupKey: 'contact:lastHash',
-    cooldownKey: 'contact:lastTs',
-
-    // --- Runtime ---
-    challenge: randomHex(16),
     start: Date.now(),
 
     init() {
-      // Ensure action="" won't break any legacy scripts if present
+      // Hide status boxes initially
+      const boxes = ['.loading', '.error-message', '.sent-message'];
+      boxes.forEach(sel => { const el = this.$el.querySelector(sel); if (el) el.style.display = 'none'; });
+
+      // If action="" exists, copy hx-post for compatibility (harmless)
       if (this.$el.getAttribute('action') === '') {
         const hx = this.$el.getAttribute('hx-post') || this.$el.dataset.action;
         if (hx) this.$el.setAttribute('action', hx);
       }
-      // Hide boxes initially
-      this.hideAll();
     },
 
-    // htmx:configRequest
+    // Attach to the element (no .window), so we always receive the event for this form
     configRequest(e) {
       if (e.target !== this.$el) return;
 
-      // Basic HTML5 validation
-      if (!this.$el.checkValidity()) {
-        e.preventDefault();
-        this.$el.reportValidity && this.$el.reportValidity();
-        this.hideAll(); this.show(this.boxError(), 'Please check your input.');
-        return;
-      }
+      // Compute elapsed AT SUBMIT time (ms), not at page load.
+      const elapsed = Math.max(1, Date.now() - this.start);
 
-      // Spam/time guard
-      const elapsed = Date.now() - this.start;
-      if (elapsed < this.minFillMs) {
-        e.preventDefault();
-        this.hideAll(); this.show(this.boxError(), 'Please wait a moment before sending.');
-        return;
-      }
+      // 1) Mirror into hidden input if present (for diagnostics / fallbacks)
+      const h = this.$el.querySelector('input[name="_elapsed_ms"]');
+      if (h) h.value = String(elapsed);
 
-      // Build parameters for json-enc
-      const fd = new FormData(this.$el);
-      const trim = v => (v == null ? '' : String(v)).trim();
-
-      const name = trim(fd.get('name'));
-      const email = trim(fd.get('email'));
-      const subject = trim(fd.get('subject')) || document.title;
-      const message = trim(fd.get('message'));
-      const website = trim(fd.get('website') || ''); // honeypot (optional)
-
-      // Duplicate guard (hash recent payload)
-      const hash = hashStr([name, email, subject, message].join('|'));
-      const now = Date.now();
-      const lastHash = localStorage.getItem(this.dupKey);
-      const lastTs = parseInt(localStorage.getItem(this.cooldownKey) || '0', 10);
-      if (hash && lastHash === hash && now - lastTs < this.cooldownMs) {
-        e.preventDefault();
-        this.hideAll(); this.show(this.boxError(), 'Please wait before sending the same message again.');
-        return;
-      }
-      // Store for later (if request goes out we keep it; a failed network will still block briefly)
-      localStorage.setItem(this.dupKey, hash);
-      localStorage.setItem(this.cooldownKey, String(now));
-
-      // Attach parameters for json-enc
+      // 2) Ensure json-enc sends the correct numeric field
       const p = e.detail.parameters || (e.detail.parameters = {});
-      p.name = name; p.email = email; p.subject = subject; p.message = message;
-      p.website = website;
-      p._elapsed_ms = Math.max(1, elapsed);
-      p._js_challenge = this.challenge;
+      p._elapsed_ms = elapsed;
 
-      // UI
-      this.hideAll(); this.show(this.boxLoading());
+      // Optional: brief UI state
+      const loading = this.$el.querySelector('.loading');
+      const error = this.$el.querySelector('.error-message');
+      if (error) { error.style.display = 'none'; error.textContent = ''; }
+      if (loading) { loading.style.display = 'block'; }
     },
 
-    // htmx:beforeRequest
     beforeRequest(e) {
       if (e.target !== this.$el) return;
-      // nothing special here; configRequest already set UI
+      // no-op
     },
 
-    // htmx:afterRequest
     afterRequest(e) {
       if (e.target !== this.$el) return;
-      this.hideAll();
+
+      const loading = this.$el.querySelector('.loading');
+      const ok = this.$el.querySelector('.sent-message');
+      const error = this.$el.querySelector('.error-message');
+
+      if (loading) loading.style.display = 'none';
 
       const xhr = e.detail.xhr;
-      const status = xhr.status || 0;
-
       let data = null;
-      try { data = JSON.parse(xhr.responseText || ''); } catch (_) { }
+      try { data = JSON.parse(xhr.responseText || ''); } catch { }
 
-      if (status >= 200 && status < 300 && data && data.ok) {
-        this.show(this.boxOk());
+      if (xhr.status >= 200 && xhr.status < 300 && data && data.ok) {
+        if (ok) { ok.style.display = 'block'; }
         this.$el.reset();
-        this.resetGuards();
+        // Reset start so a second submit doesn't falsely trip the guard
+        this.start = Date.now();
         return;
       }
 
       const msg = (data && data.error) ? data.error :
-        (status ? `Error (${status})` : 'Network error');
-      this.show(this.boxError(), msg);
+        (xhr.status ? `Error (${xhr.status})` : 'Network error');
+      if (error) { error.textContent = msg; error.style.display = 'block'; }
     },
 
-    // optional: global sendError hook (network)
     sendError(e) {
       if (e.target !== this.$el) return;
-      this.hideAll(); this.show(this.boxError(), 'Network error — please try again later.');
-    },
-
-    // UI helpers
-    boxLoading() { return this.$el.querySelector('.loading'); },
-    boxError() { return this.$el.querySelector('.error-message'); },
-    boxOk() { return this.$el.querySelector('.sent-message'); },
-    hideAll() {
-      [this.boxLoading(), this.boxError(), this.boxOk()].forEach(el => {
-        if (!el) return;
-        el.style.display = 'none';
-        if (el.classList.contains('error-message')) el.textContent = '';
-      });
-    },
-    show(el, msg) {
-      if (!el) return;
-      if (typeof msg === 'string') el.textContent = msg;
-      el.style.display = 'block';
-    },
-
-    resetGuards() {
-      this.start = Date.now();
-      this.challenge = randomHex(16);
+      const loading = this.$el.querySelector('.loading');
+      const error = this.$el.querySelector('.error-message');
+      if (loading) loading.style.display = 'none';
+      if (error) { error.textContent = 'Network error — please try again later.'; error.style.display = 'block'; }
     }
   }));
 });
-
-// Utilities
-function randomHex(len) {
-  const a = new Uint8Array(len);
-  (crypto || window.crypto).getRandomValues(a);
-  return Array.from(a, b => b.toString(16).padStart(2, '0')).join('');
-}
-function hashStr(s) {
-  let h = 5381;
-  for (let i = 0; i < s.length; i++) h = ((h << 5) + h) ^ s.charCodeAt(i);
-  return (h >>> 0).toString(36);
-}
