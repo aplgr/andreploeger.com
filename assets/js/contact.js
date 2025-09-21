@@ -1,4 +1,3 @@
-// assets/js/contact.js — logic only (no user-facing strings)
 document.addEventListener('alpine:init', () => {
   Alpine.store('fg', { status: '' });
 
@@ -27,15 +26,8 @@ document.addEventListener('alpine:init', () => {
       // Listen for centralized notifications to update SR text / inline boxes
       this.$el.addEventListener('ap:notify', (ev) => {
         const d = ev.detail || {};
-        const type = d.type || '';
-        const msg  = d.message || '';
-        // Screen reader line
+        const msg = d.message || '';
         Alpine.store('fg').status = msg;
-        // Inline error text (if present)
-        if (type === 'error') {
-          const el = this.$el.querySelector('.error-message');
-          if (el) el.textContent = msg;
-        }
       });
     },
 
@@ -61,7 +53,7 @@ document.addEventListener('alpine:init', () => {
       if (e.target !== this.$el) return;
       const xhr = e.detail.xhr;
       let data = null;
-      try { data = JSON.parse(xhr.responseText || ''); } catch {}
+      try { data = JSON.parse(xhr.responseText || ''); } catch { }
       if (xhr.status >= 200 && xhr.status < 300 && data && data.ok) {
         this.setState('sent');
         this.$el.reset();
