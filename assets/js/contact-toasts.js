@@ -3,7 +3,7 @@
   if (!window.htmx) return;
 
   function isContactForm(e) {
-    return e && e.target && e.target.matches && e.target.matches('form.contact-form');
+    return e && e.target && e.target.matches && e.target.matches('form.php-email-form');
   }
 
   // Centralized copy (DE)
