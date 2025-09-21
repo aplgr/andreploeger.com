@@ -11,7 +11,6 @@ with their respective authors. Please review the linked licenses for details.
 | AOS (Animate On Scroll) | MIT | https://github.com/michalsnik/aos |
 | Bootstrap (CSS/JS) | MIT | https://github.com/twbs/bootstrap |
 | Bootstrap Icons | MIT | https://github.com/twbs/icons |
-| GLightbox | MIT | https://github.com/biati-digital/glightbox |
 | imagesLoaded | MIT | https://github.com/desandro/imagesloaded |
 | Isotope | GPL-3.0 | https://github.com/metafizzy/isotope |
 | Swiper | MIT | https://github.com/nolimits4web/swiper |

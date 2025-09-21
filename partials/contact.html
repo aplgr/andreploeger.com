@@ -58,7 +58,7 @@
                             hx-disabled-elt="button[type=submit], input[type=submit]"
                             @htmx:configRequest="configRequest($event)" @htmx:beforeRequest="beforeRequest($event)"
                             @htmx:afterRequest="afterRequest($event)" @htmx:sendError="sendError($event)" action=""
-                            method="post" class="contact-form">
+                            method="post" class="email-form">
 
                             <div class="row gy-4">
 
@@ -90,10 +90,8 @@
                                 </div>
 
                             </div>
-                            <p class="form-status" x-data x-text="$store.fg.status" role="status" aria-live="polite">
-                            </p>
-
                         </form>
+                        <p class="form-status" x-data x-text="$store.fg.status" role="status" aria-live="polite"></p>
                     </div>
                 </div>
             </div>
