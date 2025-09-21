@@ -57,7 +57,8 @@
                             hx-ext="json-enc" hx-encoding="json" hx-swap="none"
                             hx-disabled-elt="button[type=submit], input[type=submit]"
                             @htmx:configRequest="configRequest($event)" @htmx:beforeRequest="beforeRequest($event)"
-                            @htmx:afterRequest="afterRequest($event)" action="" method="post" class="php-email-form">
+                            @htmx:afterRequest="afterRequest($event)" @htmx:sendError="sendError($event)" action=""
+                            method="post" class="php-email-form">
 
                             <div class="row gy-4">
 
@@ -84,6 +85,7 @@
                                 </div>
 
                                 <div class="col-12 text-center">
+                                    <input type="hidden" name="_elapsed_ms">
                                     <div class="loading">Nachricht wird gesendet …</div>
                                     <div class="error-message"></div>
                                     <div class="sent-message">Vielen Dank! Ich melde mich schnellstmöglich zurück.</div>
