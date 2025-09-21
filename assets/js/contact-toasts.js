@@ -8,10 +8,10 @@
 
   // Centralized copy (DE)
   var MSG = {
-    sending: 'Message is being sent...',
-    success: 'Thank you! I will get back to you as soon as possible.',
-    network: 'Network error – please try again later.',
-    error: 'An error has occurred.',
+    sending: 'Nachricht wird gesendet …',
+    success: 'Vielen Dank! Ich melde mich schnellstmöglich zurück.',
+    network: 'Netzwerkfehler – bitte später erneut versuchen.',
+    error: 'Es ist ein Fehler aufgetreten.',
   };
 
   function notify(form, type, message, opts) {
