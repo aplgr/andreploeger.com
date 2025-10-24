@@ -2300,3 +2300,8 @@ section,
 .email-form[data-status="error"] .form-status {
   color: #dc3545;
 }
+
+/* Preload the content */
+body.preload {
+  visibility: hidden;
+}
