@@ -13,6 +13,5 @@ with their respective authors. Please review the linked licenses for details.
 | Bootstrap Icons | MIT | https://github.com/twbs/icons |
 | imagesLoaded | MIT | https://github.com/desandro/imagesloaded |
 | Isotope | GPL-3.0 | https://github.com/metafizzy/isotope |
-| Swiper | MIT | https://github.com/nolimits4web/swiper |
 | Waypoints | MIT | https://github.com/imakewebthings/waypoints |
 | Google Fonts (service) | Varies by font (commonly SIL OFL-1.1) | https://fonts.google.com/ |

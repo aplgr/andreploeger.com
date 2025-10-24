@@ -1308,6 +1308,7 @@ section,
 /*--------------------------------------------------------------
 # Testimonials Section
 --------------------------------------------------------------*/
+/*
 .testimonials .testimonials-slider {
   width: 100%;
   position: relative;
@@ -1418,7 +1419,7 @@ section,
 .testimonials .swiper-button-next:hover::after {
   color: var(--contrast-color);
 }
-
+*/
 /*--------------------------------------------------------------
 # Services Section
 --------------------------------------------------------------*/
