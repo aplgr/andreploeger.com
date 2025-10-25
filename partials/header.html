@@ -5,7 +5,12 @@
             <!-- <img src="assets/img/logo.webp" alt=""> -->
             <h1 class="sitename">André Plöger</h1>
         </a>
-        <nav id="navmenu" class="navmenu">
+        <nav id="navmenu" class="navmenu" hx-on:click="
+                if (event.target.closest('a')) {
+                    document.body.classList.remove('mobile-nav-active');
+                    const t = document.querySelector('.mobile-nav-toggle');
+                    if (t) { t.classList.add('bi-list'); t.classList.remove('bi-x'); }
+                }">
             <ul>
                 <li><a href="/#about">Über mich</a></li>
                 <li><a href="/#services">Services</a></li>
@@ -15,7 +20,10 @@
                     <a href="/#contact" class="btn btn-primary">Kontakt</a>
                 </li>
             </ul>
-            <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+            <i class="mobile-nav-toggle d-xl-none bi bi-list" hx-on:click="
+                        document.body.classList.toggle('mobile-nav-active');
+                        this.classList.toggle('bi-list');
+                        this.classList.toggle('bi-x');"></i>
         </nav>
     </div>
 </header>
