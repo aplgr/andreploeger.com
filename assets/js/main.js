@@ -1,14 +1,30 @@
 (function () {
   "use strict";
 
-  /**
-   * Apply .scrolled class to the body as the page is scrolled down
-   */
+  /* Apply .scrolled class to the body as the page is scrolled down */
   function toggleScrolled() {
     const selectBody = document.querySelector('body');
     const selectHeader = document.querySelector('#header');
-    if (!selectHeader.classList.contains('scroll-up-sticky') && !selectHeader.classList.contains('sticky-top') && !selectHeader.classList.contains('fixed-top')) return;
-    window.scrollY > 100 ? selectBody.classList.add('scrolled') : selectBody.classList.remove('scrolled');
+
+    // If there is no header yet (htmx not loaded or on pages without header), just skip.
+    if (!selectBody || !selectHeader) {
+      return;
+    }
+
+    // Only apply the effect for sticky/fixed headers.
+    if (
+      !selectHeader.classList.contains('scroll-up-sticky') &&
+      !selectHeader.classList.contains('sticky-top') &&
+      !selectHeader.classList.contains('fixed-top')
+    ) {
+      return;
+    }
+
+    if (window.scrollY > 100) {
+      selectBody.classList.add('scrolled');
+    } else {
+      selectBody.classList.remove('scrolled');
+    }
   }
 
   document.addEventListener('scroll', toggleScrolled);
