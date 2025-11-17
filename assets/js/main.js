@@ -162,13 +162,18 @@
   
     window.addEventListener("load", initSwiper);
   */
-  /**
-   * Frequently Asked Questions Toggle
-   */
-  document.querySelectorAll('.faq-item h3, .faq-item .faq-toggle').forEach((faqItem) => {
-    faqItem.addEventListener('click', () => {
-      faqItem.parentNode.classList.toggle('faq-active');
-    });
+
+  /* Frequently Asked Questions Toggle */
+  document.addEventListener('click', function (event) {
+    const trigger = event.target.closest('.faq-item h3, .faq-item .faq-toggle');
+    if (!trigger) {
+      return;
+    }
+
+    const item = trigger.closest('.faq-item');
+    if (item) {
+      item.classList.toggle('faq-active');
+    }
   });
 
   /**
