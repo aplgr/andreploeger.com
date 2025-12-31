@@ -2,35 +2,32 @@
 <html lang="de">
 
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   <title>Fallstudie: Datenbank entlastet - Query-Zeiten halbiert</title>
-  <meta name="description"
-    content="PostgreSQL 9.6: +50% Performance, −90% Tabellenvolumen, −32% Speicherbedarf. Umbau mit JSONB-Redesign, neuer Tabelle docobj_json, Index-Strategie und Perl-Refactoring.">
-  <meta name="keywords"
-    content="PostgreSQL 9.6, Performance, Legacy, JSONB, Index, Partitionierung, Perl, pgTap, EXPLAIN ANALYZE">
-  <meta name="robots" content="index,follow">
-  <link rel="canonical" href="https://andreploeger.com/datenbank-entlastet-query-zeiten-halbiert">
-
-  <meta property="og:locale" content="de_DE">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="André Plöger">
-  <meta property="og:title" content="Fallstudie: Datenbank entlastet – Query-Zeiten halbiert">
-  <meta property="og:description"
-    content="PostgreSQL 9.6: +50% Performance, −90% Tabellenvolumen, −32% Speicherbedarf. Umbau mit JSONB-Redesign, neuer Tabelle docobj_json, Index-Strategie und Perl-Refactoring.">
-  <meta property="og:url" content="https://andreploeger.com/datenbank-entlastet-query-zeiten-halbiert">
-  <meta property="og:image"
-    content="https://andreploeger.com/assets/img/cases/datenbank-entlastet-query-zeiten-halbiert.webp">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Fallstudie: Datenbank entlastet – Query-Zeiten halbiert">
-  <meta name="twitter:description"
-    content="PostgreSQL 9.6: +50% Performance, −90% Tabellenvolumen, −32% Speicherbedarf. Umbau mit JSONB-Redesign, neuer Tabelle docobj_json, Index-Strategie und Perl-Refactoring.">
-  <meta name="twitter:image"
-    content="https://andreploeger.com/assets/img/cases/datenbank-entlastet-query-zeiten-halbiert.webp">
-
+  <meta content="PostgreSQL 9.6: +50% Performance, −90% Tabellenvolumen, −32% Speicherbedarf. Umbau mit JSONB-Redesign, neuer Tabelle docobj_json, Index-Strategie und Perl-Refactoring."
+        name="description" />
+  <meta content="PostgreSQL 9.6, Performance, Legacy, JSONB, Index, Partitionierung, Perl, pgTap, EXPLAIN ANALYZE"
+        name="keywords" />
+  <meta content="index,follow" name="robots" />
+  <link href="https://andreploeger.com/datenbank-entlastet-query-zeiten-halbiert" rel="canonical" />
+  <meta content="de_DE" property="og:locale" />
+  <meta content="article" property="og:type" />
+  <meta content="André Plöger" property="og:site_name" />
+  <meta content="Fallstudie: Datenbank entlastet – Query-Zeiten halbiert" property="og:title" />
+  <meta content="PostgreSQL 9.6: +50% Performance, −90% Tabellenvolumen, −32% Speicherbedarf. Umbau mit JSONB-Redesign, neuer Tabelle docobj_json, Index-Strategie und Perl-Refactoring."
+        property="og:description" />
+  <meta content="https://andreploeger.com/datenbank-entlastet-query-zeiten-halbiert" property="og:url" />
+  <meta content="https://andreploeger.com/assets/img/cases/datenbank-entlastet-query-zeiten-halbiert.webp"
+        property="og:image" />
+  <meta content="1200" property="og:image:width" />
+  <meta content="630" property="og:image:height" />
+  <meta content="summary_large_image" name="twitter:card" />
+  <meta content="Fallstudie: Datenbank entlastet – Query-Zeiten halbiert" name="twitter:title" />
+  <meta content="PostgreSQL 9.6: +50% Performance, −90% Tabellenvolumen, −32% Speicherbedarf. Umbau mit JSONB-Redesign, neuer Tabelle docobj_json, Index-Strategie und Perl-Refactoring."
+        name="twitter:description" />
+  <meta content="https://andreploeger.com/assets/img/cases/datenbank-entlastet-query-zeiten-halbiert.webp"
+        name="twitter:image" />
   <script type="application/ld+json">
   {
   "@context": "https://schema.org",
@@ -43,29 +40,23 @@
   "author": {"@type":"Person","name":"André Plöger","url":"https://andreploeger.com/"}
   }
   </script>
-
-
-  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="/assets/img/favicon-512.png" sizes="512x512">
-  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" sizes="180x180">
-
-  <script defer src="/assets/js/cases.js"></script>
+  <link href="/assets/img/favicon.svg" rel="icon" type="image/svg+xml" />
+  <link href="/assets/img/favicon-512.png" rel="icon" sizes="512x512" />
+  <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" />
+  <script defer="" src="/assets/js/cases.js"></script>
   <script src="https://unpkg.com/htmx.org@1.9.12"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-  <div hx-get="/partials/styles-cases.html" hx-trigger="load" hx-swap="outerHTML"></div>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <div hx-get="/partials/styles-cases.html" hx-swap="outerHTML" hx-trigger="load"></div>
 </head>
 
 <body class="service-details-page" style="display:none">
-  <div hx-get="/partials/header.html" hx-trigger="load" hx-swap="outerHTML"></div>
-
+  <div hx-get="/partials/header.html" hx-swap="outerHTML" hx-trigger="load"></div>
   <main class="main">
-    <section id="service-details" class="service-details section">
+    <section class="service-details section" id="service-details">
       <div class="container" data-aos="fade-up" data-aos-delay="100">
         <div class="row gy-4">
-
           <div class="col-lg-8">
             <div class="content">
-
               <div class="service-info bg-light border rounded p-4 mb-4">
                 <div class="row gy-4 align-items-center">
                   <div class="col-sm-8">
@@ -74,39 +65,53 @@
                       Migration – begleitet von einem Komplettumbau der Perl-Such- &amp; Filterlogik.</p>
                   </div>
                   <div class="col-sm-4 text-center" style="height:180px; overflow:hidden;">
-                    <img src="/assets/img/cases/datenbank-entlastet-query-zeiten-halbiert.webp"
-                      alt="Datenbank entlastet - Query-Zeiten halbiert" class="img-fluid rounded"
-                      style="object-fit:contain; max-height:100%;">
+                    <img alt="Datenbank entlastet - Query-Zeiten halbiert" class="img-fluid rounded"
+                         src="/assets/img/cases/datenbank-entlastet-query-zeiten-halbiert.webp"
+                         style="object-fit:contain; max-height:100%;" />
                   </div>
                 </div>
               </div>
-
-              <div class="service-info bg-white border rounded p-3 mb-4">
-                <h3 class="mb-2">Ergebnisse</h3>
-                <ul class="mb-0">
-                  <li>Speicherbedarf insgesamt um 32 % gesenkt</li>
-                  <li>+50 % Performance, −90 % Tabellenvolumen</li>
-                </ul>
-                <p class="small text-muted mb-0">Metriken stammen aus den ursprünglichen Messungen/Artefakten (EXPLAIN
-                  ANALYZE Auswertungen und Vergleichsberichte).</p>
-              </div>
-
               <h3>Ausgangslage</h3>
-              <p>
-                Das Dokumentenarchiv stützte sich primär auf eine historisch gewachsene Tabelle <code>docobj</code>.
-                Ein ungünstiges Datenmodell, wenig selektive Indizes und gewachsene Workarounds
-                führten zu intransparenten Abfragepfaden, hohem Speicherverbrauch und inkonsistenten Ergebnissen.
+              <p> Das Dokumentenarchiv stützte sich primär auf eine historisch gewachsene Tabelle <code>docobj</code>.
+                Ein ungünstiges Datenmodell, wenig selektive Indizes und gewachsene Workarounds führten zu
+                intransparenten Abfragepfaden, hohem Speicherverbrauch und inkonsistenten Ergebnissen. </p>
+              <p> Je mehr Daten hinzukamen, desto stärker wurden Ausreißer sichtbar. Genau diese Ausreißer sind im
+                Alltag das Problem, nicht die Durchschnittszeit. </p>
+              <h3>Zielbild &amp; Anforderungen</h3>
+              <p> Hier ging es um zwei Dinge gleichzeitig: Performance und Architektur. Schneller werden ist relativ
+                einfach. Schnell bleiben, wenn Daten wachsen und Filter komplexer werden, ist die eigentliche Aufgabe.
               </p>
-
-              <h3>Ansatz &amp; Architektur</h3>
-              <p>
-                Wir führten eine neue Tabelle <code>docobj_json</code> ein und organisierten Daten in
-                <code>JSONB</code>-Feldern neu. Damit ließen sich Hot-Paths vereinfachen und redundante
-                Felder abbauen. Auf Basis von <strong>PostgreSQL&nbsp;9.6</strong> migrierten wir schrittweise
-                Lese- und Schreibpfade, bauten neue Indizes <em>concurrently</em> auf und verlagerten die
-                Suche auf stabilere, selektive Keys.
-              </p>
-
+              <ul>
+                <li>Schnellere und stabilere Suche/Filterung, auch bei komplexen Kombinationsfiltern</li>
+                <li>Vorhersagbares Verhalten: weniger planabhängige Ausreißer durch stabilere Query-Pläne</li>
+                <li>Datenhaltung so strukturieren, dass Indizes wirklich greifen und Wartung einfacher wird</li>
+                <li>Migration im laufenden Betrieb mit reproduzierbarer Validierung und klaren Umschaltpunkten</li>
+              </ul>
+              <p class="text-muted small mb-4">Rahmenbedingungen: historisch gewachsene Datenstruktur, produktionsnahe
+                Last, keine Downtime, bestehende Schnittstellen und funktionales Verhalten müssen erhalten bleiben.</p>
+              <h3>Lösungsweg</h3>
+              <p> Wir haben die Datenhaltung so umgebaut, dass Abfragen wieder „planbar“ werden: klare Struktur,
+                sinnvolle Indizes, und eine Anwendungsschicht, die diese Struktur konsequent nutzt. Parallel dazu lief
+                eine kontrollierte Migration mit Mess- und Vergleichsartefakten. </p>
+              <ol>
+                <li>Problem sichtbar machen: Query-Pläne, selektive Filter und Hotspots analysieren</li>
+                <li>Neue, indexierbare Datenstruktur aufbauen (neue Tabelle, gezielte JSONB-Struktur)</li>
+                <li>Indizes redesignen und schrittweise, concurrent aufbauen</li>
+                <li>Anwendung (Perl) auf die neue Struktur umstellen: Suche, Filter, CRUD</li>
+                <li>Validierung über reproduzierbare Tests und Vorher/Nachher-Vergleiche</li>
+                <li>Rollout über klare Umschaltpunkte und kontrolliertes Change Management</li>
+              </ol>
+              <h3>Umsetzung</h3>
+              <p> Die Umsetzung bestand aus einem technischen Kern (Datenstruktur + Indizes) und einer sauberen
+                Umstellung der Anwendungsschicht. Beides musste zusammenpassen, sonst gewinnt man nur Benchmarks, aber
+                verliert den Betrieb. </p>
+              <p> Wir führten eine neue Tabelle <code>docobj_json</code> ein und organisierten Daten in
+                <code>JSONB</code>-Feldern neu. Damit ließen sich Hot-Paths vereinfachen und redundante Felder abbauen.
+                Auf Basis von <strong>PostgreSQL 9.6</strong> migrierten wir schrittweise Lese- und Schreibpfade, bauten
+                neue Indizes <em>concurrently</em> auf und verlagerten die Suche auf stabilere, selektive Keys. </p>
+              <p> Die Such- und Filterlogik (Perl) wurde grundlegend neu geschrieben (Dokumentenarchiv, vollständiges
+                CRUD). Vorher umfasste der Code ca. 4.000 Zeilen; zahlreiche Workarounds basierten auf längst behobenen
+                Altfehlern. Nach dem Umbau war die Suche präziser, robuster und deutlich schneller. </p>
               <div class="service-info bg-light border rounded p-3 mb-4">
                 <h5 class="mb-2">Konkret (vereinfacht)</h5>
                 <pre class="mb-2"><code>-- Neue Struktur für schnellere Reads
@@ -125,68 +130,60 @@ CREATE INDEX CONCURRENTLY idx_docobj_json_gin ON docobj_json USING gin (payload 
 -- Beispiel für extrahierten Hot-Key (Flattening)
 ALTER TABLE docobj_json ADD COLUMN project_id bigint;
 UPDATE docobj_json
-  SET project_id = (payload -&gt; 'meta' -&gt;> 'project_id')::bigint
+  SET project_id = (payload -&gt; 'meta' -&gt;&gt; 'project_id')::bigint
   WHERE project_id IS NULL;
 CREATE INDEX CONCURRENTLY idx_docobj_json_project ON docobj_json (project_id);</code></pre>
-                <p class="mb-0 small text-muted">
-                  Ziel: eindeutige Schlüssel für Filter &amp; Sortierung, bessere Kardi\-nalität und stabilere
-                  Planner-Entscheidungen.
-                </p>
+                <p class="mb-0 small text-muted"> Ziel: eindeutige Schlüssel für Filter &amp; Sortierung, bessere
+                  Kardinalität und stabilere Planner-Entscheidungen. </p>
               </div>
-
-              <h3>Analyse &amp; Messung</h3>
-              <p>
-                Abfragepläne wurden mit <code>EXPLAIN (ANALYZE, BUFFERS)</code> erhoben und bei
-                <strong>explain.depesz.com</strong> visualisiert und verglichen. So ließen sich teure
-                Seq-Scans, falsche Join-Reihenfolgen und überschätzte Selektivitäten nachvollziehen und gezielt beheben.
-              </p>
-
-              <h3>Perl-Refactoring: Suche &amp; CRUD</h3>
-              <p>
-                Die Such- und Filterlogik (Perl) wurde grundlegend neu geschrieben (Dokumentenarchiv, vollständiges
-                CRUD).
-                Vorher umfasste der Code ca.&nbsp;4.000 Zeilen; zahlreiche Workarounds basierten auf längst behobenen
-                Altfehlern. Nach dem Umbau war die Suche präziser, robuster und deutlich schneller.
-              </p>
-
-              <h3>Qualitätssicherung</h3>
+              <div class="service-info bg-white border rounded p-3 mb-4">
+                <h3 class="mb-2">Ergebnis / Impact</h3>
+                <ul class="mb-0">
+                  <li>Speicherbedarf insgesamt um 32 % gesenkt</li>
+                  <li>+50 % Performance, −90 % Tabellenvolumen</li>
+                </ul>
+                <p class="small text-muted mb-0">Metriken stammen aus den ursprünglichen Messungen/Artefakten (EXPLAIN
+                  ANALYZE Auswertungen und Vergleichsberichte).</p>
+              </div>
+              <h3>Validierung &amp; Qualität</h3>
+              <p> Performancearbeit ohne Validierung ist Glücksspiel. Deshalb haben wir jede Maßnahme mit Plänen,
+                Messwerten und reproduzierbaren Testfällen abgesichert. </p>
+              <p> Abfragepläne wurden mit <code>EXPLAIN (ANALYZE, BUFFERS)</code> erhoben und bei
+                <strong>explain.depesz.com</strong> visualisiert und verglichen. So ließen sich teure Seq-Scans, falsche
+                Join-Reihenfolgen und überschätzte Selektivitäten nachvollziehen und gezielt beheben. </p>
               <ul>
                 <li>Unit- &amp; Integrations-Tests als Black-Box gegen definierte Query-Sets</li>
                 <li><strong>pgTap</strong> für DB-nahe Tests (Constraints, Views, Funktionen)</li>
                 <li>Vorher/Nachher-Vergleiche identischer Abfragen, reproduzierbar dokumentiert</li>
               </ul>
-
-              <h3>Change Management</h3>
-              <p>
-                Während der Migration traten „Features“ zutage, die ursprünglich aus Bugs entstanden waren – nach
-                Bereinigung verhielten sich Teilbereiche zunächst anders. Wir haben diese Fälle gemeinsam mit dem
-                Team fachlich neu bewertet, sauber abgebildet und belastbar getestet. Ergebnis: weniger Komplexität,
-                weniger Sonderfälle – und bessere, nachvollziehbare Ergebnisse.
-              </p>
-
+              <p> Das Ziel war nicht, „einmal schneller“ zu sein, sondern eine belastbare Grundlage zu schaffen, die
+                auch bei neuen Filterkombinationen stabil bleibt. </p>
+              <h3>Betrieb &amp; Rollout</h3>
+              <p> Die Migration lief im laufenden Betrieb. Entscheidend war, Risiken zu reduzieren: kleine
+                Umschaltpunkte, klare Rückwege, und ein Prozess, der auch neue Erkenntnisse sauber einfangen kann. </p>
+              <p> Während der Migration traten „Features“ zutage, die ursprünglich aus Bugs entstanden waren – nach
+                Bereinigung verhielten sich Teilbereiche zunächst anders. Wir haben diese Fälle gemeinsam mit dem Team
+                fachlich neu bewertet, sauber abgebildet und belastbar getestet. Ergebnis: weniger Komplexität, weniger
+                Sonderfälle – und bessere, nachvollziehbare Ergebnisse. </p>
+              <p> So entsteht Modernisierung, ohne dass sie wie ein Risiko wirkt: Man verändert die Basis, aber man
+                verliert nie die Kontrolle über den Zustand in Produktion. </p>
               <h3>Was heute anders ist</h3>
-              <p>
-                Die Datenhaltung ist klarer, Abfragen sind im Schnitt schneller, und der Speicherbedarf ist
-                signifikant gesunken. Neue Anforderungen lassen sich risikoarm integrieren – dank konsistenter
-                Tests, Messungen und dokumentierter Umschaltpunkte.
-              </p>
-
-              <div hx-get="/partials/cases-cta.html" hx-trigger="load" hx-swap="outerHTML"></div>
+              <p> Die Datenhaltung ist klarer, Abfragen sind im Schnitt schneller, und der Speicherbedarf ist
+                signifikant gesunken. Neue Anforderungen lassen sich risikoarm integrieren – dank konsistenter Tests,
+                Messungen und dokumentierter Umschaltpunkte. </p>
+              <div hx-get="/partials/cases-cta.html" hx-swap="outerHTML" hx-trigger="load"></div>
             </div>
           </div>
-
           <div class="col-lg-4">
             <div class="service-info">
               <h4>Kurzinfo</h4>
-
               <div class="info-item d-flex align-items-start mb-3">
                 <i class="bi bi-calendar-event me-3 fs-4"></i>
                 <div>
                   <h5>Dauer</h5>
-                  <p class="mb-0">ca. 12&nbsp;Monate (laufender Umbau)</p>
+                  <p class="mb-0">ca. 12 Monate (laufender Umbau)</p>
                 </div>
               </div>
-
               <div class="info-item d-flex align-items-start mb-3">
                 <i class="bi bi-person-workspace me-3 fs-4"></i>
                 <div>
@@ -194,46 +191,43 @@ CREATE INDEX CONCURRENTLY idx_docobj_json_project ON docobj_json (project_id);</
                   <p class="mb-0">DB-Design &amp; Tuning · Perl-Refactoring · Teststrategie (pgTap)</p>
                 </div>
               </div>
-
               <div class="info-item d-flex align-items-start mb-0">
                 <i class="bi bi-tools me-3 fs-4"></i>
                 <div>
                   <h5>Werkzeuge</h5>
-                  <p class="mb-0">PostgreSQL&nbsp;9.6, EXPLAIN (ANALYZE), explain.depesz.com, pgTap, Perl, Bash</p>
+                  <p class="mb-0">PostgreSQL 9.6, EXPLAIN (ANALYZE), explain.depesz.com, pgTap, Perl, Bash</p>
                 </div>
               </div>
             </div>
-
             <div class="related-services mt-5">
-              <h4>Thinkproject</h4>
+              <h4>Projektkontext</h4>
               <ul class="list-unstyled mb-0">
+                <li><strong>Umfeld:</strong> Datenintensives Dokumenten-Archiv mit komplexer Suche und Filtern</li>
                 <li><strong>Branche:</strong> Bau- &amp; Infrastruktur-Software</li>
-                <li><strong>Schwerpunkt:</strong> Projektdokumente &amp; Workflows</li>
-              </ul>
-              <br>
-              Performance- &amp; Architektur-Modernisierung in einem datenintensiven Umfeld.
+                <li><strong>Schwerpunkt:</strong> PostgreSQL-Performance, Datenmodell-Modernisierung, Refactoring</li>
+              </ul><br />Ein produktionskritisches Archiv mit historisch gewachsenem Schema. Ziel war, Such- und
+              Filterabfragen wieder planbar zu machen und den Datenbestand so zu strukturieren, dass Indizes zuverlässig
+              greifen.
             </div>
-
             <div class="related-services mt-5">
-              <h4>Migrationsschritte (Auszug)</h4>
+              <h4>Vorgehensschritte (Auszug)</h4>
               <ol class="mb-0">
-                <li>Baseline-Messung (EXPLAIN ANALYZE &amp; Vergleich auf explain.depesz.com)</li>
-                <li>Einführung <code>docobj_json</code> und schrittweiser Read-Path-Umbau</li>
-                <li>Indizes <em>concurrently</em> aufbauen · redundante entfernen</li>
-                <li>Perl-Suche/Filter &amp; CRUD neu implementieren</li>
-                <li>Tests &amp; Freigabe je Inkrement</li>
+                <li>Query-Pläne und Hotspots identifizieren (EXPLAIN, Metriken, Vergleichsreports)</li>
+                <li>Neue Struktur aufbauen und parallel befüllen</li>
+                <li>Indizes redesignen und concurrent einführen</li>
+                <li>Perl-Suche/Filter und CRUD auf neue Struktur umstellen</li>
+                <li>Vorher/Nachher-Validierung und reproduzierbare Tests</li>
+                <li>Umschalten in kontrollierten Schritten (Change Management)</li>
               </ol>
             </div>
-
-            <div hx-get="/partials/cases-share-links.html" hx-trigger="load" hx-swap="outerHTML"></div>
-
-            <div x-data="relatedCases()" x-init="init()" class="related-services mt-5">
+            <div hx-get="/partials/cases-share-links.html" hx-swap="outerHTML" hx-trigger="load"></div>
+            <div class="related-services mt-5" x-data="relatedCases()" x-init="init()">
               <h4>Weitere Fallstudien</h4>
-              <template x-for="item in selectedCases" :key="item.url">
+              <template :key="item.url" x-for="item in selectedCases">
                 <div class="service-item">
-                  <div class=" d-flex align-items-center gap-3 mb-2">
+                  <div class="d-flex align-items-center gap-3 mb-2">
                     <i :class="item.icon"></i>
-                    <h5><a :href="item.url" target="_blank" x-text="item.title" rel="noopener"></a></h5>
+                    <h5><a :href="item.url" rel="noopener" target="_blank" x-text="item.title"></a></h5>
                   </div>
                   <p x-text="item.description"></p>
                 </div>
@@ -244,17 +238,15 @@ CREATE INDEX CONCURRENTLY idx_docobj_json_project ON docobj_json (project_id);</
       </div>
     </section>
   </main>
-
-  <div hx-get="/partials/footer.html" hx-trigger="load" hx-swap="outerHTML"></div>
-  <div hx-get="/partials/footer-scripts.html" hx-trigger="load" hx-swap="outerHTML"></div>
+  <div hx-get="/partials/footer.html" hx-swap="outerHTML" hx-trigger="load"></div>
+  <div hx-get="/partials/footer-scripts.html" hx-swap="outerHTML" hx-trigger="load"></div>
   <script>window.onload = () => { document.body.style.display = "block"; };</script>
-
-  <div x-data class="ap-toast" x-show="$store.toast.open" x-transition.opacity.duration.150ms role="status"
-    aria-live="polite">
-    <i class="bi" :class="$store.toast.isError ? 'bi-x-circle' : 'bi-check2-circle'"></i>
+  <div aria-live="polite" class="ap-toast" role="status" x-data="" x-show="$store.toast.open"
+       x-transition.opacity.duration.150ms="">
+    <i :class="$store.toast.isError ? 'bi-x-circle' : 'bi-check2-circle'" class="bi"></i>
     <span x-text="$store.toast.message"></span>
   </div>
-  <a href="#" class="scroll-top d-flex align-items-center justify-content-center">
+  <a class="scroll-top d-flex align-items-center justify-content-center" href="#">
     <i class="bi bi-arrow-up-short"></i>
   </a>
 </body>

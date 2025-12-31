@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Fallstudie: {{TITLE}}</title>
+    <meta name="description" content="{{META_DESCRIPTION}}">
+    <meta name="keywords" content="{{META_KEYWORDS}}">
+    <meta name="robots" content="index,follow">
+    <link rel="canonical" href="https://andreploeger.com/{{SLUG}}">
+    <!-- OpenGraph -->
+    <meta property="og:locale" content="de_DE">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="André Plöger">
+    <meta property="og:title" content="Fallstudie: {{TITLE}}">
+    <meta property="og:description" content="{{META_DESCRIPTION}}">
+    <meta property="og:url" content="https://andreploeger.com/{{SLUG}}">
+    <meta property="og:image" content="https://andreploeger.com/assets/img/cases/{{IMAGE_FILE}}.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Fallstudie: {{TITLE}}">
+    <meta name="twitter:description" content="{{META_DESCRIPTION}}">
+    <meta name="twitter:image" content="https://andreploeger.com/assets/img/cases/{{IMAGE_FILE}}.webp">
+    <!-- Structured data -->
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "inLanguage": "de",
+    "headline": "{{TITLE}}",
+    "description": "{{META_DESCRIPTION}}",
+    "mainEntityOfPage": {"@type":"WebPage","@id":"https://andreploeger.com/{{SLUG}}"},
+    "image": "https://andreploeger.com/assets/img/cases/{{IMAGE_FILE}}.webp",
+    "author": {"@type":"Person","name":"André Plöger","url":"https://andreploeger.com/"}
+  }
+  </script>
+    <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/assets/img/favicon-512.png" sizes="512x512">
+    <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" sizes="180x180">
+    <script defer src="/assets/js/cases.js"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <div hx-get="/partials/styles-cases.html" hx-trigger="load" hx-swap="outerHTML"></div>
+</head>
+
+<body class="service-details-page" style="display:none">
+    <div hx-get="/partials/header.html" hx-trigger="load" hx-swap="outerHTML"></div>
+    <main class="main">
+        <section id="service-details" class="service-details section">
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
+                <div class="row gy-4">
+                    <!-- MAIN CONTENT -->
+                    <div class="col-lg-8">
+                        <div class="content">
+                            <!-- HERO / INTRO -->
+                            <div class="service-info bg-light border rounded p-4 mb-4">
+                                <div class="row gy-4 align-items-center">
+                                    <div class="col-sm-8">
+                                        <h1>{{TITLE}}</h1>
+                                        <p class="mb-0">{{TEASER_ONE_LINER}}</p>
+                                    </div>
+                                    <div class="col-sm-4 text-center" style="height:180px; overflow:hidden;">
+                                        <img src="/assets/img/cases/{{IMAGE_FILE}}.webp"
+                                             alt="{{TITLE}}" class="img-fluid rounded"
+                                             style="object-fit:contain; max-height:100%;">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 1) AUSGANGSLAGE -->
+                            <h3>Ausgangslage</h3>
+                            <p> {{SITUATION_TEXT}} </p>
+                            <!-- 2) ZIELBILD / ANFORDERUNGEN -->
+                            <h3>Zielbild &amp; Anforderungen</h3>
+                            <ul>
+                                <li>{{GOAL_1}}</li>
+                                <li>{{GOAL_2}}</li>
+                                <li>{{GOAL_3}}</li>
+                            </ul>
+                            <p class="text-muted small mb-4"> {{CONSTRAINTS_HINT}}
+                                <!-- e.g. "Laufender Betrieb, Legacy-Constraints, begrenztes Wartungsfenster ..." -->
+                            </p>
+                            <!-- 3) LÖSUNGSWEG -->
+                            <h3>Lösungsweg</h3>
+                            <p> {{APPROACH_TEXT}} </p>
+                            <ol>
+                                <li>{{STEP_1}}</li>
+                                <li>{{STEP_2}}</li>
+                                <li>{{STEP_3}}</li>
+                                <li>{{STEP_4}}</li>
+                            </ol>
+                            <!-- 4) UMSETZUNG -->
+                            <h3>Umsetzung</h3>
+                            <p> {{IMPLEMENTATION_TEXT}} </p>
+                            <!-- Optional: one or multiple "Konkret (vereinfacht)" boxes -->
+                            <div class="service-info bg-light border rounded p-3 mb-4">
+                                <h5 class="mb-2">Konkret (vereinfacht)</h5>
+                                <pre class="mb-2"><code>{{CODE_OR_CONFIG_SNIPPET_1}}</code></pre>
+                                <p class="small text-muted mb-0">{{SNIPPET_NOTE_1}}</p>
+                            </div>
+                            <!-- Optional: second snippet box (delete if not needed) -->
+                            <div class="service-info bg-light border rounded p-3 mb-4">
+                                <h5 class="mb-2">Konkret (vereinfacht)</h5>
+                                <pre class="mb-2"><code>{{CODE_OR_CONFIG_SNIPPET_2}}</code></pre>
+                                <p class="small text-muted mb-0">{{SNIPPET_NOTE_2}}</p>
+                            </div>
+                            <!-- 5) ERGEBNIS / IMPACT (AFTER IMPLEMENTATION) -->
+                            <div class="service-info bg-white border rounded p-3 mb-4">
+                                <h3 class="mb-2">Ergebnis / Impact</h3>
+                                <ul class="mb-0">
+                                    <li>{{IMPACT_1}}</li>
+                                    <li>{{IMPACT_2}}</li>
+                                    <li>{{IMPACT_3}}</li>
+                                </ul>
+                                <p class="small text-muted mb-0">{{MEASUREMENT_NOTE}}</p>
+                            </div>
+                            <!-- 6) VALIDIERUNG / QUALITÄT -->
+                            <h3>Validierung &amp; Qualität</h3>
+                            <p> {{QUALITY_TEXT}} </p>
+                            <ul>
+                                <li>{{QUALITY_POINT_1}}</li>
+                                <li>{{QUALITY_POINT_2}}</li>
+                                <li>{{QUALITY_POINT_3}}</li>
+                            </ul>
+                            <!-- 7) BETRIEB / ROLLOUT -->
+                            <h3>Betrieb &amp; Rollout</h3>
+                            <p> {{ROLLOUT_TEXT}} </p>
+                            <ul>
+                                <li>{{ROLLOUT_POINT_1}}</li>
+                                <li>{{ROLLOUT_POINT_2}}</li>
+                                <li>{{ROLLOUT_POINT_3}}</li>
+                            </ul>
+                            <!-- 8) WAS HEUTE ANDERS IST -->
+                            <h3>Was heute anders ist</h3>
+                            <p> {{TODAY_DIFFERENT_TEXT}} </p>
+                            <!-- CTA (shared partial) -->
+                            <div hx-get="/partials/cases-cta.html" hx-trigger="load" hx-swap="outerHTML"></div>
+                        </div>
+                    </div>
+                    <!-- SIDEBAR -->
+                    <div class="col-lg-4">
+                        <!-- Kurzinfo -->
+                        <div class="service-info">
+                            <h4>Kurzinfo</h4>
+                            <div class="info-item d-flex align-items-start mb-3">
+                                <i class="bi bi-calendar-event me-3 fs-4"></i>
+                                <div>
+                                    <h5>Dauer</h5>
+                                    <p class="mb-0">{{DURATION}}</p>
+                                </div>
+                            </div>
+                            <div class="info-item d-flex align-items-start mb-3">
+                                <i class="bi bi-person-workspace me-3 fs-4"></i>
+                                <div>
+                                    <h5>Rolle</h5>
+                                    <p class="mb-0">{{ROLE}}</p>
+                                </div>
+                            </div>
+                            <div class="info-item d-flex align-items-start mb-0">
+                                <i class="bi bi-tools me-3 fs-4"></i>
+                                <div>
+                                    <h5>Werkzeuge</h5>
+                                    <p class="mb-0">{{TOOLS}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Projektkontext (anonymized) -->
+                        <div class="related-services mt-5">
+                            <h4>Projektkontext</h4>
+                            <ul class="list-unstyled mb-0">
+                                <li><strong>Umfeld:</strong> {{CONTEXT_ENV}}</li>
+                                <li><strong>Branche:</strong> {{CONTEXT_INDUSTRY}}</li>
+                                <li><strong>Schwerpunkt:</strong> {{CONTEXT_FOCUS}}</li>
+                            </ul>
+                            <br> {{CONTEXT_TEXT}}
+                        </div>
+                        <!-- Optional: Vorgehensschritte in the sidebar (delete if you don't want this block) -->
+                        <div class="related-services mt-5">
+                            <h4>Vorgehensschritte (Auszug)</h4>
+                            <ol class="mb-0">
+                                <li>{{SIDEBAR_STEP_1}}</li>
+                                <li>{{SIDEBAR_STEP_2}}</li>
+                                <li>{{SIDEBAR_STEP_3}}</li>
+                                <li>{{SIDEBAR_STEP_4}}</li>
+                                <li>{{SIDEBAR_STEP_5}}</li>
+                            </ol>
+                        </div>
+                        <!-- Share links + related cases -->
+                        <div hx-get="/partials/cases-share-links.html" hx-trigger="load" hx-swap="outerHTML"></div>
+                        <div x-data="relatedCases()" x-init="init()" class="related-services mt-5">
+                            <h4>Weitere Fallstudien</h4>
+                            <template x-for="item in selectedCases" :key="item.url">
+                                <div class="service-item">
+                                    <div class="d-flex align-items-center gap-3 mb-2">
+                                        <i :class="item.icon"></i>
+                                        <h5><a :href="item.url" target="_blank" x-text="item.title" rel="noopener"></a>
+                                        </h5>
+                                    </div>
+                                    <p x-text="item.description"></p>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div hx-get="/partials/footer.html" hx-trigger="load" hx-swap="outerHTML"></div>
+    <div hx-get="/partials/footer-scripts.html" hx-trigger="load" hx-swap="outerHTML"></div>
+    <script>window.onload = () => { document.body.style.display = "block"; };</script>
+    <div x-data class="ap-toast" x-show="$store.toast.open" x-transition.opacity.duration.150ms role="status"
+         aria-live="polite">
+        <i class="bi" :class="$store.toast.isError ? 'bi-x-circle' : 'bi-check2-circle'"></i>
+        <span x-text="$store.toast.message"></span>
+    </div>
+    <a href="#" class="scroll-top d-flex align-items-center justify-content-center">
+        <i class="bi bi-arrow-up-short"></i>
+    </a>
+</body>
+
+</html>
