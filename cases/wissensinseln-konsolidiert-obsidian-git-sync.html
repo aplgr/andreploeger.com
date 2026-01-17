@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fallstudie: Wissensinseln konsolidiert mit Obsidian &amp; lokalem Git-Sync</title>
+<meta content="Wissensinseln konsolidiert: Notizen aus FastNotepad und Zim nach Obsidian-Markdown migriert, Cloud-SaaS vermieden, Sync per lokalem Git-Repository auf NAS." name="description"/>
+<meta content="Obsidian, Markdown, Notizen, Wissensmanagement, Migration, FastNotepad, Zim, Git, NAS, On-Premise, Offline" name="keywords"/>
+<meta content="index,follow" name="robots"/>
+<link href="https://andreploeger.com/wissensinseln-konsolidiert-obsidian-git-sync" rel="canonical"/>
+<!-- OpenGraph -->
+<meta content="de_DE" property="og:locale"/>
+<meta content="article" property="og:type"/>
+<meta content="André Plöger" property="og:site_name"/>
+<meta content="Fallstudie: Wissensinseln konsolidiert mit Obsidian &amp; lokalem Git-Sync" property="og:title"/>
+<meta content="Wissensinseln konsolidiert: Notizen aus FastNotepad und Zim nach Obsidian-Markdown migriert, Cloud-SaaS vermieden, Sync per lokalem Git-Repository auf NAS." property="og:description"/>
+<meta content="https://andreploeger.com/wissensinseln-konsolidiert-obsidian-git-sync" property="og:url"/>
+<meta content="https://andreploeger.com/assets/img/cases/wissensinseln-konsolidiert-obsidian-git-sync.webp" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<!-- Twitter -->
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Fallstudie: Wissensinseln konsolidiert mit Obsidian &amp; lokalem Git-Sync" name="twitter:title"/>
+<meta content="Wissensinseln konsolidiert: Notizen aus FastNotepad und Zim nach Obsidian-Markdown migriert, Cloud-SaaS vermieden, Sync per lokalem Git-Repository auf NAS." name="twitter:description"/>
+<meta content="https://andreploeger.com/assets/img/cases/wissensinseln-konsolidiert-obsidian-git-sync.webp" name="twitter:image"/>
+<!-- Structured data -->
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "inLanguage": "de",
+    "headline": "Wissensinseln konsolidiert mit Obsidian & lokalem Git-Sync",
+    "description": "Wissensinseln konsolidiert: Notizen aus FastNotepad und Zim nach Obsidian-Markdown migriert, Cloud-SaaS vermieden, Sync per lokalem Git-Repository auf NAS.",
+    "mainEntityOfPage": {"@type":"WebPage","@id":"https://andreploeger.com/wissensinseln-konsolidiert-obsidian-git-sync"},
+    "image": "https://andreploeger.com/assets/img/cases/wissensinseln-konsolidiert-obsidian-git-sync.webp",
+    "author": {"@type":"Person","name":"André Plöger","url":"https://andreploeger.com/"}
+  }
+  </script>
+<link href="/assets/img/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="/assets/img/favicon-512.png" rel="icon" sizes="512x512"/>
+<link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<script defer="" src="/assets/js/cases.js"></script>
+<script src="https://unpkg.com/htmx.org@1.9.12"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<div hx-get="/partials/styles-cases.html" hx-swap="outerHTML" hx-trigger="load"></div>
+</head>
+<body class="service-details-page" style="display:none">
+<div hx-get="/partials/header.html" hx-swap="outerHTML" hx-trigger="load"></div>
+<main class="main">
+<section class="service-details section" id="service-details">
+<div class="container" data-aos="fade-up" data-aos-delay="100">
+<div class="row gy-4">
+<!-- MAIN CONTENT -->
+<div class="col-lg-8">
+<div class="content">
+<!-- HERO / INTRO -->
+<div class="service-info bg-light border rounded p-4 mb-4">
+<div class="row gy-4 align-items-center">
+<div class="col-sm-8">
+<h1>Wissensinseln konsolidiert mit Obsidian &amp; lokalem Git-Sync</h1>
+<p class="mb-0">Zwei inkompatible Notizformate vereinheitlicht, in ein offenes Markdown-System überführt und ohne Cloud-Abhängigkeit über Geräte synchronisiert.</p>
+</div>
+<div class="col-sm-4 text-center" style="height:180px; overflow:hidden;">
+<img alt="Wissensinseln konsolidiert mit Obsidian &amp; lokalem Git-Sync" class="img-fluid rounded" src="/assets/img/cases/wissensinseln-konsolidiert-obsidian-git-sync.webp" style="object-fit:contain; max-height:100%;"/>
+</div>
+</div>
+</div>
+<!-- 1) AUSGANGSLAGE -->
+<h3>Ausgangslage</h3>
+<p>
+Ein Kunde hatte sein Wissen über zwei Systeme verteilt: Auf Android wurden Kurznotizen mit <strong>FastNotepad</strong> gepflegt (Export in einem proprietären, JSON-ähnlichen Blockformat). Auf dem Desktop lief ein gewachsenes Wissensarchiv in <strong>Zim</strong> (Textdateien in Zim-Wiki-Syntax, teils mit Anhängen).
+</p>
+<p>
+Das Ergebnis waren klassische Wissensinseln: unterschiedliche Formate, keine zuverlässige Synchronisation und ein hoher Reibungsverlust beim Wechsel zwischen Geräten. Zusätzlich sollten Cloud-SaaS-Lösungen (z. B. Notion) bewusst vermieden werden, weil sensible Inhalte die eigene Infrastruktur nicht verlassen sollten.
+</p>
+<!-- 2) ZIELBILD / ANFORDERUNGEN -->
+<h3>Zielbild &amp; Anforderungen</h3>
+<p>
+Gesucht war eine konsolidierte Wissensbasis, die offline funktioniert, versionierbar ist und langfristig nicht von einem proprietären Datenmodell abhängt. <strong>Obsidian</strong> war hier ein pragmatischer Fit: Markdown-Dateien als Datenbasis, moderne UI, erweiterbar über Plugins, breite Community und verfügbar auf Desktop und Android.
+</p>
+<ul>
+<li>Einheitliches Zielformat: Obsidian-kompatibles Markdown (eine Notiz pro Datei)</li>
+<li>Migration aus beiden Quellen ohne „Copy-Paste-Projekt“ (inkl. Anhänge aus Zim)</li>
+<li>Keine Cloud-Abhängigkeit: Sync über ein <strong>lokales</strong> Git-Repository auf dem NAS</li>
+<li>Automatischer Hintergrund-Sync auf Desktop und Android</li>
+</ul>
+<p class="text-muted small mb-4">Rahmenbedingungen: Offline-Nutzung muss möglich bleiben, Daten bleiben on-premise, Migration muss wiederholbar und rückrollbar sein.</p>
+<!-- 3) LÖSUNGSWEG -->
+<h3>Lösungsweg</h3>
+<p>
+Der Weg war bewusst „low-tech“ im besten Sinne: offene Textformate, klare Regeln, keine Spezial-Infrastruktur. Entscheidend war, die Migration als reproduzierbaren Prozess zu bauen und den späteren Betrieb so einfach zu halten, dass er im Alltag nicht nervt.
+</p>
+<ol>
+<li>Zielstruktur definieren: Obsidian-Vault als Ordnerstruktur aus Markdown-Dateien</li>
+<li>Konverter bauen: FastNotepad-Export und Zim-Notebook nach Markdown überführen</li>
+<li>Regeln deterministisch machen (Dateinamen, Kollisionen, Anhänge, Frontmatter/Tags)</li>
+<li>Git als Sync-Transport: NAS-Repository als zentrale Quelle der Wahrheit</li>
+<li>Auto-Sync auf allen Geräten: Desktop per Obsidian Git Plugin, Android per GitSync</li>
+</ol>
+<!-- 4) UMSETZUNG -->
+<h3>Umsetzung</h3>
+<p>
+Für die Migration entstanden zwei kleine Python-Utilities: Eines liest das FastNotepad-Exportformat und erzeugt pro Notiz eine Markdown-Datei. Das zweite konvertiert Zim-Seiten nach Obsidian-Markdown und übernimmt Anhänge (z. B. Bilder oder PDFs) in eine kompatible Ordnerstruktur.
+</p>
+<p>
+Die Tools sind bewusst schlank gehalten (CLI, lokal ausführbar) und wurden so umgesetzt, dass sie für ähnliche Migrationen wiederverwendbar sind. Der Quellcode ist öffentlich dokumentiert:
+<a href="https://github.com/aplgr/fastnotepad-to-obsidian" rel="noopener" target="_blank">fastnotepad-to-obsidian</a>
+und
+<a href="https://github.com/aplgr/zim-to-obsidian" rel="noopener" target="_blank">zim-to-obsidian</a>.
+</p>
+<div class="service-info bg-light border rounded p-3 mb-4">
+<h5 class="mb-2">Konkret (vereinfacht)</h5>
+<pre class="mb-2"><code># 1) FastNotepad (Android) -&gt; Obsidian Vault
+fastnotepad2obsidian FastNotepad_Export.txt Vault/Inbox --by-category --tag
+
+# 2) Zim (Desktop) -&gt; Obsidian Vault (inkl. Anhänge)
+zim2obsidian ~/Notebooks/Zim ~/Vault --dry-run
+zim2obsidian ~/Notebooks/Zim ~/Vault --overwrite
+
+# 3) Sync ohne Cloud: lokales Git-Repository auf dem NAS
+cd ~/Vault
+git init
+git remote add origin ssh://nas.example/notes.git
+git add .
+git commit -m "Initial vault migration"
+git push -u origin main</code></pre>
+<p class="mb-0 small text-muted">Wichtig ist das Prinzip: das Repository liegt on-premise, Zugriff per SSH, und die Clients synchronisieren automatisch im Hintergrund.</p>
+</div>
+<!-- 5) ERGEBNIS / IMPACT -->
+<div class="service-info bg-white border rounded p-3 mb-4">
+<h3 class="mb-2">Ergebnis / Impact</h3>
+<ul class="mb-0">
+<li>Alle Notizen liegen in einem konsistenten Obsidian-Vault auf Basis von Markdown</li>
+<li>Geräteübergreifende Nutzung: Desktop und Android arbeiten am selben Datenbestand</li>
+<li>Keine Cloud-SaaS notwendig, trotzdem Auto-Sync im Hintergrund</li>
+</ul>
+<p class="small text-muted mb-0">Validierung über Git-Diffs, Stichproben im Vault und reproduzierbare Konvertierungsläufe (dry-run und kontrolliertes Überschreiben).</p>
+</div>
+<!-- 6) VALIDIERUNG / QUALITÄT -->
+<h3>Validierung &amp; Qualität</h3>
+<p>
+Bei Migrationen ist nicht die „Einmaligkeit“ entscheidend, sondern die Wiederholbarkeit. Deshalb wurden die Konvertierungsregeln deterministisch gehalten und die Migration so aufgesetzt, dass sie iterativ gefahren werden kann.
+</p>
+<ul>
+<li>Deterministische Dateinamen-Regeln (Slugging plus Kollisionsauflösung)</li>
+<li>Dry-Run-Mode und nachvollziehbare Logs für Review vor dem Schreiben</li>
+<li>Git als Kontrollinstrument: nachvollziehbare Änderungen, einfache Rollbacks</li>
+</ul>
+<!-- 7) BETRIEB / ROLLOUT -->
+<h3>Betrieb &amp; Rollout</h3>
+<p>
+Der Cutover war schrittweise: erst konvertieren, dann im Vault prüfen, dann committen. Anschließend wurde der laufende Sync automatisiert. Auf dem Desktop übernimmt das Obsidian Git Plugin Pull/Commit/Push. Auf Android hat sich das Plugin in der Praxis als weniger stabil erwiesen, daher synchronisiert dort <strong>GitSync</strong> im Hintergrund.
+</p>
+<ul>
+<li>Migration in Etappen: Import, Review, Commit, Sync</li>
+<li>Konflikte minimieren: kurze Sync-Intervalle und klare Arbeitsregeln</li>
+<li>Backup-Effekt: Git-Historie als zusätzliche Sicherheitsleine</li>
+</ul>
+<!-- 8) WAS HEUTE ANDERS IST -->
+<h3>Was heute anders ist</h3>
+<p>
+Statt Wissensinseln gibt es eine konsolidierte, offene Wissensbasis. Neue Geräte lassen sich schnell anbinden, Inhalte bleiben on-premise, und durch Markdown bleibt die Exit-Option erhalten, falls sich die Tool-Landschaft in ein paar Jahren wieder ändert.
+</p>
+<!-- CTA (shared partial) -->
+<div hx-get="/partials/cases-cta.html" hx-swap="outerHTML" hx-trigger="load"></div>
+</div>
+</div>
+<!-- SIDEBAR -->
+<div class="col-lg-4">
+<!-- Kurzinfo -->
+<div class="service-info">
+<h4>Kurzinfo</h4>
+<div class="info-item d-flex align-items-start mb-3">
+<i class="bi bi-calendar-event me-3 fs-4"></i>
+<div>
+<h5>Dauer</h5>
+<p class="mb-0">ca. 3 bis 5 Tage</p>
+</div>
+</div>
+<div class="info-item d-flex align-items-start mb-3">
+<i class="bi bi-person-workspace me-3 fs-4"></i>
+<div>
+<h5>Rolle</h5>
+<p class="mb-0">Konzept, Tooling (Python), Migration, On-Premise Sync-Betrieb</p>
+</div>
+</div>
+<div class="info-item d-flex align-items-start mb-0">
+<i class="bi bi-tools me-3 fs-4"></i>
+<div>
+<h5>Werkzeuge</h5>
+<p class="mb-0">Python, Obsidian, Git, NAS, SSH, Obsidian Git Plugin, GitSync (Android)</p>
+</div>
+</div>
+</div>
+<!-- Projektkontext -->
+<div class="related-services mt-5">
+<h4>Projektkontext</h4>
+<ul class="list-unstyled mb-0">
+<li><strong>Umfeld:</strong> Wissensmanagement auf Desktop und Mobile, heterogene Altsysteme</li>
+<li><strong>Branche:</strong> Knowledge Work / Engineering</li>
+<li><strong>Schwerpunkt:</strong> Konsolidierung, offene Formate, On-Premise Synchronisation</li>
+</ul>
+<br/>Ziel war ein Setup, das im Alltag funktioniert: keine Cloud-Abhängigkeit, keine Spezial-Infrastruktur, aber trotzdem automatische Synchronisation und nachvollziehbare Historie.</div>
+<!-- Vorgehensschritte -->
+<div class="related-services mt-5">
+<h4>Vorgehensschritte (Auszug)</h4>
+<ol class="mb-0">
+<li>Ist-Formate analysieren (Exportstruktur, Syntax, Anhänge)</li>
+<li>Konvertierung als CLI-Tools implementieren (wiederholbar und testbar)</li>
+<li>Obsidian-Vault als Zielstruktur festlegen (Ordner, Tags, Metadaten)</li>
+<li>NAS-Repository als Source of Truth einrichten (SSH, Rechte, Backup)</li>
+<li>Auto-Sync auf Desktop und Android stabil konfigurieren</li>
+</ol>
+</div>
+<!-- Share links + related cases -->
+<div hx-get="/partials/cases-share-links.html" hx-swap="outerHTML" hx-trigger="load"></div>
+<div class="related-services mt-5" x-data="relatedCases()" x-init="init()">
+<h4>Weitere Fallstudien</h4>
+<template :key="item.url" x-for="item in selectedCases">
+<div class="service-item">
+<div class="d-flex align-items-center gap-3 mb-2">
+<i :class="item.icon"></i>
+<h5><a :href="item.url" rel="noopener" target="_blank" x-text="item.title"></a></h5>
+</div>
+<p x-text="item.description"></p>
+</div>
+</template>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<div hx-get="/partials/footer.html" hx-swap="outerHTML" hx-trigger="load"></div>
+<div hx-get="/partials/footer-scripts.html" hx-swap="outerHTML" hx-trigger="load"></div>
+<script>window.onload = () => { document.body.style.display = "block"; };</script>
+<div aria-live="polite" class="ap-toast" role="status" x-data="" x-show="$store.toast.open" x-transition.opacity.duration.150ms="">
+<i :class="$store.toast.isError ? 'bi-x-circle' : 'bi-check2-circle'" class="bi"></i>
+<span x-text="$store.toast.message"></span>
+</div>
+<a class="scroll-top d-flex align-items-center justify-content-center" href="#">
+<i class="bi bi-arrow-up-short"></i>
+</a>
+</body>
+</html>
