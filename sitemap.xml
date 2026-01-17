@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://andreploeger.com/</loc>
-    <lastmod>2025-09-20</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -20,19 +20,25 @@
   </url>
   <url>
     <loc>https://andreploeger.com/cases/preislogik-konsolidiert.html</loc>
-    <lastmod>2025-09-20</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://andreploeger.com/cases/datenbank-entlastet-query-zeiten-halbiert.html</loc>
-    <lastmod>2025-09-20</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://andreploeger.com/cases/microservice-unter-last-stabilisiert.html</loc>
-    <lastmod>2025-09-20</lastmod>
+    <lastmod>2026-01-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://andreploeger.com/cases/wissensinseln-konsolidiert-obsidian-git-sync.html</loc>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

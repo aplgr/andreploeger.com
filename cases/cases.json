@@ -16,5 +16,11 @@
     "description": "Von zwölf Skripten zu einem Modul – abgesichert durch Tests, eingeführt im laufenden Betrieb.",
     "url": "preislogik-konsolidiert.html",
     "icon": "bi bi-code-slash"
+  },
+  {
+    "title": "Wissensinseln konsolidiert mit Obsidian & lokalem Git-Sync",
+    "description": "FastNotepad & Zim nach Obsidian-Markdown migriert, Cloud-SaaS vermieden, on-prem Git-Sync über NAS mit Auto-Sync auf Desktop und Android.",
+    "url": "wissensinseln-konsolidiert-obsidian-git-sync.html",
+    "icon": "bi bi-diagram-3"
   }
 ]
