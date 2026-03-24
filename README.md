@@ -2,68 +2,69 @@
 
 # andreploeger.com
 
-[![Website](https://img.shields.io/badge/Website-andreploeger.com-0ea5e9?logo=firefox-browser)](https://andreploeger.com)
-[![Made with ❤️](https://img.shields.io/badge/Made%20with-%E2%9D%A4%EF%B8%8F-ff6b6b)](#)
-[![Focus: Legacy → Durable](https://img.shields.io/badge/Focus-Legacy%20%E2%86%92%20Durable-10b981)](#)
+[![Website](https://img.shields.io/badge/Website-andreploeger.com-336791?logo=firefox-browser)](https://andreploeger.com)
+[![Focus](https://img.shields.io/badge/Focus-PostgreSQL%20Performance-336791)](#)
 [![Repo language](https://img.shields.io/badge/This%20repo-English-64748b)](#)
 
 </div>
 
-Hi, I'm **André**. I help teams turn “grown & fragile” systems into **calm and predictable** ones — with clear risk assessment, robust interfaces, and small, verifiable steps. This repository is simply the **developer’s view** of my website.
+This repository contains the source of **andreploeger.com** — my freelance website focused on **PostgreSQL performance, query analysis, and predictable system behavior**.
+
+It is the working repository behind the public site: pages, copy, case studies, styling, and the static assets needed to publish the website via GitHub Pages.
 
 ---
 
-## What’s in here
+## What’s in this repo
 
-- **Homepage & copy** – the content you see online.
-- **Case studies** – short, straightforward write‑ups from real work.
-- **Contact** – if it’s a fit, we’ll find the next sensible step.
-
-> No buzzword fireworks. No glossy marketing. Just substance: **problem → approach → outcome**.
-
----
-
-## Selected cases
-
-- **Pricing logic consolidated** – fewer edge cases, clearer rules, easier maintenance.  
-  ↗ `/cases/preislogik-konsolidiert.html`
-- **Database load reduced, query times halved** – performance where it matters.  
-  ↗ `/cases/datenbank-entlastet-query-zeiten-halbiert.html`
-- **Microservice stabilized under load** – made failure modes visible, then neutralized them.  
-  ↗ `/cases/microservice-unter-last-stabilisiert.html`
-
-Find all pages in [`/cases`](./cases).
+- **Homepage content** – hero, positioning, services, pricing, FAQ, and contact-related sections.
+- **Case study pages** – concise write-ups showing real technical work and outcomes.
+- **Static assets** – CSS, JavaScript, images, icons, and other frontend resources used by the site.
+- **Reusable partials and page structure** – the building blocks behind the public pages.
+- **Deployment-ready website source** – the version that is published to GitHub Pages.
 
 ---
 
-## How I work
+## What the website is about
 
-**Understand first, then change.** I start with a crisp diagnosis, prioritize by impact and risk, and deliver in **small, traceable releases**.  
-You’ll always know **what** I’m doing, **why**, and **how it helps tomorrow**.
+The site presents a focused consulting offer around:
+
+- **PostgreSQL performance tuning**
+- **Query analysis and bottleneck detection**
+- **Latency reduction and workload stabilization**
+- **Pragmatic, low-drama technical improvements**
+- **Remote B2B collaboration via Fovebo LLC**
 
 ---
 
 ## Who this is for
 
-- Your **legacy code** carries the business and **stability** beats hype.  
-- You need **migration** (often towards **Go** & robust APIs) **without downtime**.  
-- You value **honest assessments** and **predictable delivery**.
+This website is aimed at teams who need help when:
+
+- PostgreSQL queries become slow or unpredictable
+- database load grows without a clear explanation
+- performance issues affect application behavior and reliability
+- changes need to be made carefully, with clear reasoning and low operational risk
+
+---
+
+## Notes
+
+- The website is intentionally lean and content-driven.
+- Case studies remain part of the repo because they support the positioning with concrete examples.
+- This repository is a practical working surface, not a marketing microsite about the repo itself.
 
 ---
 
 ## Contact
 
-Easiest via the **contact form** on the website:  
-**https://andreploeger.com**
+Main entry point: **https://andreploeger.com**
 
-Or connect on [LinkedIn](https://www.linkedin.com/in/andreploeger/).
+Or connect via [LinkedIn](https://www.linkedin.com/in/andreploeger/).
 
 ---
 
-## License & third‑party
+## License & third-party
 
-- **Code** in this repo: **MIT** (see [`LICENSE`](./LICENSE))  
-- **Text/images/brand**: **All Rights Reserved** (see non‑code section in `LICENSE`)  
-- Third‑party components: see [`THIRD_PARTY_LICENSE.md`](./THIRD_PARTY_LICENSE.md)
-
-> This repo is a working surface. The site itself is intentionally lean—so we can focus on what matters: **results**.
+- **Code** in this repo: **MIT** (see [`LICENSE`](./LICENSE))
+- **Text/images/brand**: **All Rights Reserved** (see non-code section in `LICENSE`)
+- Third-party components: see [`THIRD_PARTY_LICENSE.md`](./THIRD_PARTY_LICENSE.md)

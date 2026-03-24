@@ -11,13 +11,13 @@
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
 :root {
-  --background-color: #ffffff;
+  --background-color: #f7fafc;
   /* Background color for the entire website, including individual sections */
-  --default-color: #0a0f14;
+  --default-color: #182b3d;
   /* Default color used for the majority of the text content across the entire website */
-  --heading-color: #0f2943;
+  --heading-color: #1f4f82;
   /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #e87532;
+  --accent-color: #336791;
   /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
   --surface-color: #ffffff;
   /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
@@ -27,32 +27,32 @@
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
 :root {
-  --nav-color: #0a0f14;
+  --nav-color: #182b3d;
   /* The default color of the main navmenu links */
-  --nav-hover-color: #e87532;
+  --nav-hover-color: #336791;
   /* Applied to main navmenu links when they are hovered over or active */
   --nav-mobile-background-color: #ffffff;
   /* Used as the background color for mobile navigation menu */
   --nav-dropdown-background-color: #ffffff;
   /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
-  --nav-dropdown-color: #0a0f14;
+  --nav-dropdown-color: #182b3d;
   /* Used for navigation links of the dropdown items in the navigation menu. */
-  --nav-dropdown-hover-color: #e87532;
+  --nav-dropdown-hover-color: #336791;
   /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
 }
 
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
 
 .light-background {
-  --background-color: #faf9fb;
+  --background-color: #f1f6fb;
   --surface-color: #ffffff;
 }
 
 .dark-background {
-  --background-color: #060606;
-  --default-color: #ffffff;
+  --background-color: #0f1c2c;
+  --default-color: #eef4fa;
   --heading-color: #ffffff;
-  --surface-color: #252525;
+  --surface-color: #162437;
   --contrast-color: #ffffff;
 }
 
@@ -1753,7 +1753,7 @@ section,
 
 .portfolio-details .portfolio-description .testimonial-item h4 {
   font-size: 14px;
-  color: #6c757d;
+  color: #5f7489;
   margin: 0;
 }
 
@@ -2028,10 +2028,10 @@ section,
   height: 38px;
   border-radius: 50%;
   background-color: #fff;
-  color: #6c757d;
+  color: #5f7489;
   font-size: 1.1rem;
   border: 1px solid transparent;
-  border-color: #6c757d;
+  border-color: #5f7489;
   transition: background-color 0.3s, color 0.3s;
   text-decoration: none;
 }
@@ -2231,7 +2231,7 @@ section,
 
 .ap-toast {
   --ap-ok: var(--bs-success, #28a745);
-  --ap-err: var(--bs-danger, #dc3545);
+  --ap-err: var(--bs-danger, #b42318);
 }
 
 .ap-toast .bi-check2-circle {
@@ -2298,7 +2298,7 @@ section,
 }
 
 .email-form[data-status="error"] .form-status {
-  color: #dc3545;
+  color: #b42318;
 }
 
 /* Preload the content */

@@ -100,9 +100,9 @@
     font-weight: 600;
     font-size: .85rem;
     color: #fff;
-    background: linear-gradient(90deg, #ff7a00, #ff5500);
+    background: linear-gradient(90deg, #336791, #244c73);
     /* Template-Orange */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
+    box-shadow: 0 6px 18px rgba(36, 76, 115, .18);
 }
 
 @media (max-width: 991.98px) {
