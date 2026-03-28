@@ -1,8 +1,9 @@
 import { spawnSync } from "node:child_process";
 
-function run(command, args) {
+function run(command, args, options = {}) {
     const result = spawnSync(command, args, {
-        stdio: "inherit"
+        stdio: "inherit",
+        ...options
     });
 
     if (result.error) {
@@ -16,19 +17,31 @@ function run(command, args) {
 
 run(process.execPath, ["scripts/sync-vendor.mjs"]);
 
-const diff = spawnSync("git", ["diff", "--quiet", "--", "assets/vendor", "index.html"], {
-    stdio: "inherit"
-});
+const diffNames = spawnSync(
+    "git",
+    ["diff", "--name-only", "--", "assets/vendor", "index.html"],
+    { encoding: "utf-8" }
+);
 
-if (diff.error) {
-    throw diff.error;
+if (diffNames.error) {
+    throw diffNames.error;
 }
 
-if (diff.status !== 0) {
+const changedFiles = diffNames.stdout
+    .split("\n")
+    .map(line => line.trim())
+    .filter(Boolean);
+
+if (changedFiles.length > 0) {
     console.error("");
     console.error("Vendored assets are out of sync.");
-    console.error("Run 'npm install' or 'npm run vendor:sync' and commit the updated files.");
-    process.exit(diff.status ?? 1);
+    console.error("Changed files:");
+    for (const file of changedFiles) {
+        console.error(`- ${file}`);
+    }
+    console.error("");
+    console.error("Run 'npm run vendor:sync' locally and commit the updated files.");
+    process.exit(1);
 }
 
 console.log("Vendored assets are in sync.");
