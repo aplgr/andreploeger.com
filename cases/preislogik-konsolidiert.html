@@ -1,28 +1,33 @@
 <!DOCTYPE html>
-
 <html lang="de">
+
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Fallstudie: Preislogik konsolidiert</title>
-<meta content="Von zwölf Skripten zu einem Modul: zentrale Preislogik mit stabiler API, Konfiguration statt Code-Forks und 200+ Tests – schrittweise ausgerollt." name="description"/>
-<meta content="Preislogik, Preisregeln, Refactoring, Perl, Tests, Devel::Cover, YAML::XS, E-Commerce, Shadow-Run, API, Konfiguration" name="keywords"/>
-<meta content="index,follow" name="robots"/>
-<link href="https://andreploeger.com/preislogik-konsolidiert" rel="canonical"/>
-<meta content="de_DE" property="og:locale"/>
-<meta content="article" property="og:type"/>
-<meta content="André Plöger" property="og:site_name"/>
-<meta content="Fallstudie: Preislogik konsolidiert" property="og:title"/>
-<meta content="Von zwölf Skripten zu einem Modul: zentrale Preislogik mit stabiler API, Konfiguration statt Code-Forks und 200+ Tests – schrittweise ausgerollt." property="og:description"/>
-<meta content="https://andreploeger.com/preislogik-konsolidiert" property="og:url"/>
-<meta content="https://andreploeger.com/assets/img/cases/preislogik-konsolidiert.webp" property="og:image"/>
-<meta content="1200" property="og:image:width"/>
-<meta content="630" property="og:image:height"/>
-<meta content="summary_large_image" name="twitter:card"/>
-<meta content="Fallstudie: Preislogik konsolidiert" name="twitter:title"/>
-<meta content="Von zwölf Skripten zu einem Modul: zentrale Preislogik mit stabiler API, Konfiguration statt Code-Forks und 200+ Tests – schrittweise ausgerollt." name="twitter:description"/>
-<meta content="https://andreploeger.com/assets/img/cases/preislogik-konsolidiert.webp" name="twitter:image"/>
-<script type="application/ld+json">
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Fallstudie: Preislogik konsolidiert</title>
+  <meta content="Von zwölf Skripten zu einem Modul: zentrale Preislogik mit stabiler API, Konfiguration statt Code-Forks und 200+ Tests – schrittweise ausgerollt."
+        name="description" />
+  <meta content="Preislogik, Preisregeln, Refactoring, Perl, Tests, Devel::Cover, YAML::XS, E-Commerce, Shadow-Run, API, Konfiguration"
+        name="keywords" />
+  <meta content="index,follow" name="robots" />
+  <link href="https://andreploeger.com/preislogik-konsolidiert" rel="canonical" />
+  <meta content="de_DE" property="og:locale" />
+  <meta content="article" property="og:type" />
+  <meta content="André Plöger" property="og:site_name" />
+  <meta content="Fallstudie: Preislogik konsolidiert" property="og:title" />
+  <meta content="Von zwölf Skripten zu einem Modul: zentrale Preislogik mit stabiler API, Konfiguration statt Code-Forks und 200+ Tests – schrittweise ausgerollt."
+        property="og:description" />
+  <meta content="https://andreploeger.com/preislogik-konsolidiert" property="og:url" />
+  <meta content="https://andreploeger.com/assets/img/cases/preislogik-konsolidiert.webp" property="og:image" />
+  <meta content="1200" property="og:image:width" />
+  <meta content="630" property="og:image:height" />
+  <meta content="summary_large_image" name="twitter:card" />
+  <meta content="Fallstudie: Preislogik konsolidiert" name="twitter:title" />
+  <meta content="Von zwölf Skripten zu einem Modul: zentrale Preislogik mit stabiler API, Konfiguration statt Code-Forks und 200+ Tests – schrittweise ausgerollt."
+        name="twitter:description" />
+  <meta content="https://andreploeger.com/assets/img/cases/preislogik-konsolidiert.webp" name="twitter:image" />
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="78b59231-ef0a-4019-8383-a113c294bcbe"></script>
+  <script type="application/ld+json">
   {
   "@context": "https://schema.org",
   "@type": "Article",
@@ -34,56 +39,76 @@
   "author": {"@type":"Person","name":"André Plöger","url":"https://andreploeger.com/"}
   }
   </script>
-<link href="/assets/img/favicon.svg" rel="icon" type="image/svg+xml"/>
-<link href="/assets/img/favicon-512.png" rel="icon" sizes="512x512"/>
-<link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
-<script defer="" src="/assets/js/cases.js"></script>
-<script src="https://unpkg.com/htmx.org@1.9.12"></script>
-<script defer="" src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-<div hx-get="/partials/styles-cases.html" hx-swap="outerHTML" hx-trigger="load"></div>
+  <link href="/assets/img/favicon.svg" rel="icon" type="image/svg+xml" />
+  <link href="/assets/img/favicon-512.png" rel="icon" sizes="512x512" />
+  <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" />
+  <script defer="" src="/assets/js/cases.js"></script>
+  <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <div hx-get="/partials/styles-cases.html" hx-swap="outerHTML" hx-trigger="load"></div>
 </head>
+
 <body class="service-details-page" style="display:none">
-<div hx-get="/partials/header.html" hx-swap="outerHTML" hx-trigger="load"></div>
-<main class="main">
-<section class="service-details section" id="service-details">
-<div class="container" data-aos="fade-up" data-aos-delay="100">
-<div class="row gy-4">
-<div class="col-lg-8">
-<div class="content"><div class="service-info bg-light border rounded p-4 mb-4">
-<div class="row gy-4 align-items-center">
-<div class="col-sm-8">
-<h1>Preislogik konsolidiert</h1>
-<p class="mb-0">Von zwölf Skripten zu einem Modul – abgesichert durch Tests, eingeführt im laufenden
+  <div hx-get="/partials/header.html" hx-swap="outerHTML" hx-trigger="load"></div>
+  <main class="main">
+    <section class="service-details section" id="service-details">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-4">
+          <div class="col-lg-8">
+            <div class="content">
+              <div class="service-info bg-light border rounded p-4 mb-4">
+                <div class="row gy-4 align-items-center">
+                  <div class="col-sm-8">
+                    <h1>Preislogik konsolidiert</h1>
+                    <p class="mb-0">Von zwölf Skripten zu einem Modul – abgesichert durch Tests, eingeführt im laufenden
                       Betrieb.</p>
-</div>
-<div class="col-sm-4 text-center" style="height:180px; overflow:hidden;">
-<img alt="Preislogik konsolidiert" class="img-fluid rounded" src="/assets/img/cases/preislogik-konsolidiert.webp" style="object-fit:contain; max-height:100%;"/>
-</div>
-</div>
-</div><h3>Ausgangslage</h3><p>
-                Über die Jahre war die Preislogik für mehrere Shops in getrennten Skripten gewachsen. Viele Regeln
+                  </div>
+                  <div class="col-sm-4 text-center" style="height:180px; overflow:hidden;">
+                    <img alt="Preislogik konsolidiert" class="img-fluid rounded"
+                         src="/assets/img/cases/preislogik-konsolidiert.webp"
+                         style="object-fit:contain; max-height:100%;" />
+                  </div>
+                </div>
+              </div>
+              <h3>Ausgangslage</h3>
+              <p> Über die Jahre war die Preislogik für mehrere Shops in getrennten Skripten gewachsen. Viele Regeln
                 ähnelten sich, unterschieden sich aber im Detail. Wer etwas ändern wollte, musste an mehreren Stellen
-                drehen – mit dem
-                Gefühl, stets eine Abzweigung zu übersehen. Tests gab es nur punktuell.
-              </p><p>
-Das Problem war weniger „komplexe Preise“ als „komplexe Verteilung“: Wissen steckte im Code an mehreren Orten. Genau das wollten wir entkoppeln und unter Kontrolle bringen.
-</p><h3>Zielbild &amp; Anforderungen</h3><p>
-Das Ziel war nicht „neue Preise“, sondern eine neue Form von Kontrolle: weniger Duplikate, weniger Stellen zum Übersehen, bessere Nachvollziehbarkeit im Alltag.
-</p><ul><li>Eine zentrale Preislogik als wiederverwendbares Modul statt verteilter Skripte</li><li>Konfiguration statt Code-Forks: Regeln sollen versionierbar und reviewbar sein</li><li>Sichere Einführung im laufenden Betrieb, mit klarer Rückfalloption</li><li>Gleiche Ergebnisse wie zuvor: fachlich identische Preise, aber nachvollziehbarer</li></ul><p class="text-muted small mb-4">Rahmenbedingungen: laufender Betrieb ohne Downtime, mehrere Shops/Varianten, historisch gewachsene Regeln, minimale Eingriffe in angrenzende Systeme.</p><h3>Lösungsweg</h3><p>
-Wir sind bewusst schrittweise vorgegangen: erst fachliche Klarheit und Tests, dann eine stabile Modul-Schnittstelle, danach die Umstellung pro Shop. So blieb das Risiko beherrschbar, obwohl die Logik tief im Tagesgeschäft hängt.
-</p><ol><li>Bestehende Varianten der Preislogik als Black-Box erfassen und in Testfälle überführen</li><li>Gemeinsame Regeln identifizieren und in eine eindeutige Modul-Schnittstelle überführen</li><li>Sonderfälle über Konfiguration abbilden, ohne Code-Forks zu erzeugen</li><li>Shadow-Run im Parallelbetrieb: Alt/Neu vergleichen, Abweichungen gezielt schließen</li><li>Umschaltung je Shop mit Rückfalloption und sauberem Rollout-Prozess</li></ol><h3>Umsetzung</h3><p>
-Die Umsetzung war weniger ein „Rewrite“, sondern eine kontrollierte Konsolidierung: aus vielen ähnlichen Implementierungen wurde ein einziges, klar abgrenzbares Modul.
-</p><p>
-                Der erste Schritt war, das bestehende Verhalten festzuhalten, bevor wir es anfassen: Black-box-Tests für
-                die kritischen Pfade, bis die Vielfalt der Fälle abgedeckt war. Danach ließ sich eine öffentliche
+                drehen – mit dem Gefühl, stets eine Abzweigung zu übersehen. Tests gab es nur punktuell. </p>
+              <p> Das Problem war weniger „komplexe Preise“ als „komplexe Verteilung“: Wissen steckte im Code an
+                mehreren Orten. Genau das wollten wir entkoppeln und unter Kontrolle bringen. </p>
+              <h3>Zielbild &amp; Anforderungen</h3>
+              <p> Das Ziel war nicht „neue Preise“, sondern eine neue Form von Kontrolle: weniger Duplikate, weniger
+                Stellen zum Übersehen, bessere Nachvollziehbarkeit im Alltag. </p>
+              <ul>
+                <li>Eine zentrale Preislogik als wiederverwendbares Modul statt verteilter Skripte</li>
+                <li>Konfiguration statt Code-Forks: Regeln sollen versionierbar und reviewbar sein</li>
+                <li>Sichere Einführung im laufenden Betrieb, mit klarer Rückfalloption</li>
+                <li>Gleiche Ergebnisse wie zuvor: fachlich identische Preise, aber nachvollziehbarer</li>
+              </ul>
+              <p class="text-muted small mb-4">Rahmenbedingungen: laufender Betrieb ohne Downtime, mehrere
+                Shops/Varianten, historisch gewachsene Regeln, minimale Eingriffe in angrenzende Systeme.</p>
+              <h3>Lösungsweg</h3>
+              <p> Wir sind bewusst schrittweise vorgegangen: erst fachliche Klarheit und Tests, dann eine stabile
+                Modul-Schnittstelle, danach die Umstellung pro Shop. So blieb das Risiko beherrschbar, obwohl die Logik
+                tief im Tagesgeschäft hängt. </p>
+              <ol>
+                <li>Bestehende Varianten der Preislogik als Black-Box erfassen und in Testfälle überführen</li>
+                <li>Gemeinsame Regeln identifizieren und in eine eindeutige Modul-Schnittstelle überführen</li>
+                <li>Sonderfälle über Konfiguration abbilden, ohne Code-Forks zu erzeugen</li>
+                <li>Shadow-Run im Parallelbetrieb: Alt/Neu vergleichen, Abweichungen gezielt schließen</li>
+                <li>Umschaltung je Shop mit Rückfalloption und sauberem Rollout-Prozess</li>
+              </ol>
+              <h3>Umsetzung</h3>
+              <p> Die Umsetzung war weniger ein „Rewrite“, sondern eine kontrollierte Konsolidierung: aus vielen
+                ähnlichen Implementierungen wurde ein einziges, klar abgrenzbares Modul. </p>
+              <p> Der erste Schritt war, das bestehende Verhalten festzuhalten, bevor wir es anfassen: Black-box-Tests
+                für die kritischen Pfade, bis die Vielfalt der Fälle abgedeckt war. Danach ließ sich eine öffentliche
                 Schnittstelle definieren, die das Wesentliche ausdrückt: Eingaben klar benannt, Ausgaben eindeutig,
-                keine
-                Seiteneffekte. Auf dieser Basis entstand ein Modul, das die Regeln zentral bündelt; Unterschiede
-                zwischen Shops wandern
-                in Konfigurationsdateien statt in neue Code-Forks.
-              </p><div class="service-info bg-light border rounded p-3 mb-4">
-<h5 class="mb-2">Konkret (vereinfacht)</h5>
-<pre class="mb-0"><code># defaults.yaml
+                keine Seiteneffekte. Auf dieser Basis entstand ein Modul, das die Regeln zentral bündelt; Unterschiede
+                zwischen Shops wandern in Konfigurationsdateien statt in neue Code-Forks. </p>
+              <div class="service-info bg-light border rounded p-3 mb-4">
+                <h5 class="mb-2">Konkret (vereinfacht)</h5>
+                <pre class="mb-0"><code># defaults.yaml
 price_rules:
   rounding: bankers
   vat: 19
@@ -95,83 +120,114 @@ vat: 20
 promo:
   allow_stacking: true
 </code></pre>
-</div><div class="service-info bg-white border rounded p-3 mb-4"><h3 class="mb-2">Ergebnis / Impact</h3><ul class="mb-0"><li>Preislogik konsolidiert: zwölf Skripte in ein Modul überführt</li><li>Änderungen an Regeln sind heute schneller reviewbar und deutlich weniger fehleranfällig</li><li>Einführung ohne Big-Bang: Shadow-Run und schrittweise Umschaltung pro Shop</li></ul><p class="small text-muted mb-0">Validierung über umfangreiche Black-Box Tests und Shadow-Run-Vergleiche (Altlogik vs. Modul) im laufenden Betrieb.</p></div><h3>Validierung &amp; Qualität</h3><p>
-Bei Preislogik ist „funktioniert meistens“ keine Option. Entscheidend war deshalb ein Sicherheitsnetz, das nicht von implizitem Wissen abhängt, sondern reproduzierbar ist.
-</p><p>
-                Die Tests sind das Sicherheitsnetz – über zweihundert Fälle, die die vorherigen Varianten abdecken. Für
-                die
-                tägliche Arbeit heißt das: Code-Reviews konzentrieren sich auf Regeln, nicht auf Dateisuche. Eingeführt
-                wurde
-                das Modul schrittweise: zunächst als Shadow-Run, dessen Ergebnisse wir mit der Altlogik verglichen
-                haben; danach
-                die Umschaltung je Shop, mit Rückfalloption im Rücken.
-              </p><p>
-Zusätzlich haben wir die Schnittstelle so gestaltet, dass Seiteneffekte ausgeschlossen sind. Das macht Abweichungen sichtbar und behebt sie dort, wo sie entstehen: in Regeln und Daten, nicht in Copy/Paste-Varianten.
-</p><h3>Betrieb &amp; Rollout</h3><p>
-Der Rollout wurde so gestaltet, dass er operativ jederzeit stoppbar bleibt. Im Alltag ist das der Unterschied zwischen „wir hoffen“ und „wir steuern“.
-</p><p>
-Nach dem Shadow-Run erfolgte die Umschaltung je Shop. Für jede Umstellung gab es einen klaren Umschaltpunkt, Monitoring auf die relevanten Preis-Signale und eine Rückfalloption, falls ein Randfall im echten Traffic auftaucht.
-</p><h3>Was heute anders ist</h3><p>
-                Die Preislogik liegt an einem Ort und ist über eine stabile API greifbar. Neue Anforderungen lassen sich
-                als
-                Konfiguration ergänzen, ohne Kopien anzulegen. Änderungen bleiben nachvollziehbar – in Tests, im Review
-                und
-                im Betrieb.
-              </p><div hx-get="/partials/cases-cta.html" hx-swap="outerHTML" hx-trigger="load"></div></div>
-</div>
-<div class="col-lg-4">
-<div class="service-info">
-<h4>Kurzinfo</h4>
-<div class="info-item d-flex align-items-start mb-3">
-<i class="bi bi-calendar-event me-3 fs-4"></i>
-<div>
-<h5>Dauer</h5>
-<p class="mb-0">ca. 6 Wochen (inkl. Tests &amp; Rollout)</p>
-</div>
-</div>
-<div class="info-item d-flex align-items-start mb-3">
-<i class="bi bi-person-workspace me-3 fs-4"></i>
-<div>
-<h5>Rolle</h5>
-<p class="mb-0">Backend/Refactoring, enge Abstimmung mit Fachseite</p>
-</div>
-</div>
-<div class="info-item d-flex align-items-start mb-0">
-<i class="bi bi-tools me-3 fs-4"></i>
-<div>
-<h5>Werkzeuge</h5>
-<p class="mb-0">Perl 5, Test::More, Devel::Cover, YAML::XS, Git (CI)</p>
-</div>
-</div>
-</div>
-<div class="related-services mt-5"><h4>Projektkontext</h4><ul class="list-unstyled mb-0"><li><strong>Umfeld:</strong> Mehrere Online-Shops im EU-Umfeld, stark regelgetriebene Preisbildung</li><li><strong>Branche:</strong> E‑Commerce</li><li><strong>Schwerpunkt:</strong> Preislogik, Nachvollziehbarkeit, operativ sicherer Rollout</li></ul><br/>Professioneller Onlinehandel mit hoher Variantenvielfalt (z. B. Märkte/Shop-Setups). Die Preislogik ist geschäftskritisch und muss im laufenden Betrieb zuverlässig und nachvollziehbar funktionieren.</div><div class="related-services mt-5"><h4>Vorgehensschritte (Auszug)</h4><ol class="mb-0"><li>Varianten der bestehenden Logik in Tests abbilden (Black-Box)</li><li>Gemeinsame Regeln extrahieren und Modul-Schnittstelle definieren</li><li>Sonderfälle über Konfiguration abbilden (statt Forks)</li><li>Shadow-Run: Alt/Neu parallel berechnen und vergleichen</li><li>Shop-weise Umschaltung mit Rückfalloption</li></ol></div>
-<div hx-get="/partials/cases-share-links.html" hx-swap="outerHTML" hx-trigger="load"></div>
-<div class="related-services mt-5" x-data="relatedCases()" x-init="init()">
-<h4>Weitere Fallstudien</h4>
-<template :key="item.url" x-for="item in selectedCases">
-<div class="service-item">
-<div class="d-flex align-items-center gap-3 mb-2">
-<i :class="item.icon"></i>
-<h5><a :href="item.url" rel="noopener" target="_blank" x-text="item.title"></a></h5>
-</div>
-<p x-text="item.description"></p>
-</div>
-</template>
-</div>
-</div>
-</div>
-</div>
-</section>
-</main>
-<div hx-get="/partials/footer.html" hx-swap="outerHTML" hx-trigger="load"></div>
-<div hx-get="/partials/footer-scripts.html" hx-swap="outerHTML" hx-trigger="load"></div>
-<script>window.onload = () => { document.body.style.display = "block"; };</script>
-<div aria-live="polite" class="ap-toast" role="status" x-data="" x-show="$store.toast.open" x-transition.opacity.duration.150ms="">
-<i :class="$store.toast.isError ? 'bi-x-circle' : 'bi-check2-circle'" class="bi"></i>
-<span x-text="$store.toast.message"></span>
-</div>
-<a class="scroll-top d-flex align-items-center justify-content-center" href="#">
-<i class="bi bi-arrow-up-short"></i>
-</a>
+              </div>
+              <div class="service-info bg-white border rounded p-3 mb-4">
+                <h3 class="mb-2">Ergebnis / Impact</h3>
+                <ul class="mb-0">
+                  <li>Preislogik konsolidiert: zwölf Skripte in ein Modul überführt</li>
+                  <li>Änderungen an Regeln sind heute schneller reviewbar und deutlich weniger fehleranfällig</li>
+                  <li>Einführung ohne Big-Bang: Shadow-Run und schrittweise Umschaltung pro Shop</li>
+                </ul>
+                <p class="small text-muted mb-0">Validierung über umfangreiche Black-Box Tests und Shadow-Run-Vergleiche
+                  (Altlogik vs. Modul) im laufenden Betrieb.</p>
+              </div>
+              <h3>Validierung &amp; Qualität</h3>
+              <p> Bei Preislogik ist „funktioniert meistens“ keine Option. Entscheidend war deshalb ein Sicherheitsnetz,
+                das nicht von implizitem Wissen abhängt, sondern reproduzierbar ist. </p>
+              <p> Die Tests sind das Sicherheitsnetz – über zweihundert Fälle, die die vorherigen Varianten abdecken.
+                Für die tägliche Arbeit heißt das: Code-Reviews konzentrieren sich auf Regeln, nicht auf Dateisuche.
+                Eingeführt wurde das Modul schrittweise: zunächst als Shadow-Run, dessen Ergebnisse wir mit der Altlogik
+                verglichen haben; danach die Umschaltung je Shop, mit Rückfalloption im Rücken. </p>
+              <p> Zusätzlich haben wir die Schnittstelle so gestaltet, dass Seiteneffekte ausgeschlossen sind. Das macht
+                Abweichungen sichtbar und behebt sie dort, wo sie entstehen: in Regeln und Daten, nicht in
+                Copy/Paste-Varianten. </p>
+              <h3>Betrieb &amp; Rollout</h3>
+              <p> Der Rollout wurde so gestaltet, dass er operativ jederzeit stoppbar bleibt. Im Alltag ist das der
+                Unterschied zwischen „wir hoffen“ und „wir steuern“. </p>
+              <p> Nach dem Shadow-Run erfolgte die Umschaltung je Shop. Für jede Umstellung gab es einen klaren
+                Umschaltpunkt, Monitoring auf die relevanten Preis-Signale und eine Rückfalloption, falls ein Randfall
+                im echten Traffic auftaucht. </p>
+              <h3>Was heute anders ist</h3>
+              <p> Die Preislogik liegt an einem Ort und ist über eine stabile API greifbar. Neue Anforderungen lassen
+                sich als Konfiguration ergänzen, ohne Kopien anzulegen. Änderungen bleiben nachvollziehbar – in Tests,
+                im Review und im Betrieb. </p>
+              <div hx-get="/partials/cases-cta.html" hx-swap="outerHTML" hx-trigger="load"></div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="service-info">
+              <h4>Kurzinfo</h4>
+              <div class="info-item d-flex align-items-start mb-3">
+                <i class="bi bi-calendar-event me-3 fs-4"></i>
+                <div>
+                  <h5>Dauer</h5>
+                  <p class="mb-0">ca. 6 Wochen (inkl. Tests &amp; Rollout)</p>
+                </div>
+              </div>
+              <div class="info-item d-flex align-items-start mb-3">
+                <i class="bi bi-person-workspace me-3 fs-4"></i>
+                <div>
+                  <h5>Rolle</h5>
+                  <p class="mb-0">Backend/Refactoring, enge Abstimmung mit Fachseite</p>
+                </div>
+              </div>
+              <div class="info-item d-flex align-items-start mb-0">
+                <i class="bi bi-tools me-3 fs-4"></i>
+                <div>
+                  <h5>Werkzeuge</h5>
+                  <p class="mb-0">Perl 5, Test::More, Devel::Cover, YAML::XS, Git (CI)</p>
+                </div>
+              </div>
+            </div>
+            <div class="related-services mt-5">
+              <h4>Projektkontext</h4>
+              <ul class="list-unstyled mb-0">
+                <li><strong>Umfeld:</strong> Mehrere Online-Shops im EU-Umfeld, stark regelgetriebene Preisbildung</li>
+                <li><strong>Branche:</strong> E‑Commerce</li>
+                <li><strong>Schwerpunkt:</strong> Preislogik, Nachvollziehbarkeit, operativ sicherer Rollout</li>
+              </ul><br />Professioneller Onlinehandel mit hoher Variantenvielfalt (z. B. Märkte/Shop-Setups). Die
+              Preislogik ist geschäftskritisch und muss im laufenden Betrieb zuverlässig und nachvollziehbar
+              funktionieren.
+            </div>
+            <div class="related-services mt-5">
+              <h4>Vorgehensschritte (Auszug)</h4>
+              <ol class="mb-0">
+                <li>Varianten der bestehenden Logik in Tests abbilden (Black-Box)</li>
+                <li>Gemeinsame Regeln extrahieren und Modul-Schnittstelle definieren</li>
+                <li>Sonderfälle über Konfiguration abbilden (statt Forks)</li>
+                <li>Shadow-Run: Alt/Neu parallel berechnen und vergleichen</li>
+                <li>Shop-weise Umschaltung mit Rückfalloption</li>
+              </ol>
+            </div>
+            <div hx-get="/partials/cases-share-links.html" hx-swap="outerHTML" hx-trigger="load"></div>
+            <div class="related-services mt-5" x-data="relatedCases()" x-init="init()">
+              <h4>Weitere Fallstudien</h4>
+              <template :key="item.url" x-for="item in selectedCases">
+                <div class="service-item">
+                  <div class="d-flex align-items-center gap-3 mb-2">
+                    <i :class="item.icon"></i>
+                    <h5><a :href="item.url" rel="noopener" target="_blank" x-text="item.title"></a></h5>
+                  </div>
+                  <p x-text="item.description"></p>
+                </div>
+              </template>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div hx-get="/partials/footer.html" hx-swap="outerHTML" hx-trigger="load"></div>
+  <div hx-get="/partials/footer-scripts.html" hx-swap="outerHTML" hx-trigger="load"></div>
+  <script>window.onload = () => { document.body.style.display = "block"; };</script>
+  <div aria-live="polite" class="ap-toast" role="status" x-data="" x-show="$store.toast.open"
+       x-transition.opacity.duration.150ms="">
+    <i :class="$store.toast.isError ? 'bi-x-circle' : 'bi-check2-circle'" class="bi"></i>
+    <span x-text="$store.toast.message"></span>
+  </div>
+  <a class="scroll-top d-flex align-items-center justify-content-center" href="#">
+    <i class="bi bi-arrow-up-short"></i>
+  </a>
 </body>
+
 </html>

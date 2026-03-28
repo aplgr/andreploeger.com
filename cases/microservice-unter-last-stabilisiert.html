@@ -1,28 +1,34 @@
 <!DOCTYPE html>
-
 <html lang="de">
+
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Fallstudie: Microservice unter Last stabilisiert</title>
-<meta content="Go‑Microservice stabilisiert: PgBouncer eingeführt, Importstrategie optimiert, Verfügbarkeit gesteigert." name="description"/>
-<meta content="Go, Microservice, PostgreSQL, PgBouncer, Connection Pooling, Import, Stabilität" name="keywords"/>
-<meta content="index,follow" name="robots"/>
-<link href="https://andreploeger.com/microservice-unter-last-stabilisiert" rel="canonical"/>
-<meta content="de_DE" property="og:locale"/>
-<meta content="article" property="og:type"/>
-<meta content="André Plöger" property="og:site_name"/>
-<meta content="Fallstudie: Microservice unter Last stabilisiert" property="og:title"/>
-<meta content="Go-Microservice stabilisiert: PgBouncer eingeführt, Importstrategie optimiert, Verfügbarkeit gesteigert." property="og:description"/>
-<meta content="https://andreploeger.com/microservice-unter-last-stabilisiert" property="og:url"/>
-<meta content="https://andreploeger.com/assets/img/cases/microservice-unter-last-stabilisiert.webp" property="og:image"/>
-<meta content="1200" property="og:image:width"/>
-<meta content="630" property="og:image:height"/>
-<meta content="summary_large_image" name="twitter:card"/>
-<meta content="Fallstudie: Microservice unter Last stabilisiert" name="twitter:title"/>
-<meta content="Go-Microservice stabilisiert: PgBouncer eingeführt, Importstrategie optimiert, Verfügbarkeit gesteigert." name="twitter:description"/>
-<meta content="https://andreploeger.com/assets/img/cases/microservice-unter-last-stabilisiert.webp" name="twitter:image"/>
-<script type="application/ld+json">
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Fallstudie: Microservice unter Last stabilisiert</title>
+  <meta content="Go‑Microservice stabilisiert: PgBouncer eingeführt, Importstrategie optimiert, Verfügbarkeit gesteigert."
+        name="description" />
+  <meta content="Go, Microservice, PostgreSQL, PgBouncer, Connection Pooling, Import, Stabilität" name="keywords" />
+  <meta content="index,follow" name="robots" />
+  <link href="https://andreploeger.com/microservice-unter-last-stabilisiert" rel="canonical" />
+  <meta content="de_DE" property="og:locale" />
+  <meta content="article" property="og:type" />
+  <meta content="André Plöger" property="og:site_name" />
+  <meta content="Fallstudie: Microservice unter Last stabilisiert" property="og:title" />
+  <meta content="Go-Microservice stabilisiert: PgBouncer eingeführt, Importstrategie optimiert, Verfügbarkeit gesteigert."
+        property="og:description" />
+  <meta content="https://andreploeger.com/microservice-unter-last-stabilisiert" property="og:url" />
+  <meta content="https://andreploeger.com/assets/img/cases/microservice-unter-last-stabilisiert.webp"
+        property="og:image" />
+  <meta content="1200" property="og:image:width" />
+  <meta content="630" property="og:image:height" />
+  <meta content="summary_large_image" name="twitter:card" />
+  <meta content="Fallstudie: Microservice unter Last stabilisiert" name="twitter:title" />
+  <meta content="Go-Microservice stabilisiert: PgBouncer eingeführt, Importstrategie optimiert, Verfügbarkeit gesteigert."
+        name="twitter:description" />
+  <meta content="https://andreploeger.com/assets/img/cases/microservice-unter-last-stabilisiert.webp"
+        name="twitter:image" />
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="78b59231-ef0a-4019-8383-a113c294bcbe"></script>
+  <script type="application/ld+json">
   {
   "@context": "https://schema.org",
   "@type": "Article",
@@ -34,54 +40,76 @@
   "author": {"@type":"Person","name":"André Plöger","url":"https://andreploeger.com/"}
   }
   </script>
-<link href="/assets/img/favicon.svg" rel="icon" type="image/svg+xml"/>
-<link href="/assets/img/favicon-512.png" rel="icon" sizes="512x512"/>
-<link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
-<script defer="" src="/assets/js/cases.js"></script>
-<script src="https://unpkg.com/htmx.org@1.9.12"></script>
-<script defer="" src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-<div hx-get="/partials/styles-cases.html" hx-swap="outerHTML" hx-trigger="load"></div>
+  <link href="/assets/img/favicon.svg" rel="icon" type="image/svg+xml" />
+  <link href="/assets/img/favicon-512.png" rel="icon" sizes="512x512" />
+  <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" />
+  <script defer="" src="/assets/js/cases.js"></script>
+  <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <div hx-get="/partials/styles-cases.html" hx-swap="outerHTML" hx-trigger="load"></div>
 </head>
+
 <body class="service-details-page" style="display:none">
-<div hx-get="/partials/header.html" hx-swap="outerHTML" hx-trigger="load"></div>
-<main class="main">
-<section class="service-details section" id="service-details">
-<div class="container" data-aos="fade-up" data-aos-delay="100">
-<div class="row gy-4">
-<div class="col-lg-8">
-<div class="content"><div class="service-info bg-light border rounded p-4 mb-4">
-<div class="row gy-4 align-items-center">
-<div class="col-sm-8">
-<h1>Microservice unter Last stabilisiert</h1>
-<p class="mb-0">PgBouncer &amp; Import‑Optimierung sichern zuverlässige Verfügbarkeit trotz wachsender
-                      Datenmengen.</p>
-</div>
-<div class="col-sm-4 text-center" style="height:180px; overflow:hidden;">
-<img alt="Microservice unter Last stabilisiert" class="img-fluid rounded" src="/assets/img/cases/microservice-unter-last-stabilisiert.webp" style="object-fit:contain; max-height:100%;"/>
-</div>
-</div>
-</div><h3>Ausgangslage</h3><p>
-                Ein datenintensiver Go‑Microservice erzeugte unter Last zu viele Datenbankverbindungen. Die Folge waren
-                Verbindungsabbrüche und gelegentliche Timeouts im Produktivbetrieb – insbesondere bei parallelen
-                Importen
-                und Backfill‑Jobs.
-              </p><p>
-Das kritische Symptom war nicht nur ein einzelner Timeout, sondern die Kettenreaktion: wenn Verbindungen eskalieren, kippt schnell mehr als nur ein Job.
-</p><h3>Zielbild &amp; Anforderungen</h3><p>
-Im Fokus stand nicht „mehr Leistung um jeden Preis“, sondern Stabilität unter realer Produktionslast: kontrollierte Verbindungen, planbare Laufzeiten und nachvollziehbare Ursachenanalyse.
-</p><ul><li>Zuverlässige Verfügbarkeit auch bei parallelen Importen und Backfill-Jobs</li><li>Verbindungs- und Laststeuerung: DB-Limits einhalten, ohne Durchsatz zu verlieren</li><li>Planbare Importlaufzeiten statt sporadischer Timeouts</li><li>Messbarkeit als Standard: Dashboards, Alarme und klare SLO-nahe Indikatoren</li></ul><p class="text-muted small mb-4">Rahmenbedingungen: produktionsnaher Betrieb, wachsende Datenmengen, parallele Jobs, harte DB-Connection-Limits, Änderungen müssen rückrollbar sein.</p><h3>Lösungsweg</h3><p>
-Der Kern war Entkopplung und Steuerung: Imports wurden entzerrt, die Datenbankverbindungen über einen Pool kanalisiert und das Verhalten über Metriken sichtbar gemacht. Dadurch ließ sich Last nicht nur aushalten, sondern aktiv steuern.
-</p><ol><li>Baseline schaffen: Peak-Zeiten und Flaschenhälse messbar machen</li><li>Importstrategie entzerren (Batching, Job-Entkopplung, Backpressure)</li><li>Verbindungsmanagement über PgBouncer (Pool statt unkontrollierter Spikes)</li><li>Konkrete Limits &amp; Alarme definieren (Connections, Fehlerquoten, Laufzeiten)</li><li>Sicherer Rollout über Feature-Toggle, Shadow-Run und klare Umschaltpunkte</li></ol><h3>Umsetzung</h3><p>
-Die Umsetzung kombinerte Maßnahmen auf zwei Ebenen: Anwendung (Importlogik) und Datenbankzugriff (Pooling). So konnte der Dienst unter Last stabil bleiben, ohne dass Einzelspitzen die gesamte Umgebung mitreißen.
-</p><p>
-                Wir haben die Importstrategie entzerrt (Batching &amp; Backpressure), Connection Pooling über
-                <strong>PgBouncer</strong>
-                eingeführt und Hot‑Paths in SQL überarbeitet. Zusätzlich wurden <em>worker‑seitige</em>
-                Concurrency‑Limits gesetzt
-                und die Telemetrie ausgebaut, um Kapazitäten sichtbar zu machen.
-              </p><div class="service-info bg-light border rounded p-3 mb-4">
-<h5 class="mb-2">Konkret (vereinfacht)</h5>
-<pre class="mb-2"><code># pgbouncer.ini
+  <div hx-get="/partials/header.html" hx-swap="outerHTML" hx-trigger="load"></div>
+  <main class="main">
+    <section class="service-details section" id="service-details">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-4">
+          <div class="col-lg-8">
+            <div class="content">
+              <div class="service-info bg-light border rounded p-4 mb-4">
+                <div class="row gy-4 align-items-center">
+                  <div class="col-sm-8">
+                    <h1>Microservice unter Last stabilisiert</h1>
+                    <p class="mb-0">PgBouncer &amp; Import‑Optimierung sichern zuverlässige Verfügbarkeit trotz
+                      wachsender Datenmengen.</p>
+                  </div>
+                  <div class="col-sm-4 text-center" style="height:180px; overflow:hidden;">
+                    <img alt="Microservice unter Last stabilisiert" class="img-fluid rounded"
+                         src="/assets/img/cases/microservice-unter-last-stabilisiert.webp"
+                         style="object-fit:contain; max-height:100%;" />
+                  </div>
+                </div>
+              </div>
+              <h3>Ausgangslage</h3>
+              <p> Ein datenintensiver Go‑Microservice erzeugte unter Last zu viele Datenbankverbindungen. Die Folge
+                waren Verbindungsabbrüche und gelegentliche Timeouts im Produktivbetrieb – insbesondere bei parallelen
+                Importen und Backfill‑Jobs. </p>
+              <p> Das kritische Symptom war nicht nur ein einzelner Timeout, sondern die Kettenreaktion: wenn
+                Verbindungen eskalieren, kippt schnell mehr als nur ein Job. </p>
+              <h3>Zielbild &amp; Anforderungen</h3>
+              <p> Im Fokus stand nicht „mehr Leistung um jeden Preis“, sondern Stabilität unter realer Produktionslast:
+                kontrollierte Verbindungen, planbare Laufzeiten und nachvollziehbare Ursachenanalyse. </p>
+              <ul>
+                <li>Zuverlässige Verfügbarkeit auch bei parallelen Importen und Backfill-Jobs</li>
+                <li>Verbindungs- und Laststeuerung: DB-Limits einhalten, ohne Durchsatz zu verlieren</li>
+                <li>Planbare Importlaufzeiten statt sporadischer Timeouts</li>
+                <li>Messbarkeit als Standard: Dashboards, Alarme und klare SLO-nahe Indikatoren</li>
+              </ul>
+              <p class="text-muted small mb-4">Rahmenbedingungen: produktionsnaher Betrieb, wachsende Datenmengen,
+                parallele Jobs, harte DB-Connection-Limits, Änderungen müssen rückrollbar sein.</p>
+              <h3>Lösungsweg</h3>
+              <p> Der Kern war Entkopplung und Steuerung: Imports wurden entzerrt, die Datenbankverbindungen über einen
+                Pool kanalisiert und das Verhalten über Metriken sichtbar gemacht. Dadurch ließ sich Last nicht nur
+                aushalten, sondern aktiv steuern. </p>
+              <ol>
+                <li>Baseline schaffen: Peak-Zeiten und Flaschenhälse messbar machen</li>
+                <li>Importstrategie entzerren (Batching, Job-Entkopplung, Backpressure)</li>
+                <li>Verbindungsmanagement über PgBouncer (Pool statt unkontrollierter Spikes)</li>
+                <li>Konkrete Limits &amp; Alarme definieren (Connections, Fehlerquoten, Laufzeiten)</li>
+                <li>Sicherer Rollout über Feature-Toggle, Shadow-Run und klare Umschaltpunkte</li>
+              </ol>
+              <h3>Umsetzung</h3>
+              <p> Die Umsetzung kombinerte Maßnahmen auf zwei Ebenen: Anwendung (Importlogik) und Datenbankzugriff
+                (Pooling). So konnte der Dienst unter Last stabil bleiben, ohne dass Einzelspitzen die gesamte Umgebung
+                mitreißen. </p>
+              <p> Wir haben die Importstrategie entzerrt (Batching &amp; Backpressure), Connection Pooling über
+                <strong>PgBouncer</strong> eingeführt und Hot‑Paths in SQL überarbeitet. Zusätzlich wurden
+                <em>worker‑seitige</em> Concurrency‑Limits gesetzt und die Telemetrie ausgebaut, um Kapazitäten sichtbar
+                zu machen. </p>
+              <div class="service-info bg-light border rounded p-3 mb-4">
+                <h5 class="mb-2">Konkret (vereinfacht)</h5>
+                <pre class="mb-2"><code># pgbouncer.ini
 [databases]
 appdb = host=postgres port=5432 dbname=appdb
 
@@ -92,103 +120,127 @@ max_client_conn   = 200
 default_pool_size = 20
 server_reset_query = DISCARD ALL
 </code></pre>
-<pre class="mb-2"><code>// Go (database/sql) – DSN zeigt auf PgBouncer bei Port 6432
+                <pre class="mb-2"><code>// Go (database/sql) – DSN zeigt auf PgBouncer bei Port 6432
 sql.Open("pgx", os.Getenv("DATABASE_URL"))
 // Poolgrenzen an die DB‑Kapazität anpassen
 DB.SetMaxOpenConns(20)
 DB.SetMaxIdleConns(20)
 DB.SetConnMaxLifetime(5 * time.Minute)
 </code></pre>
-<p class="mb-0 small text-muted">
-                  Ziel: konstante Last auf der Datenbank, kurze Transaktionen, vorhersehbare Parallelität – statt
-                  ungebremster Verbindungsflut.
-                </p>
-</div><div class="service-info bg-white border rounded p-3 mb-4">
-<h3 class="mb-2">Ergebnis / Impact</h3>
-<ul class="mb-0">
-<li>Importlaufzeiten stabilisiert, keine Timeouts unter Produktionslast</li>
-<li>Datenbank‑Verbindungslimits eingehalten (Pool‑gesteuert)</li>
-<li>Deutlich robustere Verfügbarkeit des Dienstes</li>
-</ul>
-<p class="small text-muted mb-0">Messung über Laufzeit‑Logs &amp; DB‑Metriken (z. B. aktive
+                <p class="mb-0 small text-muted"> Ziel: konstante Last auf der Datenbank, kurze Transaktionen,
+                  vorhersehbare Parallelität – statt ungebremster Verbindungsflut. </p>
+              </div>
+              <div class="service-info bg-white border rounded p-3 mb-4">
+                <h3 class="mb-2">Ergebnis / Impact</h3>
+                <ul class="mb-0">
+                  <li>Importlaufzeiten stabilisiert, keine Timeouts unter Produktionslast</li>
+                  <li>Datenbank‑Verbindungslimits eingehalten (Pool‑gesteuert)</li>
+                  <li>Deutlich robustere Verfügbarkeit des Dienstes</li>
+                </ul>
+                <p class="small text-muted mb-0">Messung über Laufzeit‑Logs &amp; DB‑Metriken (z. B. aktive
                   Verbindungen, Fehlerquoten).</p>
-</div><h3>Validierung &amp; Qualität</h3><p>
-Stabilität ist nur so gut wie die Messung dahinter. Deshalb war der wichtigste Schritt: erst eine belastbare Baseline, dann iterativ optimieren und jede Änderung mit Daten abzusichern.
-</p><ul>
-<li>Baseline über <code>pg_stat_activity</code> &amp; Logs (Peak‑Verbindungen, Wartesituationen)</li>
-<li>Vergleich vor/nach Pooling (Timeouts, Fehlerquoten, Importdauer)</li>
-<li>Dashboards &amp; Alarme für Verbindungsauslastung und Fehler</li>
-</ul><p>
-Zusätzlich haben wir typische Fehlerbilder (z. B. Connection-Spikes, lange Locks, Timeouts) als konkrete Signale im Monitoring verankert. Damit wird „gefühlt stabil“ zu „nachweisbar stabil“.
-</p><h3>Betrieb &amp; Rollout</h3><p>
-Im Betrieb zählt vor allem, wie kontrolliert Änderungen live gehen. Hier war die Leitlinie: jede Maßnahme muss einzeln aktivierbar sein, und jede Aktivierung muss beobachtbar sein.
-</p><ul>
-<li>Feature‑Toggle &amp; Shadow‑Run der neuen Importpfade vor Umschaltung</li>
-<li>Readiness/Liveness‑Probes auf Downstream‑Abhängigkeiten</li>
-<li>Rollback‑Pfad pro Umgebung (sichere Umschaltpunkte)</li>
-</ul><p>
-Das Ergebnis ist ein Setup, das auch bei wachsender Last nicht plötzlich kippt. Wenn Last steigt, steigen Metriken. Nicht das Risiko.
-</p><h3>Was heute anders ist</h3><p>
-                Die Importprozesse laufen planbar durch, die Verbindungen bleiben unterhalb der erlaubten Limits, und
+              </div>
+              <h3>Validierung &amp; Qualität</h3>
+              <p> Stabilität ist nur so gut wie die Messung dahinter. Deshalb war der wichtigste Schritt: erst eine
+                belastbare Baseline, dann iterativ optimieren und jede Änderung mit Daten abzusichern. </p>
+              <ul>
+                <li>Baseline über <code>pg_stat_activity</code> &amp; Logs (Peak‑Verbindungen, Wartesituationen)</li>
+                <li>Vergleich vor/nach Pooling (Timeouts, Fehlerquoten, Importdauer)</li>
+                <li>Dashboards &amp; Alarme für Verbindungsauslastung und Fehler</li>
+              </ul>
+              <p> Zusätzlich haben wir typische Fehlerbilder (z. B. Connection-Spikes, lange Locks, Timeouts) als
+                konkrete Signale im Monitoring verankert. Damit wird „gefühlt stabil“ zu „nachweisbar stabil“. </p>
+              <h3>Betrieb &amp; Rollout</h3>
+              <p> Im Betrieb zählt vor allem, wie kontrolliert Änderungen live gehen. Hier war die Leitlinie: jede
+                Maßnahme muss einzeln aktivierbar sein, und jede Aktivierung muss beobachtbar sein. </p>
+              <ul>
+                <li>Feature‑Toggle &amp; Shadow‑Run der neuen Importpfade vor Umschaltung</li>
+                <li>Readiness/Liveness‑Probes auf Downstream‑Abhängigkeiten</li>
+                <li>Rollback‑Pfad pro Umgebung (sichere Umschaltpunkte)</li>
+              </ul>
+              <p> Das Ergebnis ist ein Setup, das auch bei wachsender Last nicht plötzlich kippt. Wenn Last steigt,
+                steigen Metriken. Nicht das Risiko. </p>
+              <h3>Was heute anders ist</h3>
+              <p> Die Importprozesse laufen planbar durch, die Verbindungen bleiben unterhalb der erlaubten Limits, und
                 der Dienst ist unter Last deutlich robuster. Erweiterungen können schrittweise aktiviert und über
-                Metriken
-                überwacht werden.
-              </p><div hx-get="/partials/cases-cta.html" hx-swap="outerHTML" hx-trigger="load"></div></div>
-</div>
-<div class="col-lg-4">
-<div class="service-info">
-<h4>Kurzinfo</h4>
-<div class="info-item d-flex align-items-start mb-3">
-<i class="bi bi-calendar-event me-3 fs-4"></i>
-<div>
-<h5>Dauer</h5>
-<p class="mb-0">ca. 8 Wochen</p>
-</div>
-</div>
-<div class="info-item d-flex align-items-start mb-3">
-<i class="bi bi-person-workspace me-3 fs-4"></i>
-<div>
-<h5>Rolle</h5>
-<p class="mb-0">Go &amp; DB‑Tuning · Einführung PgBouncer · Import‑Optimierung</p>
-</div>
-</div>
-<div class="info-item d-flex align-items-start mb-0">
-<i class="bi bi-tools me-3 fs-4"></i>
-<div>
-<h5>Werkzeuge</h5>
-<p class="mb-0">Go, PostgreSQL, PgBouncer, AWS (Monitoring/Logs)</p>
-</div>
-</div>
-</div>
-<div class="related-services mt-5"><h4>Projektkontext</h4><ul class="list-unstyled mb-0"><li><strong>Umfeld:</strong> Datenintensiver Microservice mit parallelen Import- und Backfill-Prozessen</li><li><strong>Branche:</strong> Omnichannel / E‑Commerce</li><li><strong>Schwerpunkt:</strong> Verfügbarkeit, Verbindungs- und Laststeuerung, Observability</li></ul><br/>Ein produktionskritischer Dienst, der große Datenmengen verarbeitet. Ziel war, Lastspitzen operativ beherrschbar zu machen, ohne aufwendige Infrastruktur-Migrationen oder Big-Bang-Änderungen.</div>
-<div class="related-services mt-5"><h4>Vorgehensschritte (Auszug)</h4><ol class="mb-0"><li>Baseline &amp; Peaks messen (Logs, DB-Metriken, Fehlerquoten)</li><li>Importstrategie entzerren (Batching, Entkopplung, Backpressure)</li><li>PgBouncer einsetzen und Pools sauber dimensionieren</li><li>Dashboards/Alarme definieren und Grenzwerte operationalisieren</li><li>Feature-Toggle, Shadow-Run und kontrollierte Umschaltpunkte</li></ol></div>
-<div hx-get="/partials/cases-share-links.html" hx-swap="outerHTML" hx-trigger="load"></div>
-<div class="related-services mt-5" x-data="relatedCases()" x-init="init()">
-<h4>Weitere Fallstudien</h4>
-<template :key="item.url" x-for="item in selectedCases">
-<div class="service-item">
-<div class="d-flex align-items-center gap-3 mb-2">
-<i :class="item.icon"></i>
-<h5><a :href="item.url" rel="noopener" target="_blank" x-text="item.title"></a></h5>
-</div>
-<p x-text="item.description"></p>
-</div>
-</template>
-</div>
-</div>
-</div>
-</div>
-</section>
-</main>
-<div hx-get="/partials/footer.html" hx-swap="outerHTML" hx-trigger="load"></div>
-<div hx-get="/partials/footer-scripts.html" hx-swap="outerHTML" hx-trigger="load"></div>
-<script>window.onload = () => { document.body.style.display = "block"; };</script>
-<div aria-live="polite" class="ap-toast" role="status" x-data="" x-show="$store.toast.open" x-transition.opacity.duration.150ms="">
-<i :class="$store.toast.isError ? 'bi-x-circle' : 'bi-check2-circle'" class="bi"></i>
-<span x-text="$store.toast.message"></span>
-</div>
-<a class="scroll-top d-flex align-items-center justify-content-center" href="#">
-<i class="bi bi-arrow-up-short"></i>
-</a>
+                Metriken überwacht werden. </p>
+              <div hx-get="/partials/cases-cta.html" hx-swap="outerHTML" hx-trigger="load"></div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="service-info">
+              <h4>Kurzinfo</h4>
+              <div class="info-item d-flex align-items-start mb-3">
+                <i class="bi bi-calendar-event me-3 fs-4"></i>
+                <div>
+                  <h5>Dauer</h5>
+                  <p class="mb-0">ca. 8 Wochen</p>
+                </div>
+              </div>
+              <div class="info-item d-flex align-items-start mb-3">
+                <i class="bi bi-person-workspace me-3 fs-4"></i>
+                <div>
+                  <h5>Rolle</h5>
+                  <p class="mb-0">Go &amp; DB‑Tuning · Einführung PgBouncer · Import‑Optimierung</p>
+                </div>
+              </div>
+              <div class="info-item d-flex align-items-start mb-0">
+                <i class="bi bi-tools me-3 fs-4"></i>
+                <div>
+                  <h5>Werkzeuge</h5>
+                  <p class="mb-0">Go, PostgreSQL, PgBouncer, AWS (Monitoring/Logs)</p>
+                </div>
+              </div>
+            </div>
+            <div class="related-services mt-5">
+              <h4>Projektkontext</h4>
+              <ul class="list-unstyled mb-0">
+                <li><strong>Umfeld:</strong> Datenintensiver Microservice mit parallelen Import- und Backfill-Prozessen
+                </li>
+                <li><strong>Branche:</strong> Omnichannel / E‑Commerce</li>
+                <li><strong>Schwerpunkt:</strong> Verfügbarkeit, Verbindungs- und Laststeuerung, Observability</li>
+              </ul><br />Ein produktionskritischer Dienst, der große Datenmengen verarbeitet. Ziel war, Lastspitzen
+              operativ beherrschbar zu machen, ohne aufwendige Infrastruktur-Migrationen oder Big-Bang-Änderungen.
+            </div>
+            <div class="related-services mt-5">
+              <h4>Vorgehensschritte (Auszug)</h4>
+              <ol class="mb-0">
+                <li>Baseline &amp; Peaks messen (Logs, DB-Metriken, Fehlerquoten)</li>
+                <li>Importstrategie entzerren (Batching, Entkopplung, Backpressure)</li>
+                <li>PgBouncer einsetzen und Pools sauber dimensionieren</li>
+                <li>Dashboards/Alarme definieren und Grenzwerte operationalisieren</li>
+                <li>Feature-Toggle, Shadow-Run und kontrollierte Umschaltpunkte</li>
+              </ol>
+            </div>
+            <div hx-get="/partials/cases-share-links.html" hx-swap="outerHTML" hx-trigger="load"></div>
+            <div class="related-services mt-5" x-data="relatedCases()" x-init="init()">
+              <h4>Weitere Fallstudien</h4>
+              <template :key="item.url" x-for="item in selectedCases">
+                <div class="service-item">
+                  <div class="d-flex align-items-center gap-3 mb-2">
+                    <i :class="item.icon"></i>
+                    <h5><a :href="item.url" rel="noopener" target="_blank" x-text="item.title"></a></h5>
+                  </div>
+                  <p x-text="item.description"></p>
+                </div>
+              </template>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div hx-get="/partials/footer.html" hx-swap="outerHTML" hx-trigger="load"></div>
+  <div hx-get="/partials/footer-scripts.html" hx-swap="outerHTML" hx-trigger="load"></div>
+  <script>window.onload = () => { document.body.style.display = "block"; };</script>
+  <div aria-live="polite" class="ap-toast" role="status" x-data="" x-show="$store.toast.open"
+       x-transition.opacity.duration.150ms="">
+    <i :class="$store.toast.isError ? 'bi-x-circle' : 'bi-check2-circle'" class="bi"></i>
+    <span x-text="$store.toast.message"></span>
+  </div>
+  <a class="scroll-top d-flex align-items-center justify-content-center" href="#">
+    <i class="bi bi-arrow-up-short"></i>
+  </a>
 </body>
+
 </html>
