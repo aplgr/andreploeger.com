@@ -1,6 +1,45 @@
 (function () {
   "use strict";
 
+  function onReadyOrNow(callback) {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', callback, { once: true });
+      return;
+    }
+
+    callback();
+  }
+
+  function onLoadOrNow(callback) {
+    if (document.readyState === 'complete') {
+      callback();
+      return;
+    }
+
+    window.addEventListener('load', callback, { once: true });
+  }
+
+  function whenAvailable(check, callback, maxAttempts = 50, interval = 100) {
+    if (check()) {
+      callback();
+      return;
+    }
+
+    let attempts = 0;
+    const timer = window.setInterval(() => {
+      if (check()) {
+        window.clearInterval(timer);
+        callback();
+        return;
+      }
+
+      attempts += 1;
+      if (attempts >= maxAttempts) {
+        window.clearInterval(timer);
+      }
+    }, interval);
+  }
+
   /* Apply .scrolled class to the body as the page is scrolled down */
   function toggleScrolled() {
     const selectBody = document.querySelector('body');
@@ -28,7 +67,7 @@
   }
 
   document.addEventListener('scroll', toggleScrolled);
-  window.addEventListener('load', toggleScrolled);
+  onLoadOrNow(toggleScrolled);
 
   /**
    * Mobile nav toggle
@@ -90,72 +129,99 @@
     toggle();
   }
 
-  document.addEventListener('DOMContentLoaded', bindScrollTop);
-  window.addEventListener('load', bindScrollTop);
+  onReadyOrNow(bindScrollTop);
+  onLoadOrNow(bindScrollTop);
   document.addEventListener('htmx:afterSwap', bindScrollTop);
 
   /**
    * Animation on scroll function and init
    */
   function aosInit() {
-    AOS.init({
+    if (typeof window.AOS === 'undefined') {
+      return;
+    }
+
+    window.AOS.init({
       duration: 600,
       easing: 'ease-in-out',
       once: true,
       mirror: false
     });
   }
-  window.addEventListener('load', aosInit);
+  onLoadOrNow(() => {
+    whenAvailable(() => typeof window.AOS !== 'undefined', aosInit);
+  });
 
   /**
    * Animate the skills items on reveal
    */
-  let skillsAnimation = document.querySelectorAll('.skills-animation');
-  skillsAnimation.forEach((item) => {
-    new Waypoint({
-      element: item,
-      offset: '80%',
-      handler: function (direction) {
-        let progress = item.querySelectorAll('.progress .progress-bar');
-        progress.forEach(el => {
-          el.style.width = el.getAttribute('aria-valuenow') + '%';
-        });
-      }
+  function initSkillsAnimation() {
+    if (typeof window.Waypoint === 'undefined') {
+      return;
+    }
+
+    let skillsAnimation = document.querySelectorAll('.skills-animation');
+    skillsAnimation.forEach((item) => {
+      new Waypoint({
+        element: item,
+        offset: '80%',
+        handler: function () {
+          let progress = item.querySelectorAll('.progress .progress-bar');
+          progress.forEach(el => {
+            el.style.width = el.getAttribute('aria-valuenow') + '%';
+          });
+        }
+      });
     });
+  }
+  onReadyOrNow(() => {
+    whenAvailable(() => typeof window.Waypoint !== 'undefined', initSkillsAnimation);
   });
 
 
   /**
    * Init isotope layout and filters
    */
-  document.querySelectorAll('.isotope-layout').forEach(function (isotopeItem) {
-    let layout = isotopeItem.getAttribute('data-layout') ?? 'masonry';
-    let filter = isotopeItem.getAttribute('data-default-filter') ?? '*';
-    let sort = isotopeItem.getAttribute('data-sort') ?? 'original-order';
+  function initIsotopeLayouts() {
+    if (typeof window.imagesLoaded === 'undefined' || typeof window.Isotope === 'undefined') {
+      return;
+    }
 
-    let initIsotope;
-    imagesLoaded(isotopeItem.querySelector('.isotope-container'), function () {
-      initIsotope = new Isotope(isotopeItem.querySelector('.isotope-container'), {
-        itemSelector: '.isotope-item',
-        layoutMode: layout,
-        filter: filter,
-        sortBy: sort
-      });
-    });
+    document.querySelectorAll('.isotope-layout').forEach(function (isotopeItem) {
+      let layout = isotopeItem.getAttribute('data-layout') ?? 'masonry';
+      let filter = isotopeItem.getAttribute('data-default-filter') ?? '*';
+      let sort = isotopeItem.getAttribute('data-sort') ?? 'original-order';
 
-    isotopeItem.querySelectorAll('.isotope-filters li').forEach(function (filters) {
-      filters.addEventListener('click', function () {
-        isotopeItem.querySelector('.isotope-filters .filter-active').classList.remove('filter-active');
-        this.classList.add('filter-active');
-        initIsotope.arrange({
-          filter: this.getAttribute('data-filter')
+      let initIsotope;
+      imagesLoaded(isotopeItem.querySelector('.isotope-container'), function () {
+        initIsotope = new Isotope(isotopeItem.querySelector('.isotope-container'), {
+          itemSelector: '.isotope-item',
+          layoutMode: layout,
+          filter: filter,
+          sortBy: sort
         });
-        if (typeof aosInit === 'function') {
-          aosInit();
-        }
-      }, false);
-    });
+      });
 
+      isotopeItem.querySelectorAll('.isotope-filters li').forEach(function (filters) {
+        filters.addEventListener('click', function () {
+          isotopeItem.querySelector('.isotope-filters .filter-active').classList.remove('filter-active');
+          this.classList.add('filter-active');
+          initIsotope.arrange({
+            filter: this.getAttribute('data-filter')
+          });
+          if (typeof aosInit === 'function') {
+            aosInit();
+          }
+        }, false);
+      });
+
+    });
+  }
+  onReadyOrNow(() => {
+    whenAvailable(
+      () => typeof window.imagesLoaded !== 'undefined' && typeof window.Isotope !== 'undefined',
+      initIsotopeLayouts
+    );
   });
 
   /**
@@ -195,7 +261,7 @@
   /**
    * Correct scrolling position upon page load for URLs containing hash links.
    */
-  window.addEventListener('load', function (e) {
+  onLoadOrNow(function () {
     if (window.location.hash) {
       if (document.querySelector(window.location.hash)) {
         setTimeout(() => {
@@ -229,7 +295,7 @@
       }
     })
   }
-  window.addEventListener('load', navmenuScrollspy);
+  onLoadOrNow(navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
 
 })();
