@@ -19,6 +19,7 @@
                                 <div class="info-item d-flex mb-3">
                                     <i class="bi bi-envelope-at me-3"></i>
                                     <a x-data="{u:'hello', d:'andreploeger.com', s:'Kontakt über Website'}"
+                                        data-umami-event="contact_email_click"
                                         x-text="`${u}@${d}`" :href="`mailto:${u}@${d}?subject=${encodeURIComponent(s)}`"
                                         rel="noopener noreferrer nofollow">E-Mail anzeigen
                                     </a>
@@ -26,6 +27,7 @@
                                 <div class="info-item d-flex mb-3">
                                     <i class="bi bi-linkedin me-3"></i>
                                     <a href="https://www.linkedin.com/in/andreploeger" target="_blank"
+                                        data-umami-event="contact_linkedin_click"
                                         rel="noopener noreferrer nofollow">LinkedIn</a>
                                 </div>
                             </div>
@@ -33,9 +35,11 @@
                                 <div class="info-item d-flex mb-3">
                                     <i class="bi bi-github me-3"></i>
                                     <a href="https://github.com/aplgr" target="_blank"
+                                        data-umami-event="contact_github_click"
                                         rel="noopener noreferrer nofollow">GitHub</a>
                                 </div>
                                 <a href="https://www.upwork.com/freelancers/~0189cd9a6b6bce0eb5" target="_blank"
+                                    data-umami-event="contact_upwork_click"
                                     rel="noopener noreferrer nofollow" aria-label="Upwork" class="icon-link">
                                     <svg class="me-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 641 512"
                                         fill="currentColor" width="20" height="20">

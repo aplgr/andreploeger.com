@@ -1,9 +1,29 @@
 document.addEventListener('alpine:init', () => {
   Alpine.store('fg', { status: '' });
 
+  function trackUmami(eventName, payload = {}) {
+    if (typeof window.apTrackUmami === 'function') {
+      return window.apTrackUmami(eventName, payload);
+    }
+
+    if (!window.umami || typeof window.umami.track !== 'function') {
+      return false;
+    }
+
+    if (Object.keys(payload).length > 0) {
+      window.umami.track(eventName, payload);
+    } else {
+      window.umami.track(eventName);
+    }
+
+    return true;
+  }
+
   Alpine.data('formGuard', () => ({
     start: 0,
     lastElapsed: 0,
+    requestPending: false,
+    requestOutcomeTracked: false,
 
     init() {
       this.start = Date.now();
@@ -15,6 +35,9 @@ document.addEventListener('alpine:init', () => {
         this.lastElapsed = elapsed;
         const hidden = this.$el.querySelector('input[name=\"_elapsed_ms\"]');
         if (hidden) hidden.value = String(elapsed);
+        this.requestPending = true;
+        this.requestOutcomeTracked = false;
+        trackUmami('contact_form_submit');
       }, { capture: true });
 
       // Fallback: copy hx-post into action if empty
@@ -55,18 +78,32 @@ document.addEventListener('alpine:init', () => {
       let data = null;
       try { data = JSON.parse(xhr.responseText || ''); } catch { }
       if (xhr.status >= 200 && xhr.status < 300 && data && data.ok) {
+        this.trackRequestOutcome('contact_form_success');
         this.setState('sent');
         this.$el.reset();
         this.start = Date.now();
         this.lastElapsed = 0;
       } else {
+        this.trackRequestOutcome('contact_form_error', xhr.status ? { status_code: xhr.status } : {});
         this.setState('error');
       }
     },
 
     sendError(e) {
       if (e.target !== this.$el) return;
+      this.trackRequestOutcome('contact_form_error');
       this.setState('error');
+    },
+
+    trackRequestOutcome(eventName, payload = {}) {
+      // htmx can surface both sendError and afterRequest for the same attempt.
+      if (!this.requestPending || this.requestOutcomeTracked) {
+        return;
+      }
+
+      this.requestOutcomeTracked = true;
+      this.requestPending = false;
+      trackUmami(eventName, payload);
     },
 
     // visual state for CSS fallbacks

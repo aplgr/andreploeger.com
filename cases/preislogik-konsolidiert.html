@@ -225,7 +225,8 @@ promo:
     <i :class="$store.toast.isError ? 'bi-x-circle' : 'bi-check2-circle'" class="bi"></i>
     <span x-text="$store.toast.message"></span>
   </div>
-  <a class="scroll-top d-flex align-items-center justify-content-center" href="#">
+  <a class="scroll-top d-flex align-items-center justify-content-center" href="#"
+     data-umami-event="scroll_top_click">
     <i class="bi bi-arrow-up-short"></i>
   </a>
 </body>

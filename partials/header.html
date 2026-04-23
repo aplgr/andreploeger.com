@@ -1,7 +1,7 @@
 <header id="header" class="header d-flex align-items-center sticky-top">
     <div
          class="header-container container-fluid container-xl position-relative align-items-center justify-content-between">
-        <a href="/#hero" class="logo d-flex align-items-center me-auto me-xl-0">
+        <a href="/#hero" class="logo d-flex align-items-center me-auto me-xl-0" data-umami-event="nav_logo_click">
             <!-- <img src="assets/img/logo.webp" alt=""> -->
             <h1 class="sitename">André Plöger</h1>
         </a>
@@ -12,12 +12,12 @@
                     if (t) { t.classList.add('bi-list'); t.classList.remove('bi-x'); }
                 }">
             <ul>
-                <li><a href="/#about">Über mich</a></li>
-                <li><a href="/#services">Services</a></li>
-                <li><a href="/#cases">Fallstudien</a></li>
-                <li><a href="/#pricing">Preise & Buchung</a></li>
+                <li><a href="/#about" data-umami-event="nav_about_click">Über mich</a></li>
+                <li><a href="/#services" data-umami-event="nav_services_click">Services</a></li>
+                <li><a href="/#cases" data-umami-event="nav_cases_click">Fallstudien</a></li>
+                <li><a href="/#pricing" data-umami-event="nav_pricing_click">Preise & Buchung</a></li>
                 <li class="cta-buttons" data-aos="fade-up" data-aos-delay="300">
-                    <a href="/#contact" class="btn btn-primary">Kontakt</a>
+                    <a href="/#contact" class="btn btn-primary" data-umami-event="nav_contact_click">Kontakt</a>
                 </li>
             </ul>
             <i class="mobile-nav-toggle d-xl-none bi bi-list" hx-on:click="
