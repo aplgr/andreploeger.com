@@ -258,22 +258,75 @@
     }
   });
 
+  function getHashTarget() {
+    if (!window.location.hash) {
+      return null;
+    }
+
+    try {
+      return document.querySelector(window.location.hash);
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function revealFaqTarget(target) {
+    const item = target ? target.closest('.faq-item') : null;
+    if (item) {
+      item.classList.add('faq-active');
+    }
+  }
+
+  function scrollToHashTarget() {
+    const target = getHashTarget();
+    if (!target) {
+      return false;
+    }
+
+    revealFaqTarget(target);
+
+    const scrollMarginTop = parseInt(getComputedStyle(target).scrollMarginTop, 10) || 0;
+    window.scrollTo({
+      top: target.getBoundingClientRect().top + window.scrollY - scrollMarginTop,
+      behavior: 'smooth'
+    });
+
+    return true;
+  }
+
+  let pendingHashScroll = Boolean(window.location.hash);
+
+  window.addEventListener('hashchange', function () {
+    pendingHashScroll = true;
+
+    setTimeout(() => {
+      const target = getHashTarget();
+      if (target) {
+        revealFaqTarget(target);
+        pendingHashScroll = false;
+      }
+    }, 0);
+  });
+
   /**
    * Correct scrolling position upon page load for URLs containing hash links.
    */
   onLoadOrNow(function () {
     if (window.location.hash) {
-      if (document.querySelector(window.location.hash)) {
-        setTimeout(() => {
-          let section = document.querySelector(window.location.hash);
-          let scrollMarginTop = getComputedStyle(section).scrollMarginTop;
-          window.scrollTo({
-            top: section.offsetTop - parseInt(scrollMarginTop),
-            behavior: 'smooth'
-          });
-        }, 100);
-      }
+      setTimeout(() => {
+        pendingHashScroll = !scrollToHashTarget();
+      }, 100);
     }
+  });
+
+  document.addEventListener('htmx:afterSwap', function () {
+    if (!pendingHashScroll) {
+      return;
+    }
+
+    setTimeout(() => {
+      pendingHashScroll = !scrollToHashTarget();
+    }, 100);
   });
 
   /**

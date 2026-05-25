@@ -1500,6 +1500,13 @@ section,
   border: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
   border-radius: 5px;
   overflow: hidden;
+  scroll-margin-top: 90px;
+}
+
+@media (max-width: 1199px) {
+  .faq .faq-container .faq-item {
+    scroll-margin-top: 66px;
+  }
 }
 
 .faq .faq-container .faq-item:last-child {
