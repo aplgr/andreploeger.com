@@ -2075,6 +2075,21 @@ section,
   display: block;
 }
 
+.services .service-offer-card .list-compact {
+  margin-bottom: .85rem;
+}
+
+.services .service-price-line {
+  margin-top: auto;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--heading-color);
+}
+
+.services .service-card-cta {
+  align-self: stretch;
+}
+
 .services .service-item {
   padding: 1rem 1rem;
   border-radius: .75rem;
@@ -2199,6 +2214,58 @@ section,
     top: auto;
   }
 
+}
+
+.service-details .service-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  margin-bottom: .75rem;
+  color: var(--accent-color);
+  font-size: .85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.service-details .service-price-anchor,
+.service-details .package-price {
+  color: var(--heading-color);
+  font-weight: 800;
+}
+
+.service-details .service-price-anchor {
+  font-size: 1.25rem;
+}
+
+.service-details .service-package-card {
+  position: relative;
+  height: 100%;
+  border-color: color-mix(in srgb, var(--accent-color), transparent 78%) !important;
+}
+
+.service-details .service-package-card.recommended {
+  border-color: var(--accent-color) !important;
+  box-shadow: 0 10px 30px color-mix(in srgb, var(--accent-color), transparent 88%);
+}
+
+.service-details .recommended-badge {
+  display: inline-flex;
+  margin-bottom: .75rem;
+  padding: .25rem .55rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent-color), transparent 88%);
+  color: var(--accent-color);
+  font-size: .78rem;
+  font-weight: 700;
+}
+
+.service-details .service-package-card ul,
+.service-details .tool-list {
+  padding-left: 1.1rem;
+}
+
+.service-details .tool-list code {
+  color: var(--heading-color);
 }
 
 /* share link toast */

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Stabilization Sprint · PostgreSQL Performance verbessern</title>
+  <meta name="description"
+        content="Stabilization Sprint für PostgreSQL: ausgewählte Performance-Hotspots gezielt verbessern, Query- und Index-Tuning durchführen und Ergebnisse messbar machen.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://andreploeger.com/services/stabilization-sprint/">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="André Plöger">
+  <meta property="og:title" content="Stabilization Sprint · PostgreSQL Performance verbessern">
+  <meta property="og:description"
+        content="Stabilization Sprint für PostgreSQL: ausgewählte Performance-Hotspots gezielt verbessern, Query- und Index-Tuning durchführen und Ergebnisse messbar machen.">
+  <meta property="og:url" content="https://andreploeger.com/services/stabilization-sprint/">
+  <meta property="og:image" content="https://andreploeger.com/assets/img/og-cover.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Stabilization Sprint · PostgreSQL Performance verbessern">
+  <meta name="twitter:description"
+        content="Stabilization Sprint für PostgreSQL: ausgewählte Performance-Hotspots gezielt verbessern, Query- und Index-Tuning durchführen und Ergebnisse messbar machen.">
+  <meta name="twitter:image" content="https://andreploeger.com/assets/img/og-cover.png">
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/assets/img/favicon-512.png" sizes="512x512">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" sizes="180x180">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Questrial:wght@400&display=swap"
+        rel="stylesheet">
+  <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/assets/vendor/bootstrap-icons/bootstrap-icons.css">
+  <link rel="stylesheet" href="/assets/vendor/aos/aos.css">
+  <link rel="stylesheet" href="/assets/css/toast.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script src="/assets/vendor/htmx/htmx.min.js"></script>
+  <script src="/assets/vendor/htmx/ext/json-enc.js"></script>
+  <script defer src="/assets/vendor/alpinejs/cdn.min.js"></script>
+  <script src="/assets/js/toast.js"></script>
+  <script src="/assets/js/contact.js" type="text/javascript"></script>
+  <script src="/assets/js/contact-toasts.js"></script>
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="78b59231-ef0a-4019-8383-a113c294bcbe"></script>
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": "https://andreploeger.com/services/stabilization-sprint/#webpage",
+      "url": "https://andreploeger.com/services/stabilization-sprint/",
+      "name": "Stabilization Sprint",
+      "description": "Stabilization Sprint für PostgreSQL: ausgewählte Performance-Hotspots gezielt verbessern, Query- und Index-Tuning durchführen und Ergebnisse messbar machen.",
+      "inLanguage": "de",
+      "mainEntity": {
+        "@id": "https://andreploeger.com/services/stabilization-sprint/#service"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "@id": "https://andreploeger.com/services/stabilization-sprint/#service",
+      "name": "Stabilization Sprint",
+      "serviceType": "PostgreSQL Performance Verbesserung",
+      "description": "Ausgewählte Performance-Hotspots gezielt verbessern und messbar stabilisieren.",
+      "provider": {
+        "@type": "Person",
+        "name": "André Plöger",
+        "url": "https://andreploeger.com/"
+      },
+      "areaServed": "DE",
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "EUR",
+        "lowPrice": "2900",
+        "offerCount": "3",
+        "offers": [
+          {"@type": "Offer", "name": "Sprint Lite", "price": "2900", "priceCurrency": "EUR"},
+          {"@type": "Offer", "name": "Sprint Core", "price": "5900", "priceCurrency": "EUR"},
+          {"@type": "Offer", "name": "Sprint Plus", "price": "9500", "priceCurrency": "EUR"}
+        ]
+      }
+    }
+  ]
+  </script>
+</head>
+
+<body class="service-details-page" style="display:none">
+  <div hx-get="/partials/header.html" hx-trigger="load" hx-swap="outerHTML"></div>
+  <main class="main">
+    <section class="service-details section" id="service-details">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-4">
+          <div class="col-lg-8">
+            <div class="content">
+              <div class="service-info bg-light border rounded p-4 mb-4">
+                <span class="service-eyebrow"><i class="bi bi-speedometer2"></i> Tuning & Messbarkeit</span>
+                <h1>Stabilization Sprint</h1>
+                <p class="lead mb-3">Ausgewählte Performance-Hotspots gezielt verbessern und messbar stabilisieren.</p>
+                <p class="service-price-anchor mb-4">ab 2.900 €</p>
+                <div class="d-flex flex-column flex-sm-row gap-3 cta-buttons">
+                  <a href="#contact" class="btn btn-primary"
+                     data-umami-event="service_stabilization_sprint_cta_click">Unverbindlich anfragen</a>
+                  <a href="/#services" class="btn btn-outline-primary"
+                     data-umami-event="service_stabilization_sprint_services_back_click">Alle Services ansehen</a>
+                </div>
+              </div>
+
+              <h3>Für wen ist das?</h3>
+              <p>Der Stabilization Sprint passt für Teams, die konkrete PostgreSQL-Hotspots nicht nur verstehen, sondern gezielt verbessern wollen. Typisch sind langsame Kernabfragen, unpassende Indexe, hohe Lastspitzen oder Performance-Themen, die direkt auf Produkt- oder Umsatzmetriken einzahlen.</p>
+
+              <h3>Was Sie bekommen</h3>
+              <ul>
+                <li>Query- und Index-Tuning auf Basis realer Last</li>
+                <li>Messbarer Vorher/Nachher-Vergleich für die ausgewählten Hotspots</li>
+                <li>Review der Auswirkungen auf Betrieb, Deployment und laufende Nutzung</li>
+                <li>Dokumentierte Empfehlungen, die Engineering-Teams direkt weiterverwenden können</li>
+              </ul>
+
+              <h3>Pakete</h3>
+              <div class="row g-3 mb-4 service-packages">
+                <div class="col-md-4">
+                  <div class="service-info service-package-card bg-white border rounded p-3">
+                    <h4>Sprint Lite</h4>
+                    <p class="package-price mb-3">2.900 €</p>
+                    <ul class="mb-0">
+                      <li>Ein klar abgegrenztes Performance-Thema</li>
+                      <li>Query-/Index-Analyse und konkrete Verbesserungsempfehlung</li>
+                      <li>Vorher/Nachher-Vergleich für den ausgewählten Hotspot</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="service-info service-package-card recommended bg-white border rounded p-3">
+                    <span class="recommended-badge">Empfohlen</span>
+                    <h4>Sprint Core</h4>
+                    <p class="package-price mb-3">5.900 €</p>
+                    <ul class="mb-0">
+                      <li>Zwei bis drei priorisierte Performance-Themen</li>
+                      <li>Query- und Index-Tuning auf Basis realer Last</li>
+                      <li>Dokumentierte Verbesserungen mit Review der Deployment-Auswirkungen</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="service-info service-package-card bg-white border rounded p-3">
+                    <h4>Sprint Plus</h4>
+                    <p class="package-price mb-3">9.500 €</p>
+                    <ul class="mb-0">
+                      <li>Mehrere zusammenhängende Hotspots</li>
+                      <li>Vertiefte Analyse, Umsetzungsvorbereitung und Review-Schleifen</li>
+                      <li>Stabilisierung mit Blick auf Lastspitzen, Betrieb und weitere Schritte</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <h3>Ablauf</h3>
+              <ol>
+                <li>Start mit klarer Auswahl der Hotspots und Erfolgskriterien</li>
+                <li>Messung und Analyse der relevanten Queries, Pläne, Indexe und Logsignale</li>
+                <li>Verbesserungsvorschläge, Abstimmung mit dem Team und Umsetzungsvorbereitung</li>
+                <li>Vorher/Nachher-Vergleich, Ergebnisdokumentation und nächste Prioritäten</li>
+              </ol>
+
+              <div class="service-info bg-white border rounded p-3 mb-4">
+                <h3 class="mb-2">Typisches Ergebnis</h3>
+                <p>Nach dem Sprint sind die ausgewählten Hotspots nachvollziehbar verbessert oder sauber für die Umsetzung vorbereitet. Das Team sieht, welche Änderung welchen Effekt hatte und wie die Verbesserung in den Betrieb passt.</p>
+                <ul class="mb-0">
+                  <li>Verbesserte Query-Pläne, Index-Strategien oder Datenzugriffe für die priorisierten Hotspots</li>
+                  <li>Vorher/Nachher-Messung mit nachvollziehbaren Zahlen</li>
+                  <li>Deployment-Notizen und klare Empfehlungen für den nächsten Schritt</li>
+                </ul>
+              </div>
+
+              <div class="service-info bg-light border rounded p-4 mt-4">
+                <h3>Hotspots gezielt stabilisieren?</h3>
+                <p>Schreiben Sie mir, welche Abfragen oder Systembereiche gerade auffallen. Ich melde mich mit einem pragmatischen Vorschlag für den passenden Sprint-Zuschnitt.</p>
+                <div class="d-flex flex-column flex-sm-row gap-3 cta-buttons">
+                  <a href="#contact" class="btn btn-primary"
+                     data-umami-event="service_stabilization_sprint_cta_click">Unverbindlich anfragen</a>
+                  <a href="/services/performance-audit/" class="btn btn-outline-primary"
+                     data-umami-event="service_stabilization_sprint_to_audit_click">Performance Audit ansehen</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="service-info">
+              <h4>Kurzinfo</h4>
+              <div class="info-item d-flex align-items-start mb-3">
+                <i class="bi bi-currency-euro me-3 fs-4"></i>
+                <div>
+                  <h5>Einstieg</h5>
+                  <p class="mb-0">ab 2.900 €</p>
+                </div>
+              </div>
+              <div class="info-item d-flex align-items-start mb-3">
+                <i class="bi bi-graph-up-arrow me-3 fs-4"></i>
+                <div>
+                  <h5>Fokus</h5>
+                  <p class="mb-0">Ausgewählte Hotspots verbessern und messbar machen</p>
+                </div>
+              </div>
+              <div class="info-item d-flex align-items-start mb-0">
+                <i class="bi bi-people me-3 fs-4"></i>
+                <div>
+                  <h5>Ideal für</h5>
+                  <p class="mb-0">Teams mit bekannten Performance-Themen und klarer Priorität</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="related-services mt-5">
+              <h4>Werkzeuge & Messpunkte</h4>
+              <p>Der Sprint verbindet PostgreSQL-Analyse mit nachvollziehbarer Umsetzungsvorbereitung.</p>
+              <ul class="tool-list mb-0">
+                <li><code>EXPLAIN ANALYZE</code> und <code>BUFFERS</code></li>
+                <li><code>pg_stat_statements</code></li>
+                <li>Slow query logs</li>
+                <li>Before/after measurements</li>
+                <li>Deployment notes</li>
+              </ul>
+            </div>
+
+            <div class="related-services mt-5">
+              <h4>Passende nächste Schritte</h4>
+              <div class="service-item">
+                <i class="bi bi-search"></i>
+                <h5><a href="/services/performance-audit/"
+                       data-umami-event="service_stabilization_sprint_related_audit_click">Performance Audit</a></h5>
+                <p>Wenn Ursachen und Prioritäten zuerst sauber sichtbar gemacht werden sollen.</p>
+              </div>
+              <div class="service-item">
+                <i class="bi bi-heart-pulse"></i>
+                <h5><a href="/services/performance-care/"
+                       data-umami-event="service_stabilization_sprint_related_care_click">Performance Care</a></h5>
+                <p>Wenn Performance-Themen nach dem Sprint laufend im Blick bleiben sollen.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div hx-get="/partials/contact.html" hx-trigger="load" hx-swap="outerHTML"></div>
+  </main>
+  <div hx-get="/partials/footer.html" hx-trigger="load" hx-swap="outerHTML"></div>
+  <div hx-get="/partials/footer-scripts.html" hx-trigger="load" hx-swap="outerHTML"></div>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"
+     data-umami-event="scroll_top_click"><i class="bi bi-arrow-up-short"></i></a>
+  <script>window.onload = () => { document.body.style.display = "block"; };</script>
+</body>
+
+</html>
