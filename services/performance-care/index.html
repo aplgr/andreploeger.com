@@ -87,77 +87,134 @@
   </script>
 </head>
 
-<body class="service-details-page" style="display:none">
+<body class="service-details-page preload">
   <div hx-get="/partials/header.html" hx-trigger="load" hx-swap="outerHTML"></div>
   <main class="main">
+    <section class="hero service-hero section">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row content">
+          <div class="col-lg-10">
+            <h1>Performance Care</h1>
+            <p class="lead">Laufende PostgreSQL-Performance-Betreuung für produktive Systeme.</p>
+            <p class="lead">Für SaaS- und eCommerce-Teams, die PostgreSQL nicht erst dann anschauen wollen, wenn es brennt: regelmäßige Reviews, priorisierte Findings und verlässliche technische Unterstützung.</p>
+            <div class="cta-buttons" data-aos="fade-up" data-aos-delay="200">
+              <a href="#contact" class="btn btn-primary" data-umami-event="service_performance_care_cta_click">Unverbindlich anfragen</a>
+              <a href="#packages" class="btn btn-outline" data-umami-event="service_performance_care_packages_click">Pakete ansehen</a>
+            </div>
+            <div class="service-facts" data-aos="fade-up" data-aos-delay="300">
+              <div class="fact-item">
+                <span class="fact-number">ab 1.200 €/Monat</span>
+                <span class="fact-label">Einstieg</span>
+              </div>
+              <div class="fact-item">
+                <span class="fact-number">3 Pakete</span>
+                <span class="fact-label">Light, Core, Plus</span>
+              </div>
+              <div class="fact-item">
+                <span class="fact-number">Monatlich</span>
+                <span class="fact-label">Review & Findings</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="service-details section" id="service-details">
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="row gy-4">
-          <div class="col-lg-8">
+        <div class="row justify-content-center">
+          <div class="col-lg-11 col-xl-10">
             <div class="content">
-              <div class="service-info bg-light border rounded p-4 mb-4">
-                <span class="service-eyebrow"><i class="bi bi-heart-pulse"></i> Laufende Betreuung</span>
-                <h1>Performance Care</h1>
-                <p class="lead mb-3">Laufende PostgreSQL-Performance-Betreuung für Systeme, die produktiv zuverlässig bleiben müssen.</p>
-                <p class="service-price-anchor mb-4">ab 1.200 €/Monat</p>
-                <div class="d-flex flex-column flex-sm-row gap-3 cta-buttons">
-                  <a href="#contact" class="btn btn-primary"
-                     data-umami-event="service_performance_care_cta_click">Unverbindlich anfragen</a>
-                  <a href="/#services" class="btn btn-outline-primary"
-                     data-umami-event="service_performance_care_services_back_click">Alle Services ansehen</a>
-                </div>
-              </div>
-
               <h3>Für wen ist das?</h3>
               <p>Performance Care passt für SaaS- und eCommerce-Teams, deren PostgreSQL-Systeme produktiv wachsen und regelmäßig Aufmerksamkeit brauchen. Das Format eignet sich, wenn Performance nicht nur ein einzelnes Projekt ist, sondern kontinuierlich beobachtet, priorisiert und ruhig verbessert werden soll.</p>
 
               <h3>Was Sie bekommen</h3>
+              <p>Performance Care schafft einen wiederkehrenden Blick auf PostgreSQL-Performance: wichtige Signale werden monatlich geprüft, Findings sortiert und DB-nahe Fragen mit klarer Reihenfolge bearbeitet.</p>
               <ul>
                 <li>Monatlicher Performance- und Health-Review</li>
                 <li>Query-, Index-, Log- und Metric-Review mit priorisierten Findings</li>
-                <li>Unterstützung bei DB-nahen Performance-Fragen</li>
-                <li>Laufende Maßnahmenliste mit klarer Reihenfolge</li>
+                <li>Priorisierte Unterstützung bei DB-nahen Performance-Fragen</li>
+                <li>Wiederkehrende Checks mit <code>pg_stat_statements</code>, Slow Query Logs, Index Usage Checks, Autovacuum-/Storage-Indikatoren und monatlichem Health Report</li>
               </ul>
 
-              <h3>Pakete</h3>
-              <div class="row g-3 mb-4 service-packages">
-                <div class="col-md-4">
-                  <div class="service-info service-package-card bg-white border rounded p-3">
-                    <h4>Care Light</h4>
-                    <p class="package-price mb-3">1.200 €/Monat</p>
-                    <ul class="mb-0">
-                      <li>Monatlicher Performance-Check</li>
-                      <li>Kurze Review- und Support-Schleife</li>
-                      <li>Kompakte Findings und Empfehlungen</li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="service-info service-package-card recommended bg-white border rounded p-3">
-                    <span class="recommended-badge">Empfohlen</span>
-                    <h4>Care Core</h4>
-                    <p class="package-price mb-3">2.400 €/Monat</p>
-                    <ul class="mb-0">
-                      <li>Monatlicher Health Review</li>
-                      <li>Query-, Index-, Log- und Metric-Review</li>
-                      <li>Priorisierte Unterstützung bei DB-nahen Performance-Fragen</li>
-                      <li>Laufende Maßnahmenliste mit klarer Reihenfolge</li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="service-info service-package-card bg-white border rounded p-3">
-                    <h4>Care Plus</h4>
-                    <p class="package-price mb-3">4.200 €/Monat</p>
-                    <ul class="mb-0">
-                      <li>Erweiterte monatliche Analyse</li>
-                      <li>Mehr Support- und Review-Kapazität</li>
-                      <li>Engere Begleitung bei wachsender Last und geplanten DB-nahen Änderungen</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <section id="packages" class="services section light-background service-packages-section">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Pakete</h2>
+        <div class="title-shape">
+          <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor"
+                  stroke-width="2" />
+          </svg>
+        </div>
+        <p>Drei Care-Umfänge für regelmäßige Reviews, priorisierte Findings und laufende PostgreSQL-Performance-Betreuung.</p>
+      </div>
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row g-4 pricing-row">
+                  <div class="col-12 col-md-6 col-lg-4 pricing-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-item">
+                      <div class="service-head">
+                        <h2 class="plan-title"><span class="plan-name">Care Light</span><span class="plan-price">1.200 € <span class="price-unit">/Monat</span></span></h2>
+                      </div>
+                      <p class="service-desc">Kompakter monatlicher Blick auf zentrale Performance-Signale.</p>
+                      <ul class="service-list list-unstyled small list-compact">
+                        <li><i class="bi bi-check2 me-2"></i>Monatlicher Performance-Check</li>
+                        <li><i class="bi bi-check2 me-2"></i>Kurze Review- und Support-Schleife</li>
+                        <li><i class="bi bi-check2 me-2"></i>Kompakte Findings und Empfehlungen</li>
+                      </ul>
+                      <div class="service-cta cta-buttons text-center">
+                        <a href="#contact" class="btn btn-primary w-100" data-umami-event="service_performance_care_package_cta_click">Anfragen</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6 col-lg-4 pricing-card" data-aos="fade-up" data-aos-delay="150">
+                    <div class="service-item">
+                      <span class="tier-badge" aria-label="Empfohlen">Empfohlen</span>
+                      <div class="service-head">
+                        <h2 class="plan-title"><span class="plan-name">Care Core</span><span class="plan-price">2.400 € <span class="price-unit">/Monat</span></span></h2>
+                      </div>
+                      <p class="service-desc">Laufende Performance-Betreuung mit monatlichem Health Review und Priorisierung.</p>
+                      <ul class="service-list list-unstyled small list-compact">
+                        <li><i class="bi bi-check2 me-2"></i>Monatlicher Health Review</li>
+                        <li><i class="bi bi-check2 me-2"></i>Query-, Index-, Log- und Metric-Review</li>
+                        <li><i class="bi bi-check2 me-2"></i>Priorisierte Unterstützung bei DB-nahen Performance-Fragen</li>
+                        <li><i class="bi bi-check2 me-2"></i>Laufende Maßnahmenliste mit klarer Reihenfolge</li>
+                      </ul>
+                      <div class="service-cta cta-buttons text-center">
+                        <a href="#contact" class="btn btn-primary w-100" data-umami-event="service_performance_care_package_cta_click">Anfragen</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6 col-lg-4 pricing-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-item">
+                      <div class="service-head">
+                        <h2 class="plan-title"><span class="plan-name">Care Plus</span><span class="plan-price">4.200 € <span class="price-unit">/Monat</span></span></h2>
+                      </div>
+                      <p class="service-desc">Mehr Tiefe für wachsende Last, wiederkehrende Reviews und geplante DB-nahe Änderungen.</p>
+                      <ul class="service-list list-unstyled small list-compact">
+                        <li><i class="bi bi-check2 me-2"></i>Erweiterte monatliche Analyse</li>
+                        <li><i class="bi bi-check2 me-2"></i>Mehr Support- und Review-Kapazität</li>
+                        <li><i class="bi bi-check2 me-2"></i>Engere Begleitung bei wachsender Last und geplanten DB-nahen Änderungen</li>
+                      </ul>
+                      <div class="service-cta cta-buttons text-center">
+                        <a href="#contact" class="btn btn-primary w-100" data-umami-event="service_performance_care_package_cta_click">Anfragen</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+        </div>
+    </section>
+
+    <section class="service-details section">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row justify-content-center">
+          <div class="col-lg-11 col-xl-10">
+            <div class="content">
               <h3>Ablauf</h3>
               <ol>
                 <li>Start mit Systemkontext, Zielbild, Datenquellen und bevorzugtem Arbeitskanal</li>
@@ -166,94 +223,37 @@
                 <li>Regelmäßige kurze Zusammenfassung mit Empfehlungen und nächster Reihenfolge</li>
               </ol>
 
-              <div class="service-info bg-white border rounded p-3 mb-4">
-                <h3 class="mb-2">Typisches Ergebnis</h3>
-                <p>Performance Care gibt dem Team einen wiederkehrenden Blick auf die wichtigsten PostgreSQL-Signale und eine klare Reihenfolge für Verbesserungen. So werden Performance-Fragen früher sichtbar und besser priorisiert.</p>
-                <ul class="mb-0">
-                  <li>Monatlicher Health Report mit Findings und Empfehlungen</li>
-                  <li>Priorisierte Maßnahmenliste für DB-nahe Performance-Themen</li>
-                  <li>Ruhigere Entscheidungsgrundlage bei wachsender Last</li>
-                </ul>
-              </div>
-
-              <div class="service-info bg-light border rounded p-4 mt-4">
-                <h3>PostgreSQL laufend im Blick behalten?</h3>
-                <p>Schreiben Sie mir, welche Systeme kritisch sind und wie Ihr Team Performance heute beobachtet. Ich melde mich mit einem passenden Performance-Care-Vorschlag zurück.</p>
-                <div class="d-flex flex-column flex-sm-row gap-3 cta-buttons">
-                  <a href="#contact" class="btn btn-primary"
-                     data-umami-event="service_performance_care_cta_click">Unverbindlich anfragen</a>
-                  <a href="/services/flex-support/" class="btn btn-outline-primary"
-                     data-umami-event="service_performance_care_to_flex_click">Flex Support ansehen</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4">
-            <div class="service-info">
-              <h4>Kurzinfo</h4>
-              <div class="info-item d-flex align-items-start mb-3">
-                <i class="bi bi-currency-euro me-3 fs-4"></i>
-                <div>
-                  <h5>Einstieg</h5>
-                  <p class="mb-0">ab 1.200 €/Monat</p>
-                </div>
-              </div>
-              <div class="info-item d-flex align-items-start mb-3">
-                <i class="bi bi-arrow-repeat me-3 fs-4"></i>
-                <div>
-                  <h5>Fokus</h5>
-                  <p class="mb-0">Review, Triage, Findings und priorisierte Unterstützung</p>
-                </div>
-              </div>
-              <div class="info-item d-flex align-items-start mb-0">
-                <i class="bi bi-people me-3 fs-4"></i>
-                <div>
-                  <h5>Ideal für</h5>
-                  <p class="mb-0">Produktive SaaS- und eCommerce-Systeme mit laufender PostgreSQL-Last</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="related-services mt-5">
-              <h4>Werkzeuge & Messpunkte</h4>
-              <p>Performance Care nutzt wiederkehrende Checks und klare monatliche Ergebnisformate.</p>
-              <ul class="tool-list mb-0">
-                <li>Standardisierte SQL-Checks</li>
-                <li><code>pg_stat_statements</code></li>
-                <li>Slow query logs</li>
-                <li>Index usage checks</li>
-                <li>Autovacuum- und Storage-Indikatoren</li>
-                <li>Monthly Health Report</li>
+              <h3>Typisches Ergebnis</h3>
+              <p>Performance Care gibt dem Team einen wiederkehrenden Blick auf die wichtigsten PostgreSQL-Signale und eine klare Reihenfolge für Verbesserungen. So werden Performance-Fragen früher sichtbar und besser priorisiert.</p>
+              <ul>
+                <li>Monatlicher Health Report mit Findings und Empfehlungen</li>
+                <li>Priorisierte Maßnahmenliste für DB-nahe Performance-Themen</li>
+                <li>Ruhigere Entscheidungsgrundlage bei wachsender Last</li>
               </ul>
-            </div>
-
-            <div class="related-services mt-5">
-              <h4>Passende nächste Schritte</h4>
-              <div class="service-item">
-                <i class="bi bi-search"></i>
-                <h5><a href="/services/performance-audit/"
-                       data-umami-event="service_performance_care_related_audit_click">Performance Audit</a></h5>
-                <p>Wenn vor dem laufenden Format zuerst ein tieferer Startpunkt sinnvoll ist.</p>
-              </div>
-              <div class="service-item">
-                <i class="bi bi-tools"></i>
-                <h5><a href="/services/flex-support/"
-                       data-umami-event="service_performance_care_related_flex_click">Flex Support</a></h5>
-                <p>Wenn einzelne Fragen oder Reviews außerhalb eines laufenden Care-Formats anstehen.</p>
-              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
+
     <div hx-get="/partials/contact.html" hx-trigger="load" hx-swap="outerHTML"></div>
   </main>
   <div hx-get="/partials/footer.html" hx-trigger="load" hx-swap="outerHTML"></div>
-  <div hx-get="/partials/footer-scripts.html" hx-trigger="load" hx-swap="outerHTML"></div>
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"
      data-umami-event="scroll_top_click"><i class="bi bi-arrow-up-short"></i></a>
-  <script>window.onload = () => { document.body.style.display = "block"; };</script>
+  <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/vendor/aos/aos.js" defer></script>
+  <script src="/assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="/assets/js/umami-events.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      document.body.style.visibility = "visible";
+      if (window.AOS) AOS.init({ once: true });
+    });
+  </script>
 </body>
 
 </html>

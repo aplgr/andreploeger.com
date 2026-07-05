@@ -2081,9 +2081,10 @@ section,
 
 .services .service-price-line {
   margin-top: auto;
-  font-size: 1.05rem;
-  font-weight: 800;
-  color: var(--heading-color);
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent-color);
 }
 
 .services .service-card-cta {
@@ -2266,6 +2267,172 @@ section,
 
 .service-details .tool-list code {
   color: var(--heading-color);
+}
+
+.service-hero .content h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  color: var(--heading-color);
+  font-family: var(--heading-font);
+}
+
+.service-hero .service-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  margin-top: 2rem;
+}
+
+.service-hero .service-facts .fact-number {
+  display: block;
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: var(--heading-color);
+  line-height: 1;
+}
+
+.service-hero .service-facts .fact-label {
+  display: block;
+  margin-top: .5rem;
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  font-size: .9rem;
+}
+
+.service-hero .btn.btn-outline {
+  border: 2px solid color-mix(in srgb, var(--accent-color), transparent 70%);
+  color: var(--accent-color);
+  background: transparent;
+}
+
+.service-hero .btn.btn-outline:hover {
+  background-color: var(--accent-color);
+  color: var(--contrast-color);
+  transform: translateY(-2px);
+}
+
+.service-packages-section {
+  margin: 2.5rem 0;
+  scroll-margin-top: 110px;
+}
+
+.service-packages-section .pricing-row>[class*="col-"] {
+  display: flex;
+  flex-direction: column;
+}
+
+.service-packages-section .service-item {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  width: 100%;
+  height: 100%;
+  padding: 1.35rem;
+  overflow: visible;
+}
+
+.service-packages-section .service-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--accent-color);
+  border-top-left-radius: .5rem;
+  border-top-right-radius: .5rem;
+}
+
+.service-packages-section .service-head {
+  margin-bottom: .25rem;
+}
+
+.service-packages-section .plan-title {
+  margin: 0 0 .25rem 0;
+  text-align: center;
+  line-height: 1.15;
+}
+
+.service-packages-section .plan-name {
+  display: block;
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--accent-color);
+}
+
+.service-packages-section .plan-price {
+  display: inline-block;
+  padding: 0 .1rem;
+  border-radius: .2rem;
+  color: var(--accent-color);
+  font-size: 1.7rem;
+  font-weight: 900;
+}
+
+.service-packages-section .price-unit {
+  font-size: .5em;
+  font-weight: 600;
+  opacity: .9;
+}
+
+.service-packages-section .service-desc {
+  min-height: 5rem;
+  margin-bottom: .75rem;
+  line-height: 1.35;
+}
+
+.service-packages-section .service-list {
+  margin-bottom: 0;
+}
+
+.service-packages-section .service-list li {
+  display: grid;
+  grid-template-columns: 1rem 1fr;
+  column-gap: .5rem;
+  align-items: start;
+  margin-bottom: .35rem;
+  line-height: 1.35;
+}
+
+.service-packages-section .service-list li i {
+  margin-top: .15rem;
+  color: var(--bs-success);
+  font-size: .9rem;
+  line-height: 1;
+}
+
+.service-packages-section .service-cta {
+  margin-top: 1rem;
+}
+
+.service-packages-section .tier-badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: .4rem .6rem;
+  border-radius: 999px;
+  font-size: .85rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(90deg, #336791, #244c73);
+  box-shadow: 0 6px 18px rgba(36, 76, 115, .18);
+}
+
+@media (max-width: 991px) {
+  .service-hero .content h1 {
+    font-size: 2.5rem;
+  }
+
+  .service-hero .service-facts {
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .service-packages-section .tier-badge {
+    top: -8px;
+    right: -8px;
+  }
 }
 
 /* share link toast */

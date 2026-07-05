@@ -87,170 +87,172 @@
   </script>
 </head>
 
-<body class="service-details-page" style="display:none">
+<body class="service-details-page preload">
   <div hx-get="/partials/header.html" hx-trigger="load" hx-swap="outerHTML"></div>
   <main class="main">
-    <section class="service-details section" id="service-details">
+    <section class="hero service-hero section">
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="row gy-4">
-          <div class="col-lg-8">
-            <div class="content">
-              <div class="service-info bg-light border rounded p-4 mb-4">
-                <span class="service-eyebrow"><i class="bi bi-search"></i> Analyse & Priorisierung</span>
-                <h1>Performance Audit</h1>
-                <p class="lead mb-3">PostgreSQL-Engpässe sichtbar machen, priorisieren und sauber einordnen.</p>
-                <p class="service-price-anchor mb-4">ab 1.900 €</p>
-                <div class="d-flex flex-column flex-sm-row gap-3 cta-buttons">
-                  <a href="#contact" class="btn btn-primary"
-                     data-umami-event="service_performance_audit_cta_click">Unverbindlich anfragen</a>
-                  <a href="/#services" class="btn btn-outline-primary"
-                     data-umami-event="service_performance_audit_services_back_click">Alle Services ansehen</a>
-                </div>
-              </div>
-
-              <h3>Für wen ist das?</h3>
-              <p>Der Performance Audit passt für SaaS- und eCommerce-Teams, die spürbare Latenz, wachsende Query-Last oder unklare PostgreSQL-Engpässe strukturiert verstehen wollen. Er ist besonders hilfreich, wenn Entscheidungen anstehen und das Team eine klare, priorisierte Grundlage braucht.</p>
-
-              <h3>Was Sie bekommen</h3>
-              <ul>
-                <li>Analyse zentraler Queries, Indexe, Logs, Tabellenstatistiken und Lastmuster</li>
-                <li>Priorisierte Findings nach Wirkung, Risiko und Aufwand</li>
-                <li>Konkrete nächste Schritte, die technisch nachvollziehbar und im Team anschlussfähig sind</li>
-                <li>Positive, handlungsorientierte Einordnung statt loser Maßnahmenliste</li>
-              </ul>
-
-              <h3>Pakete</h3>
-              <div class="row g-3 mb-4 service-packages">
-                <div class="col-md-4">
-                  <div class="service-info service-package-card bg-white border rounded p-3">
-                    <h4>Audit Lite</h4>
-                    <p class="package-price mb-3">1.900 €</p>
-                    <ul class="mb-0">
-                      <li>Fokus auf ausgewählte Hotspots</li>
-                      <li>Analyse zentraler Queries, Indexe und Basis-Metriken</li>
-                      <li>Kurzer Findings-Bericht mit Top-Prioritäten</li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="service-info service-package-card recommended bg-white border rounded p-3">
-                    <span class="recommended-badge">Empfohlen</span>
-                    <h4>Audit Core</h4>
-                    <p class="package-price mb-3">3.900 €</p>
-                    <ul class="mb-0">
-                      <li>Tieferer Blick auf Query-Last, Index-Nutzung, Locks, Connections, Autovacuum und Tabellenwachstum</li>
-                      <li>Priorisierte Roadmap nach Wirkung, Risiko und Aufwand</li>
-                      <li>Ergebnisgespräch und konkrete nächste Schritte</li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="service-info service-package-card bg-white border rounded p-3">
-                    <h4>Audit Plus</h4>
-                    <p class="package-price mb-3">6.500 €</p>
-                    <ul class="mb-0">
-                      <li>Erweiterte Analyse bei kritischer oder schwer einzuordnender Last</li>
-                      <li>Zusätzlicher Blick auf App-/DB-Zusammenspiel und Peak-Zeiten</li>
-                      <li>Entscheidungsfähiger Bericht mit Quick Wins und strukturellen Empfehlungen</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              <h3>Ablauf</h3>
-              <ol>
-                <li>Kurzer Startabgleich zu Symptomen, Zielen, Systemkontext und verfügbaren Daten</li>
-                <li>Analyse von Queries, Indexen, Logs, Metriken und Lastmustern</li>
-                <li>Einordnung der Findings nach Wirkung, Risiko, Aufwand und Reihenfolge</li>
-                <li>Ergebnisgespräch mit klaren nächsten Schritten und optionalem Anschlussformat</li>
-              </ol>
-
-              <div class="service-info bg-white border rounded p-3 mb-4">
-                <h3 class="mb-2">Typisches Ergebnis</h3>
-                <p>Nach dem Audit kennt das Team die wichtigsten Performance-Treiber, versteht die Reihenfolge der Maßnahmen und kann gezielt entscheiden, welche Verbesserungen direkt angegangen werden.</p>
-                <ul class="mb-0">
-                  <li>Priorisierte Findings mit technischer Begründung</li>
-                  <li>Konkrete Quick Wins und belastbare nächste Schritte</li>
-                  <li>Klarer Übergang in Stabilization Sprint oder Performance Care, wenn sinnvoll</li>
-                </ul>
-              </div>
-
-              <div class="service-info bg-light border rounded p-4 mt-4">
-                <h3>Bereit für mehr Klarheit?</h3>
-                <p>Schreiben Sie mir kurz, welche PostgreSQL-Symptome Sie sehen und welche Ziele für das Team wichtig sind. Ich melde mich mit einem passenden nächsten Schritt zurück.</p>
-                <div class="d-flex flex-column flex-sm-row gap-3 cta-buttons">
-                  <a href="#contact" class="btn btn-primary"
-                     data-umami-event="service_performance_audit_cta_click">Unverbindlich anfragen</a>
-                  <a href="/services/stabilization-sprint/" class="btn btn-outline-primary"
-                     data-umami-event="service_performance_audit_to_sprint_click">Stabilization Sprint ansehen</a>
-                </div>
-              </div>
+        <div class="row content">
+          <div class="col-lg-10">
+            <h1>Performance Audit</h1>
+            <p class="lead">PostgreSQL-Engpässe sichtbar machen, priorisieren und sauber einordnen.</p>
+            <p class="lead">Für SaaS- und eCommerce-Teams, die wissen wollen, welche Queries, Indexe und Lastmuster wirklich bremsen — und welche Schritte zuerst Wirkung zeigen.</p>
+            <div class="cta-buttons" data-aos="fade-up" data-aos-delay="200">
+              <a href="#contact" class="btn btn-primary" data-umami-event="service_performance_audit_cta_click">Unverbindlich anfragen</a>
+              <a href="#packages" class="btn btn-outline" data-umami-event="service_performance_audit_packages_click">Pakete ansehen</a>
             </div>
-          </div>
-
-          <div class="col-lg-4">
-            <div class="service-info">
-              <h4>Kurzinfo</h4>
-              <div class="info-item d-flex align-items-start mb-3">
-                <i class="bi bi-currency-euro me-3 fs-4"></i>
-                <div>
-                  <h5>Einstieg</h5>
-                  <p class="mb-0">ab 1.900 €</p>
-                </div>
+            <div class="service-facts" data-aos="fade-up" data-aos-delay="300">
+              <div class="fact-item">
+                <span class="fact-number">ab 1.900 €</span>
+                <span class="fact-label">Einstieg</span>
               </div>
-              <div class="info-item d-flex align-items-start mb-3">
-                <i class="bi bi-bullseye me-3 fs-4"></i>
-                <div>
-                  <h5>Fokus</h5>
-                  <p class="mb-0">Analyse, Priorisierung und nächste Schritte</p>
-                </div>
+              <div class="fact-item">
+                <span class="fact-number">3 Pakete</span>
+                <span class="fact-label">Lite, Core, Plus</span>
               </div>
-              <div class="info-item d-flex align-items-start mb-0">
-                <i class="bi bi-people me-3 fs-4"></i>
-                <div>
-                  <h5>Ideal für</h5>
-                  <p class="mb-0">SaaS- und eCommerce-Teams mit produktiver PostgreSQL-Last</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="related-services mt-5">
-              <h4>Werkzeuge & Messpunkte</h4>
-              <p>Je nach Setup arbeite ich mit bewährten PostgreSQL-Signalen und Messartefakten.</p>
-              <ul class="tool-list mb-0">
-                <li><code>pg_stat_statements</code></li>
-                <li><code>EXPLAIN (ANALYZE, BUFFERS)</code></li>
-                <li>PostgreSQL Logs und <code>pgBadger</code></li>
-                <li>Index- und Tabellenstatistiken</li>
-              </ul>
-            </div>
-
-            <div class="related-services mt-5">
-              <h4>Passende nächste Schritte</h4>
-              <div class="service-item">
-                <i class="bi bi-speedometer2"></i>
-                <h5><a href="/services/stabilization-sprint/"
-                       data-umami-event="service_performance_audit_related_sprint_click">Stabilization Sprint</a></h5>
-                <p>Wenn ausgewählte Hotspots direkt verbessert und messbar stabilisiert werden sollen.</p>
-              </div>
-              <div class="service-item">
-                <i class="bi bi-heart-pulse"></i>
-                <h5><a href="/services/performance-care/"
-                       data-umami-event="service_performance_audit_related_care_click">Performance Care</a></h5>
-                <p>Wenn PostgreSQL-Performance laufend beobachtet und priorisiert betreut werden soll.</p>
+              <div class="fact-item">
+                <span class="fact-number">Remote</span>
+                <span class="fact-label">PY/EU-Zeitzone</span>
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
+
+    <section class="service-details section" id="service-details">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row justify-content-center">
+          <div class="col-lg-11 col-xl-10">
+            <div class="content">
+              <h3>Für wen ist das?</h3>
+              <p>Der Performance Audit passt für SaaS- und eCommerce-Teams, die spürbare Latenz, wachsende Query-Last oder unklare PostgreSQL-Engpässe strukturiert verstehen wollen. Er ist besonders hilfreich, wenn Entscheidungen anstehen und das Team eine klare, priorisierte Grundlage braucht.</p>
+
+              <h3>Was Sie bekommen</h3>
+              <p>Der Audit verbindet technische PostgreSQL-Analyse mit einer klaren geschäftlichen Reihenfolge: Welche Engpässe bremsen wirklich, welche Maßnahmen zeigen schnell Wirkung und welche Themen brauchen ruhigere Vorbereitung?</p>
+              <ul>
+                <li>Analyse zentraler Queries, Indexe, Logs, Tabellenstatistiken und Lastmuster</li>
+                <li>Priorisierte Findings nach Wirkung, Betriebsrelevanz und Aufwand</li>
+                <li>Konkrete nächste Schritte, die technisch nachvollziehbar und im Team anschlussfähig sind</li>
+                <li>Tooling je nach Setup: <code>pg_stat_statements</code>, <code>EXPLAIN (ANALYZE, BUFFERS)</code>, PostgreSQL Logs, <code>pgBadger</code> sowie Index- und Tabellenstatistiken</li>
+              </ul>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="packages" class="services section light-background service-packages-section">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Pakete</h2>
+        <div class="title-shape">
+          <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor"
+                  stroke-width="2" />
+          </svg>
+        </div>
+        <p>Drei Audit-Umfänge für unterschiedliche Ausgangslagen: vom fokussierten Hotspot-Check bis zur erweiterten Performance-Analyse.</p>
+      </div>
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row g-4 pricing-row">
+                  <div class="col-12 col-md-6 col-lg-4 pricing-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-item">
+                      <div class="service-head">
+                        <h2 class="plan-title"><span class="plan-name">Audit Lite</span><span class="plan-price">1.900 €</span></h2>
+                      </div>
+                      <p class="service-desc">Kompakter Einstieg für ausgewählte Hotspots und schnelle Orientierung.</p>
+                      <ul class="service-list list-unstyled small list-compact">
+                        <li><i class="bi bi-check2 me-2"></i>Fokus auf ausgewählte Hotspots</li>
+                        <li><i class="bi bi-check2 me-2"></i>Analyse zentraler Queries, Indexe und Basis-Metriken</li>
+                        <li><i class="bi bi-check2 me-2"></i>Kurzer Findings-Bericht mit Top-Prioritäten</li>
+                      </ul>
+                      <div class="service-cta cta-buttons text-center">
+                        <a href="#contact" class="btn btn-primary w-100" data-umami-event="service_performance_audit_package_cta_click">Anfragen</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6 col-lg-4 pricing-card" data-aos="fade-up" data-aos-delay="150">
+                    <div class="service-item">
+                      <span class="tier-badge" aria-label="Empfohlen">Empfohlen</span>
+                      <div class="service-head">
+                        <h2 class="plan-title"><span class="plan-name">Audit Core</span><span class="plan-price">3.900 €</span></h2>
+                      </div>
+                      <p class="service-desc">Der gründliche Audit für klare Prioritäten und ein gemeinsames Ergebnisgespräch.</p>
+                      <ul class="service-list list-unstyled small list-compact">
+                        <li><i class="bi bi-check2 me-2"></i>Tieferer Blick auf Query-Last, Index-Nutzung, Locks, Connections, Autovacuum und Tabellenwachstum</li>
+                        <li><i class="bi bi-check2 me-2"></i>Priorisierte Roadmap nach Wirkung, Betriebsrelevanz und Aufwand</li>
+                        <li><i class="bi bi-check2 me-2"></i>Ergebnisgespräch und konkrete nächste Schritte</li>
+                      </ul>
+                      <div class="service-cta cta-buttons text-center">
+                        <a href="#contact" class="btn btn-primary w-100" data-umami-event="service_performance_audit_package_cta_click">Anfragen</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6 col-lg-4 pricing-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-item">
+                      <div class="service-head">
+                        <h2 class="plan-title"><span class="plan-name">Audit Plus</span><span class="plan-price">6.500 €</span></h2>
+                      </div>
+                      <p class="service-desc">Erweiterte Analyse, wenn Lastmuster kritischer oder schwerer einzuordnen sind.</p>
+                      <ul class="service-list list-unstyled small list-compact">
+                        <li><i class="bi bi-check2 me-2"></i>Erweiterte Analyse bei kritischer oder schwer einzuordnender Last</li>
+                        <li><i class="bi bi-check2 me-2"></i>Zusätzlicher Blick auf App-/DB-Zusammenspiel und Peak-Zeiten</li>
+                        <li><i class="bi bi-check2 me-2"></i>Entscheidungsfähiger Bericht mit Quick Wins und strukturellen Empfehlungen</li>
+                      </ul>
+                      <div class="service-cta cta-buttons text-center">
+                        <a href="#contact" class="btn btn-primary w-100" data-umami-event="service_performance_audit_package_cta_click">Anfragen</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+        </div>
+    </section>
+
+    <section class="service-details section">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row justify-content-center">
+          <div class="col-lg-11 col-xl-10">
+            <div class="content">
+              <h3>Ablauf</h3>
+              <ol>
+                <li>Kurzer Startabgleich zu Symptomen, Zielen, Systemkontext und verfügbaren Daten</li>
+                <li>Analyse von Queries, Indexen, Logs, Metriken und Lastmustern</li>
+                <li>Einordnung der Findings nach Wirkung, Betriebsrelevanz, Aufwand und Reihenfolge</li>
+                <li>Ergebnisgespräch mit klaren nächsten Schritten und optionalem Anschlussformat</li>
+              </ol>
+
+              <h3>Typisches Ergebnis</h3>
+              <p>Nach dem Audit kennt das Team die wichtigsten Performance-Treiber, versteht die Reihenfolge der Maßnahmen und kann gezielt entscheiden, welche Verbesserungen direkt angegangen werden.</p>
+              <ul>
+                <li>Priorisierte Findings mit technischer Begründung</li>
+                <li>Konkrete Quick Wins und belastbare nächste Schritte</li>
+                <li>Klarer Übergang in Stabilization Sprint oder Performance Care, wenn sinnvoll</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <div hx-get="/partials/contact.html" hx-trigger="load" hx-swap="outerHTML"></div>
   </main>
   <div hx-get="/partials/footer.html" hx-trigger="load" hx-swap="outerHTML"></div>
-  <div hx-get="/partials/footer-scripts.html" hx-trigger="load" hx-swap="outerHTML"></div>
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"
      data-umami-event="scroll_top_click"><i class="bi bi-arrow-up-short"></i></a>
-  <script>window.onload = () => { document.body.style.display = "block"; };</script>
+  <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/vendor/aos/aos.js" defer></script>
+  <script src="/assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="/assets/js/umami-events.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      document.body.style.visibility = "visible";
+      if (window.AOS) AOS.init({ once: true });
+    });
+  </script>
 </body>
 
 </html>

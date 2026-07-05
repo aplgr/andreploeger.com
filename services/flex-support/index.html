@@ -87,76 +87,133 @@
   </script>
 </head>
 
-<body class="service-details-page" style="display:none">
+<body class="service-details-page preload">
   <div hx-get="/partials/header.html" hx-trigger="load" hx-swap="outerHTML"></div>
   <main class="main">
+    <section class="hero service-hero section">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row content">
+          <div class="col-lg-10">
+            <h1>Flex Support</h1>
+            <p class="lead">Flexible Unterstützung für PostgreSQL-Reviews, Troubleshooting und klar abgegrenzte Sonderfälle.</p>
+            <p class="lead">Für Teams, die kurzfristig eine fundierte technische Einschätzung, einen fokussierten Review oder Unterstützung bei einem konkreten Performance-Thema brauchen.</p>
+            <div class="cta-buttons" data-aos="fade-up" data-aos-delay="200">
+              <a href="#contact" class="btn btn-primary" data-umami-event="service_flex_support_cta_click">Unverbindlich anfragen</a>
+              <a href="#packages" class="btn btn-outline" data-umami-event="service_flex_support_packages_click">Pakete ansehen</a>
+            </div>
+            <div class="service-facts" data-aos="fade-up" data-aos-delay="300">
+              <div class="fact-item">
+                <span class="fact-number">ab 140 €/h</span>
+                <span class="fact-label">Einstieg</span>
+              </div>
+              <div class="fact-item">
+                <span class="fact-number">3 Formate</span>
+                <span class="fact-label">Hourly, Day, Block</span>
+              </div>
+              <div class="fact-item">
+                <span class="fact-number">Fokussiert</span>
+                <span class="fact-label">Review & Troubleshooting</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="service-details section" id="service-details">
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="row gy-4">
-          <div class="col-lg-8">
+        <div class="row justify-content-center">
+          <div class="col-lg-11 col-xl-10">
             <div class="content">
-              <div class="service-info bg-light border rounded p-4 mb-4">
-                <span class="service-eyebrow"><i class="bi bi-tools"></i> Reviews & Troubleshooting</span>
-                <h1>Flex Support</h1>
-                <p class="lead mb-3">Flexible Unterstützung für PostgreSQL-Reviews, Troubleshooting und klar abgegrenzte Sonderfälle.</p>
-                <p class="service-price-anchor mb-4">ab 140 €/h</p>
-                <div class="d-flex flex-column flex-sm-row gap-3 cta-buttons">
-                  <a href="#contact" class="btn btn-primary"
-                     data-umami-event="service_flex_support_cta_click">Unverbindlich anfragen</a>
-                  <a href="/#services" class="btn btn-outline-primary"
-                     data-umami-event="service_flex_support_services_back_click">Alle Services ansehen</a>
-                </div>
-              </div>
-
               <h3>Für wen ist das?</h3>
               <p>Flex Support passt, wenn ein konkretes PostgreSQL-Thema schnell technisch eingeordnet werden soll: ein Query-Review, eine Second Opinion, ein Troubleshooting-Termin oder eine begrenzte Analyse für eine einzelne Entscheidung.</p>
 
               <h3>Was Sie bekommen</h3>
+              <p>Flex Support ist bewusst leichtgewichtig: eine klare Frage, passende Daten, technische Einordnung und ein Ergebnis, mit dem das Team weiterarbeiten kann.</p>
               <ul>
                 <li>Second Opinion zu Queries, Indexen und Performance-Fragen</li>
                 <li>Technische Analyse bei konkreten Engpässen</li>
-                <li>Flexible Unterstützung ohne langfristiges Paket</li>
-                <li>Klare Ergebnisnotizen, damit das Team direkt weiterarbeiten kann</li>
+                <li>Flexible Unterstützung für Reviews, Troubleshooting oder Umsetzungsvorbereitung</li>
+                <li>Passende PostgreSQL-Signale je nach Thema: <code>EXPLAIN (ANALYZE, BUFFERS)</code>, <code>pg_stat_statements</code>, Slow Query Logs, Index Usage Checks sowie Query- und Schema-Review</li>
               </ul>
 
-              <h3>Pakete</h3>
-              <div class="row g-3 mb-4 service-packages">
-                <div class="col-md-4">
-                  <div class="service-info service-package-card bg-white border rounded p-3">
-                    <h4>Hourly</h4>
-                    <p class="package-price mb-3">140 €/h</p>
-                    <ul class="mb-0">
-                      <li>Für kurze Reviews und konkrete Rückfragen</li>
-                      <li>Abrechnung nach Aufwand</li>
-                      <li>Geeignet für Second Opinion und technische Einordnung</li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="service-info service-package-card recommended bg-white border rounded p-3">
-                    <span class="recommended-badge">Empfohlen</span>
-                    <h4>Flex Day</h4>
-                    <p class="package-price mb-3">950 €/Tag</p>
-                    <ul class="mb-0">
-                      <li>Ein fokussierter Arbeitstag für ein klar umrissenes Thema</li>
-                      <li>Analyse, Review oder Umsetzungsvorbereitung</li>
-                      <li>Kurze Ergebnisdokumentation</li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="service-info service-package-card bg-white border rounded p-3">
-                    <h4>Flex Block</h4>
-                    <p class="package-price mb-3">1.300 €/10h</p>
-                    <ul class="mb-0">
-                      <li>Für mehrere kleine Themen innerhalb eines begrenzten Rahmens</li>
-                      <li>Planbarer Einstieg ohne laufenden Retainer</li>
-                      <li>Geeignet für wiederkehrende Reviews oder Troubleshooting</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <section id="packages" class="services section light-background service-packages-section">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Pakete</h2>
+        <div class="title-shape">
+          <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor"
+                  stroke-width="2" />
+          </svg>
+        </div>
+        <p>Drei flexible Formate für Reviews, Troubleshooting und fundierte technische Einordnung nach Bedarf.</p>
+      </div>
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row g-4 pricing-row">
+                  <div class="col-12 col-md-6 col-lg-4 pricing-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-item">
+                      <div class="service-head">
+                        <h2 class="plan-title"><span class="plan-name">Hourly</span><span class="plan-price">140 € <span class="price-unit">/h</span></span></h2>
+                      </div>
+                      <p class="service-desc">Für kurze Reviews, konkrete Rückfragen und technische Einordnung.</p>
+                      <ul class="service-list list-unstyled small list-compact">
+                        <li><i class="bi bi-check2 me-2"></i>Für kurze Reviews und konkrete Rückfragen</li>
+                        <li><i class="bi bi-check2 me-2"></i>Abrechnung nach Aufwand</li>
+                        <li><i class="bi bi-check2 me-2"></i>Geeignet für Second Opinion und technische Einordnung</li>
+                      </ul>
+                      <div class="service-cta cta-buttons text-center">
+                        <a href="#contact" class="btn btn-primary w-100" data-umami-event="service_flex_support_package_cta_click">Anfragen</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6 col-lg-4 pricing-card" data-aos="fade-up" data-aos-delay="150">
+                    <div class="service-item">
+                      <span class="tier-badge" aria-label="Empfohlen">Empfohlen</span>
+                      <div class="service-head">
+                        <h2 class="plan-title"><span class="plan-name">Flex Day</span><span class="plan-price">950 € <span class="price-unit">/Tag</span></span></h2>
+                      </div>
+                      <p class="service-desc">Ein fokussierter Tag, wenn ein Thema konzentriert analysiert werden soll.</p>
+                      <ul class="service-list list-unstyled small list-compact">
+                        <li><i class="bi bi-check2 me-2"></i>Ein fokussierter Arbeitstag für ein klar umrissenes Thema</li>
+                        <li><i class="bi bi-check2 me-2"></i>Analyse, Review oder Umsetzungsvorbereitung</li>
+                        <li><i class="bi bi-check2 me-2"></i>Kurze Ergebnisdokumentation</li>
+                      </ul>
+                      <div class="service-cta cta-buttons text-center">
+                        <a href="#contact" class="btn btn-primary w-100" data-umami-event="service_flex_support_package_cta_click">Anfragen</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6 col-lg-4 pricing-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-item">
+                      <div class="service-head">
+                        <h2 class="plan-title"><span class="plan-name">Flex Block</span><span class="plan-price">1.300 € <span class="price-unit">/10h</span></span></h2>
+                      </div>
+                      <p class="service-desc">Ein planbarer Block für mehrere kleine Themen oder wiederkehrende Reviews.</p>
+                      <ul class="service-list list-unstyled small list-compact">
+                        <li><i class="bi bi-check2 me-2"></i>Für mehrere kleine Themen innerhalb eines begrenzten Rahmens</li>
+                        <li><i class="bi bi-check2 me-2"></i>Planbarer Einstieg für begrenzte Performance-Themen</li>
+                        <li><i class="bi bi-check2 me-2"></i>Geeignet für wiederkehrende Reviews oder Troubleshooting</li>
+                      </ul>
+                      <div class="service-cta cta-buttons text-center">
+                        <a href="#contact" class="btn btn-primary w-100" data-umami-event="service_flex_support_package_cta_click">Anfragen</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+        </div>
+    </section>
+
+    <section class="service-details section">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row justify-content-center">
+          <div class="col-lg-11 col-xl-10">
+            <div class="content">
               <h3>Ablauf</h3>
               <ol>
                 <li>Kurze Einordnung des konkreten Themas und gewünschter Fragestellung</li>
@@ -165,93 +222,37 @@
                 <li>Kurze Ergebnisdokumentation mit Empfehlung für den nächsten Schritt</li>
               </ol>
 
-              <div class="service-info bg-white border rounded p-3 mb-4">
-                <h3 class="mb-2">Typisches Ergebnis</h3>
-                <p>Nach dem Flex Support hat das Team eine klare technische Einschätzung zu einem abgegrenzten PostgreSQL-Thema und kann den nächsten Schritt sicherer planen.</p>
-                <ul class="mb-0">
-                  <li>Review-Ergebnis oder Troubleshooting-Finding mit technischer Begründung</li>
-                  <li>Konkrete Empfehlung für Query, Index, Messung oder Umsetzungsvorbereitung</li>
-                  <li>Kurze Dokumentation für Team, Ticket oder Entscheidungsrunde</li>
-                </ul>
-              </div>
-
-              <div class="service-info bg-light border rounded p-4 mt-4">
-                <h3>Ein konkretes Thema klären?</h3>
-                <p>Schreiben Sie mir kurz, welche Frage Sie prüfen möchten und welche Daten schon verfügbar sind. Ich melde mich mit einem sinnvollen Flex-Format zurück.</p>
-                <div class="d-flex flex-column flex-sm-row gap-3 cta-buttons">
-                  <a href="#contact" class="btn btn-primary"
-                     data-umami-event="service_flex_support_cta_click">Unverbindlich anfragen</a>
-                  <a href="/services/performance-audit/" class="btn btn-outline-primary"
-                     data-umami-event="service_flex_support_to_audit_click">Performance Audit ansehen</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4">
-            <div class="service-info">
-              <h4>Kurzinfo</h4>
-              <div class="info-item d-flex align-items-start mb-3">
-                <i class="bi bi-currency-euro me-3 fs-4"></i>
-                <div>
-                  <h5>Einstieg</h5>
-                  <p class="mb-0">ab 140 €/h</p>
-                </div>
-              </div>
-              <div class="info-item d-flex align-items-start mb-3">
-                <i class="bi bi-chat-square-text me-3 fs-4"></i>
-                <div>
-                  <h5>Fokus</h5>
-                  <p class="mb-0">Reviews, Troubleshooting und technische Einordnung</p>
-                </div>
-              </div>
-              <div class="info-item d-flex align-items-start mb-0">
-                <i class="bi bi-people me-3 fs-4"></i>
-                <div>
-                  <h5>Ideal für</h5>
-                  <p class="mb-0">Klar abgegrenzte PostgreSQL-Fragen ohne festes Paket</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="related-services mt-5">
-              <h4>Werkzeuge & Messpunkte</h4>
-              <p>Je nach Thema nutze ich die PostgreSQL-Performance-Signale, die am schnellsten Klarheit schaffen.</p>
-              <ul class="tool-list mb-0">
-                <li><code>EXPLAIN (ANALYZE, BUFFERS)</code></li>
-                <li><code>pg_stat_statements</code></li>
-                <li>Slow query logs</li>
-                <li>Index usage checks</li>
-                <li>Query- und Schema-Review</li>
+              <h3>Typisches Ergebnis</h3>
+              <p>Nach dem Flex Support hat das Team eine klare technische Einschätzung zu einem abgegrenzten PostgreSQL-Thema und kann den nächsten Schritt sicherer planen.</p>
+              <ul>
+                <li>Review-Ergebnis oder Troubleshooting-Finding mit technischer Begründung</li>
+                <li>Konkrete Empfehlung für Query, Index, Messung oder Umsetzungsvorbereitung</li>
+                <li>Kurze Dokumentation für Team, Ticket oder Entscheidungsrunde</li>
               </ul>
-            </div>
-
-            <div class="related-services mt-5">
-              <h4>Passende nächste Schritte</h4>
-              <div class="service-item">
-                <i class="bi bi-search"></i>
-                <h5><a href="/services/performance-audit/"
-                       data-umami-event="service_flex_support_related_audit_click">Performance Audit</a></h5>
-                <p>Wenn aus einem einzelnen Thema ein umfassenderer Blick auf das System werden soll.</p>
-              </div>
-              <div class="service-item">
-                <i class="bi bi-speedometer2"></i>
-                <h5><a href="/services/stabilization-sprint/"
-                       data-umami-event="service_flex_support_related_sprint_click">Stabilization Sprint</a></h5>
-                <p>Wenn ein klarer Hotspot direkt verbessert und messbar stabilisiert werden soll.</p>
-              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
+
     <div hx-get="/partials/contact.html" hx-trigger="load" hx-swap="outerHTML"></div>
   </main>
   <div hx-get="/partials/footer.html" hx-trigger="load" hx-swap="outerHTML"></div>
-  <div hx-get="/partials/footer-scripts.html" hx-trigger="load" hx-swap="outerHTML"></div>
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"
      data-umami-event="scroll_top_click"><i class="bi bi-arrow-up-short"></i></a>
-  <script>window.onload = () => { document.body.style.display = "block"; };</script>
+  <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/vendor/aos/aos.js" defer></script>
+  <script src="/assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="/assets/js/umami-events.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      document.body.style.visibility = "visible";
+      if (window.AOS) AOS.init({ once: true });
+    });
+  </script>
 </body>
 
 </html>

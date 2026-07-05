@@ -87,76 +87,133 @@
   </script>
 </head>
 
-<body class="service-details-page" style="display:none">
+<body class="service-details-page preload">
   <div hx-get="/partials/header.html" hx-trigger="load" hx-swap="outerHTML"></div>
   <main class="main">
+    <section class="hero service-hero section">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row content">
+          <div class="col-lg-10">
+            <h1>Stabilization Sprint</h1>
+            <p class="lead">Ausgewählte Performance-Hotspots gezielt verbessern und messbar stabilisieren.</p>
+            <p class="lead">Für Teams, die nicht nur analysieren, sondern konkrete PostgreSQL-Engpässe kontrolliert verbessern wollen — mit Vorher/Nachher-Blick und sauberer Umsetzungsvorbereitung.</p>
+            <div class="cta-buttons" data-aos="fade-up" data-aos-delay="200">
+              <a href="#contact" class="btn btn-primary" data-umami-event="service_stabilization_sprint_cta_click">Unverbindlich anfragen</a>
+              <a href="#packages" class="btn btn-outline" data-umami-event="service_stabilization_sprint_packages_click">Pakete ansehen</a>
+            </div>
+            <div class="service-facts" data-aos="fade-up" data-aos-delay="300">
+              <div class="fact-item">
+                <span class="fact-number">ab 2.900 €</span>
+                <span class="fact-label">Einstieg</span>
+              </div>
+              <div class="fact-item">
+                <span class="fact-number">3 Pakete</span>
+                <span class="fact-label">Lite, Core, Plus</span>
+              </div>
+              <div class="fact-item">
+                <span class="fact-number">Messbar</span>
+                <span class="fact-label">Vorher/Nachher</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="service-details section" id="service-details">
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="row gy-4">
-          <div class="col-lg-8">
+        <div class="row justify-content-center">
+          <div class="col-lg-11 col-xl-10">
             <div class="content">
-              <div class="service-info bg-light border rounded p-4 mb-4">
-                <span class="service-eyebrow"><i class="bi bi-speedometer2"></i> Tuning & Messbarkeit</span>
-                <h1>Stabilization Sprint</h1>
-                <p class="lead mb-3">Ausgewählte Performance-Hotspots gezielt verbessern und messbar stabilisieren.</p>
-                <p class="service-price-anchor mb-4">ab 2.900 €</p>
-                <div class="d-flex flex-column flex-sm-row gap-3 cta-buttons">
-                  <a href="#contact" class="btn btn-primary"
-                     data-umami-event="service_stabilization_sprint_cta_click">Unverbindlich anfragen</a>
-                  <a href="/#services" class="btn btn-outline-primary"
-                     data-umami-event="service_stabilization_sprint_services_back_click">Alle Services ansehen</a>
-                </div>
-              </div>
-
               <h3>Für wen ist das?</h3>
               <p>Der Stabilization Sprint passt für Teams, die konkrete PostgreSQL-Hotspots nicht nur verstehen, sondern gezielt verbessern wollen. Typisch sind langsame Kernabfragen, unpassende Indexe, hohe Lastspitzen oder Performance-Themen, die direkt auf Produkt- oder Umsatzmetriken einzahlen.</p>
 
               <h3>Was Sie bekommen</h3>
+              <p>Der Sprint konzentriert sich auf ausgewählte Performance-Themen und macht Verbesserungen nachvollziehbar. Analyse, Empfehlung und Umsetzungsvorbereitung bleiben eng beieinander, damit Ergebnisse im Betrieb tragfähig sind.</p>
               <ul>
                 <li>Query- und Index-Tuning auf Basis realer Last</li>
                 <li>Messbarer Vorher/Nachher-Vergleich für die ausgewählten Hotspots</li>
                 <li>Review der Auswirkungen auf Betrieb, Deployment und laufende Nutzung</li>
-                <li>Dokumentierte Empfehlungen, die Engineering-Teams direkt weiterverwenden können</li>
+                <li>Tooling je nach Thema: <code>EXPLAIN ANALYZE</code>, <code>BUFFERS</code>, <code>pg_stat_statements</code>, Slow Query Logs, Before/After Measurements und Deployment Notes</li>
               </ul>
 
-              <h3>Pakete</h3>
-              <div class="row g-3 mb-4 service-packages">
-                <div class="col-md-4">
-                  <div class="service-info service-package-card bg-white border rounded p-3">
-                    <h4>Sprint Lite</h4>
-                    <p class="package-price mb-3">2.900 €</p>
-                    <ul class="mb-0">
-                      <li>Ein klar abgegrenztes Performance-Thema</li>
-                      <li>Query-/Index-Analyse und konkrete Verbesserungsempfehlung</li>
-                      <li>Vorher/Nachher-Vergleich für den ausgewählten Hotspot</li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="service-info service-package-card recommended bg-white border rounded p-3">
-                    <span class="recommended-badge">Empfohlen</span>
-                    <h4>Sprint Core</h4>
-                    <p class="package-price mb-3">5.900 €</p>
-                    <ul class="mb-0">
-                      <li>Zwei bis drei priorisierte Performance-Themen</li>
-                      <li>Query- und Index-Tuning auf Basis realer Last</li>
-                      <li>Dokumentierte Verbesserungen mit Review der Deployment-Auswirkungen</li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="service-info service-package-card bg-white border rounded p-3">
-                    <h4>Sprint Plus</h4>
-                    <p class="package-price mb-3">9.500 €</p>
-                    <ul class="mb-0">
-                      <li>Mehrere zusammenhängende Hotspots</li>
-                      <li>Vertiefte Analyse, Umsetzungsvorbereitung und Review-Schleifen</li>
-                      <li>Stabilisierung mit Blick auf Lastspitzen, Betrieb und weitere Schritte</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <section id="packages" class="services section light-background service-packages-section">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Pakete</h2>
+        <div class="title-shape">
+          <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor"
+                  stroke-width="2" />
+          </svg>
+        </div>
+        <p>Drei Sprint-Umfänge für konkrete Performance-Hotspots, messbare Verbesserungen und saubere Umsetzungsvorbereitung.</p>
+      </div>
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row g-4 pricing-row">
+                  <div class="col-12 col-md-6 col-lg-4 pricing-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-item">
+                      <div class="service-head">
+                        <h2 class="plan-title"><span class="plan-name">Sprint Lite</span><span class="plan-price">2.900 €</span></h2>
+                      </div>
+                      <p class="service-desc">Ein fokussierter Sprint für ein klar abgegrenztes Performance-Thema.</p>
+                      <ul class="service-list list-unstyled small list-compact">
+                        <li><i class="bi bi-check2 me-2"></i>Ein klar abgegrenztes Performance-Thema</li>
+                        <li><i class="bi bi-check2 me-2"></i>Query-/Index-Analyse und konkrete Verbesserungsempfehlung</li>
+                        <li><i class="bi bi-check2 me-2"></i>Vorher/Nachher-Vergleich für den ausgewählten Hotspot</li>
+                      </ul>
+                      <div class="service-cta cta-buttons text-center">
+                        <a href="#contact" class="btn btn-primary w-100" data-umami-event="service_stabilization_sprint_package_cta_click">Anfragen</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6 col-lg-4 pricing-card" data-aos="fade-up" data-aos-delay="150">
+                    <div class="service-item">
+                      <span class="tier-badge" aria-label="Empfohlen">Empfohlen</span>
+                      <div class="service-head">
+                        <h2 class="plan-title"><span class="plan-name">Sprint Core</span><span class="plan-price">5.900 €</span></h2>
+                      </div>
+                      <p class="service-desc">Der passende Sprint für mehrere priorisierte Hotspots und belastbare Messergebnisse.</p>
+                      <ul class="service-list list-unstyled small list-compact">
+                        <li><i class="bi bi-check2 me-2"></i>Zwei bis drei priorisierte Performance-Themen</li>
+                        <li><i class="bi bi-check2 me-2"></i>Query- und Index-Tuning auf Basis realer Last</li>
+                        <li><i class="bi bi-check2 me-2"></i>Dokumentierte Verbesserungen mit Review der Deployment-Auswirkungen</li>
+                      </ul>
+                      <div class="service-cta cta-buttons text-center">
+                        <a href="#contact" class="btn btn-primary w-100" data-umami-event="service_stabilization_sprint_package_cta_click">Anfragen</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6 col-lg-4 pricing-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-item">
+                      <div class="service-head">
+                        <h2 class="plan-title"><span class="plan-name">Sprint Plus</span><span class="plan-price">9.500 €</span></h2>
+                      </div>
+                      <p class="service-desc">Mehr Tiefe für zusammenhängende Hotspots und stabilere Lastspitzen.</p>
+                      <ul class="service-list list-unstyled small list-compact">
+                        <li><i class="bi bi-check2 me-2"></i>Mehrere zusammenhängende Hotspots</li>
+                        <li><i class="bi bi-check2 me-2"></i>Vertiefte Analyse, Umsetzungsvorbereitung und Review-Schleifen</li>
+                        <li><i class="bi bi-check2 me-2"></i>Stabilisierung mit Blick auf Lastspitzen, Betrieb und weitere Schritte</li>
+                      </ul>
+                      <div class="service-cta cta-buttons text-center">
+                        <a href="#contact" class="btn btn-primary w-100" data-umami-event="service_stabilization_sprint_package_cta_click">Anfragen</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+        </div>
+    </section>
+
+    <section class="service-details section">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row justify-content-center">
+          <div class="col-lg-11 col-xl-10">
+            <div class="content">
               <h3>Ablauf</h3>
               <ol>
                 <li>Start mit klarer Auswahl der Hotspots und Erfolgskriterien</li>
@@ -165,93 +222,37 @@
                 <li>Vorher/Nachher-Vergleich, Ergebnisdokumentation und nächste Prioritäten</li>
               </ol>
 
-              <div class="service-info bg-white border rounded p-3 mb-4">
-                <h3 class="mb-2">Typisches Ergebnis</h3>
-                <p>Nach dem Sprint sind die ausgewählten Hotspots nachvollziehbar verbessert oder sauber für die Umsetzung vorbereitet. Das Team sieht, welche Änderung welchen Effekt hatte und wie die Verbesserung in den Betrieb passt.</p>
-                <ul class="mb-0">
-                  <li>Verbesserte Query-Pläne, Index-Strategien oder Datenzugriffe für die priorisierten Hotspots</li>
-                  <li>Vorher/Nachher-Messung mit nachvollziehbaren Zahlen</li>
-                  <li>Deployment-Notizen und klare Empfehlungen für den nächsten Schritt</li>
-                </ul>
-              </div>
-
-              <div class="service-info bg-light border rounded p-4 mt-4">
-                <h3>Hotspots gezielt stabilisieren?</h3>
-                <p>Schreiben Sie mir, welche Abfragen oder Systembereiche gerade auffallen. Ich melde mich mit einem pragmatischen Vorschlag für den passenden Sprint-Zuschnitt.</p>
-                <div class="d-flex flex-column flex-sm-row gap-3 cta-buttons">
-                  <a href="#contact" class="btn btn-primary"
-                     data-umami-event="service_stabilization_sprint_cta_click">Unverbindlich anfragen</a>
-                  <a href="/services/performance-audit/" class="btn btn-outline-primary"
-                     data-umami-event="service_stabilization_sprint_to_audit_click">Performance Audit ansehen</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4">
-            <div class="service-info">
-              <h4>Kurzinfo</h4>
-              <div class="info-item d-flex align-items-start mb-3">
-                <i class="bi bi-currency-euro me-3 fs-4"></i>
-                <div>
-                  <h5>Einstieg</h5>
-                  <p class="mb-0">ab 2.900 €</p>
-                </div>
-              </div>
-              <div class="info-item d-flex align-items-start mb-3">
-                <i class="bi bi-graph-up-arrow me-3 fs-4"></i>
-                <div>
-                  <h5>Fokus</h5>
-                  <p class="mb-0">Ausgewählte Hotspots verbessern und messbar machen</p>
-                </div>
-              </div>
-              <div class="info-item d-flex align-items-start mb-0">
-                <i class="bi bi-people me-3 fs-4"></i>
-                <div>
-                  <h5>Ideal für</h5>
-                  <p class="mb-0">Teams mit bekannten Performance-Themen und klarer Priorität</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="related-services mt-5">
-              <h4>Werkzeuge & Messpunkte</h4>
-              <p>Der Sprint verbindet PostgreSQL-Analyse mit nachvollziehbarer Umsetzungsvorbereitung.</p>
-              <ul class="tool-list mb-0">
-                <li><code>EXPLAIN ANALYZE</code> und <code>BUFFERS</code></li>
-                <li><code>pg_stat_statements</code></li>
-                <li>Slow query logs</li>
-                <li>Before/after measurements</li>
-                <li>Deployment notes</li>
+              <h3>Typisches Ergebnis</h3>
+              <p>Nach dem Sprint sind die ausgewählten Hotspots nachvollziehbar verbessert oder sauber für die Umsetzung vorbereitet. Das Team sieht, welche Änderung welchen Effekt hatte und wie die Verbesserung in den Betrieb passt.</p>
+              <ul>
+                <li>Verbesserte Query-Pläne, Index-Strategien oder Datenzugriffe für die priorisierten Hotspots</li>
+                <li>Vorher/Nachher-Messung mit nachvollziehbaren Zahlen</li>
+                <li>Deployment-Notizen und klare Empfehlungen für den nächsten Schritt</li>
               </ul>
-            </div>
-
-            <div class="related-services mt-5">
-              <h4>Passende nächste Schritte</h4>
-              <div class="service-item">
-                <i class="bi bi-search"></i>
-                <h5><a href="/services/performance-audit/"
-                       data-umami-event="service_stabilization_sprint_related_audit_click">Performance Audit</a></h5>
-                <p>Wenn Ursachen und Prioritäten zuerst sauber sichtbar gemacht werden sollen.</p>
-              </div>
-              <div class="service-item">
-                <i class="bi bi-heart-pulse"></i>
-                <h5><a href="/services/performance-care/"
-                       data-umami-event="service_stabilization_sprint_related_care_click">Performance Care</a></h5>
-                <p>Wenn Performance-Themen nach dem Sprint laufend im Blick bleiben sollen.</p>
-              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
+
     <div hx-get="/partials/contact.html" hx-trigger="load" hx-swap="outerHTML"></div>
   </main>
   <div hx-get="/partials/footer.html" hx-trigger="load" hx-swap="outerHTML"></div>
-  <div hx-get="/partials/footer-scripts.html" hx-trigger="load" hx-swap="outerHTML"></div>
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"
      data-umami-event="scroll_top_click"><i class="bi bi-arrow-up-short"></i></a>
-  <script>window.onload = () => { document.body.style.display = "block"; };</script>
+  <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/vendor/aos/aos.js" defer></script>
+  <script src="/assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="/assets/js/umami-events.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      document.body.style.visibility = "visible";
+      if (window.AOS) AOS.init({ once: true });
+    });
+  </script>
 </body>
 
 </html>
