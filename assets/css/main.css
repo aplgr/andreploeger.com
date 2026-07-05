@@ -2281,21 +2281,27 @@ section,
 .service-hero .service-facts {
   display: flex;
   flex-wrap: wrap;
-  gap: 2.5rem;
+  gap: 2rem;
   margin-top: 2rem;
+}
+
+.service-hero .service-facts .fact-item {
+  flex: 1 1 130px;
+  min-width: 130px;
+  max-width: 190px;
 }
 
 .service-hero .service-facts .fact-number {
   display: block;
-  font-size: 2.1rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: var(--heading-color);
-  line-height: 1;
+  line-height: 1.1;
 }
 
 .service-hero .service-facts .fact-label {
   display: block;
-  margin-top: .5rem;
+  margin-top: .4rem;
   color: color-mix(in srgb, var(--default-color), transparent 30%);
   font-size: .9rem;
 }
@@ -2310,6 +2316,16 @@ section,
   background-color: var(--accent-color);
   color: var(--contrast-color);
   transform: translateY(-2px);
+}
+
+.service-hero-image {
+  position: relative;
+  padding: 2rem;
+}
+
+.service-hero-image img {
+  width: 100%;
+  background: var(--surface-color);
 }
 
 .service-packages-section {
@@ -2429,9 +2445,24 @@ section,
     gap: 1.5rem;
   }
 
+  .service-hero .service-facts .fact-item {
+    flex: 0 1 170px;
+  }
+
+  .service-hero-image {
+    padding: 1rem;
+  }
+
   .service-packages-section .tier-badge {
     top: -8px;
     right: -8px;
+  }
+}
+
+@media (max-width: 576px) {
+  .service-hero .service-facts .fact-item {
+    flex-basis: 100%;
+    max-width: none;
   }
 }
 
