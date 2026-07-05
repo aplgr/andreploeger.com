@@ -125,30 +125,90 @@
       </div>
     </section>
 
-    <section class="service-details section" id="service-details">
+    <section class="service-fit section">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Für wen ist das?</h2>
+        <div class="title-shape">
+          <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor"
+                  stroke-width="2" />
+          </svg>
+        </div>
+        <p>Der Stabilization Sprint passt, wenn die wichtigsten Performance-Hotspots bereits sichtbar sind oder aus einem Audit hervorgegangen sind. Ziel ist nicht, alles gleichzeitig zu verbessern, sondern ausgewählte Engpässe kontrolliert anzugehen und Wirkung messbar zu machen.</p>
+      </div>
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="row justify-content-center">
-          <div class="col-lg-11 col-xl-10">
-            <div class="content">
-              <h3>Für wen ist das?</h3>
-              <p>Der Stabilization Sprint passt für Teams, die konkrete PostgreSQL-Hotspots nicht nur verstehen, sondern gezielt verbessern wollen. Typisch sind langsame Kernabfragen, unpassende Indexe, hohe Lastspitzen oder Performance-Themen, die direkt auf Produkt- oder Umsatzmetriken einzahlen.</p>
-
-              <h3>Was Sie bekommen</h3>
-              <p>Der Sprint konzentriert sich auf ausgewählte Performance-Themen und macht Verbesserungen nachvollziehbar. Analyse, Empfehlung und Umsetzungsvorbereitung bleiben eng beieinander, damit Ergebnisse im Betrieb tragfähig sind.</p>
-              <ul>
-                <li>Query- und Index-Tuning auf Basis realer Last</li>
-                <li>Messbarer Vorher/Nachher-Vergleich für die ausgewählten Hotspots</li>
-                <li>Review der Auswirkungen auf Betrieb, Deployment und laufende Nutzung</li>
-                <li>Tooling je nach Thema: <code>EXPLAIN ANALYZE</code>, <code>BUFFERS</code>, <code>pg_stat_statements</code>, Slow Query Logs, Before/After Measurements und Deployment Notes</li>
-              </ul>
-
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-4">
+            <div class="service-feature-card">
+              <i class="bi bi-speedometer2" aria-hidden="true"></i>
+              <h3>Konkrete Hotspots</h3>
+              <p>Einzelne Queries, Endpunkte oder Datenbankpfade bremsen sichtbar und sollen gezielt verbessert werden.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="service-feature-card">
+              <i class="bi bi-arrow-up-right-circle" aria-hidden="true"></i>
+              <h3>Wirkung soll messbar sein</h3>
+              <p>Das Team möchte nicht nur Empfehlungen, sondern nachvollziehbare Vorher/Nachher-Signale.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="service-feature-card">
+              <i class="bi bi-check2-circle" aria-hidden="true"></i>
+              <h3>Änderungen müssen tragfähig sein</h3>
+              <p>Indexe, Query-Anpassungen oder kleinere technische Maßnahmen sollen nicht nur im Test gut aussehen, sondern auch im Betrieb funktionieren.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="packages" class="services section light-background service-packages-section">
+    <section class="service-value section light-background">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Was Sie bekommen</h2>
+        <div class="title-shape">
+          <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor"
+                  stroke-width="2" />
+          </svg>
+        </div>
+        <p>Der Sprint übersetzt Performance-Analyse in kontrollierte Verbesserung. Der Fokus liegt auf wenigen, relevanten Themen statt auf breiter Dauerbaustelle.</p>
+      </div>
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-3">
+            <div class="service-feature-card">
+              <i class="bi bi-speedometer2" aria-hidden="true"></i>
+              <h3>Fokussierte Umsetzung</h3>
+              <p>Ausgewählte Queries, Indexe oder Hotspots werden gezielt analysiert, verbessert und dokumentiert.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="service-feature-card">
+              <i class="bi bi-arrow-up-right-circle" aria-hidden="true"></i>
+              <h3>Vorher/Nachher-Blick</h3>
+              <p>Verbesserungen werden mit geeigneten Messpunkten nachvollziehbar gemacht, damit Wirkung sichtbar wird.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="service-feature-card">
+              <i class="bi bi-check2-circle" aria-hidden="true"></i>
+              <h3>Deployment-Blick</h3>
+              <p>Änderungen werden mit Blick auf Betrieb, Risiko und Rollout vorbereitet.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="service-feature-card">
+              <i class="bi bi-list-check" aria-hidden="true"></i>
+              <h3>Saubere Dokumentation</h3>
+              <p>Das Team erhält eine nachvollziehbare Beschreibung der Änderungen, Annahmen und nächsten Schritte.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="packages" class="services section service-packages-section">
       <div class="container section-title" data-aos="fade-up">
         <h2>Pakete</h2>
         <div class="title-shape">
@@ -214,26 +274,86 @@
         </div>
     </section>
 
-    <section class="service-details section">
+    <section class="service-process section light-background">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Ablauf</h2>
+        <div class="title-shape">
+          <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor"
+                  stroke-width="2" />
+          </svg>
+        </div>
+        <p>Der Sprint bleibt eng geführt: wenige relevante Hotspots, klare Messpunkte und eine nachvollziehbare technische Verbesserung.</p>
+      </div>
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="row justify-content-center">
-          <div class="col-lg-11 col-xl-10">
-            <div class="content">
-              <h3>Ablauf</h3>
-              <ol>
-                <li>Start mit klarer Auswahl der Hotspots und Erfolgskriterien</li>
-                <li>Messung und Analyse der relevanten Queries, Pläne, Indexe und Logsignale</li>
-                <li>Verbesserungsvorschläge, Abstimmung mit dem Team und Umsetzungsvorbereitung</li>
-                <li>Vorher/Nachher-Vergleich, Ergebnisdokumentation und nächste Prioritäten</li>
-              </ol>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-3">
+            <div class="service-process-card">
+              <span class="service-process-step">01</span>
+              <h3>Ziel festlegen</h3>
+              <p>Wir wählen die relevanten Hotspots und definieren, woran Verbesserung erkennbar wird.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="service-process-card">
+              <span class="service-process-step">02</span>
+              <h3>Analyse vertiefen</h3>
+              <p>Query-Pläne, Indexe, Laufzeitverhalten und Lastsignale werden detailliert betrachtet.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="service-process-card">
+              <span class="service-process-step">03</span>
+              <h3>Verbesserung vorbereiten</h3>
+              <p>Konkrete Tuning-Schritte werden entwickelt, geprüft und für die Umsetzung vorbereitet.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="service-process-card">
+              <span class="service-process-step">04</span>
+              <h3>Wirkung sichern</h3>
+              <p>Die Ergebnisse werden dokumentiert und mit Vorher/Nachher-Signalen eingeordnet.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-              <h3>Typisches Ergebnis</h3>
-              <p>Nach dem Sprint sind die ausgewählten Hotspots nachvollziehbar verbessert oder sauber für die Umsetzung vorbereitet. Das Team sieht, welche Änderung welchen Effekt hatte und wie die Verbesserung in den Betrieb passt.</p>
-              <ul>
-                <li>Verbesserte Query-Pläne, Index-Strategien oder Datenzugriffe für die priorisierten Hotspots</li>
-                <li>Vorher/Nachher-Messung mit nachvollziehbaren Zahlen</li>
-                <li>Deployment-Notizen und klare Empfehlungen für den nächsten Schritt</li>
-              </ul>
+    <section class="service-outcome section">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Typisches Ergebnis</h2>
+        <div class="title-shape">
+          <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor"
+                  stroke-width="2" />
+          </svg>
+        </div>
+        <p>Nach dem Sprint sind ausgewählte Performance-Probleme nicht nur beschrieben, sondern technisch greifbar verbessert oder sauber für die Umsetzung vorbereitet.</p>
+      </div>
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-3">
+            <div class="service-outcome-card">
+              <i class="bi bi-speedometer2" aria-hidden="true"></i>
+              <h3>Verbesserte Hotspots</h3>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="service-outcome-card">
+              <i class="bi bi-arrow-up-right-circle" aria-hidden="true"></i>
+              <h3>Vorher/Nachher-Messpunkte</h3>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="service-outcome-card">
+              <i class="bi bi-check2-circle" aria-hidden="true"></i>
+              <h3>Reviewfähige Änderungen</h3>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="service-outcome-card">
+              <i class="bi bi-list-check" aria-hidden="true"></i>
+              <h3>Klarer nächster technischer Schritt</h3>
             </div>
           </div>
         </div>

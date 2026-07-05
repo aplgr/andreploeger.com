@@ -125,30 +125,90 @@
       </div>
     </section>
 
-    <section class="service-details section" id="service-details">
+    <section class="service-fit section">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Für wen ist das?</h2>
+        <div class="title-shape">
+          <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor"
+                  stroke-width="2" />
+          </svg>
+        </div>
+        <p>Der Performance Audit ist der richtige Einstieg, wenn PostgreSQL spürbar bremst, aber die eigentliche Ursache noch nicht sauber greifbar ist. Statt sofort an einzelnen Queries zu schrauben, entsteht zuerst ein belastbares Bild: Was passiert im System, welche Engpässe sind wirklich relevant und welche Schritte bringen zuerst Wirkung?</p>
+      </div>
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="row justify-content-center">
-          <div class="col-lg-11 col-xl-10">
-            <div class="content">
-              <h3>Für wen ist das?</h3>
-              <p>Der Performance Audit passt für SaaS- und eCommerce-Teams, die spürbare Latenz, wachsende Query-Last oder unklare PostgreSQL-Engpässe strukturiert verstehen wollen. Er ist besonders hilfreich, wenn Entscheidungen anstehen und das Team eine klare, priorisierte Grundlage braucht.</p>
-
-              <h3>Was Sie bekommen</h3>
-              <p>Der Audit verbindet technische PostgreSQL-Analyse mit einer klaren geschäftlichen Reihenfolge: Welche Engpässe bremsen wirklich, welche Maßnahmen zeigen schnell Wirkung und welche Themen brauchen ruhigere Vorbereitung?</p>
-              <ul>
-                <li>Analyse zentraler Queries, Indexe, Logs, Tabellenstatistiken und Lastmuster</li>
-                <li>Priorisierte Findings nach Wirkung, Betriebsrelevanz und Aufwand</li>
-                <li>Konkrete nächste Schritte, die technisch nachvollziehbar und im Team anschlussfähig sind</li>
-                <li>Tooling je nach Setup: <code>pg_stat_statements</code>, <code>EXPLAIN (ANALYZE, BUFFERS)</code>, PostgreSQL Logs, <code>pgBadger</code> sowie Index- und Tabellenstatistiken</li>
-              </ul>
-
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-4">
+            <div class="service-feature-card">
+              <i class="bi bi-graph-up" aria-hidden="true"></i>
+              <h3>Latenz wird sichtbar</h3>
+              <p>Antwortzeiten schwanken, einzelne Funktionen fühlen sich träge an oder Lastspitzen lassen sich nicht sauber erklären. Der Audit bringt Struktur in diese Signale.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="service-feature-card">
+              <i class="bi bi-list-check" aria-hidden="true"></i>
+              <h3>Prioritäten fehlen</h3>
+              <p>Es gibt viele mögliche Maßnahmen, aber keine klare Reihenfolge. Der Audit trennt Quick Wins, Betriebsrisiken und strukturelle Themen voneinander.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="service-feature-card">
+              <i class="bi bi-search" aria-hidden="true"></i>
+              <h3>Entscheidungen brauchen Grundlage</h3>
+              <p>Bevor Zeit in Tuning, Umbauten oder zusätzliche Infrastruktur fließt, braucht das Team eine technische Einschätzung mit nachvollziehbarer Begründung.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="packages" class="services section light-background service-packages-section">
+    <section class="service-value section light-background">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Was Sie bekommen</h2>
+        <div class="title-shape">
+          <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor"
+                  stroke-width="2" />
+          </svg>
+        </div>
+        <p>Der Audit liefert keine lose Sammlung technischer Beobachtungen, sondern eine priorisierte Entscheidungsgrundlage für die nächsten Schritte.</p>
+      </div>
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-3">
+            <div class="service-feature-card">
+              <i class="bi bi-search" aria-hidden="true"></i>
+              <h3>Technische Analyse</h3>
+              <p>Queries, Indexe, Logs, Tabellenstatistiken, Locks, Connections und Lastmuster werden dort betrachtet, wo sie für das System relevant sind.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="service-feature-card">
+              <i class="bi bi-list-check" aria-hidden="true"></i>
+              <h3>Priorisierte Findings</h3>
+              <p>Die Ergebnisse werden nach Wirkung, Betriebsrelevanz und Aufwand sortiert. So entsteht eine Reihenfolge, mit der das Team arbeiten kann.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="service-feature-card">
+              <i class="bi bi-check2-circle" aria-hidden="true"></i>
+              <h3>Konkrete nächste Schritte</h3>
+              <p>Am Ende steht nicht nur ein Befund, sondern ein klarer Vorschlag: was kurzfristig hilft, was vorbereitet werden sollte und welches Anschlussformat passt.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="service-feature-card">
+              <i class="bi bi-graph-up" aria-hidden="true"></i>
+              <h3>Messbare Grundlage</h3>
+              <p>Wo möglich, werden Findings mit PostgreSQL-Signalen wie pg_stat_statements, EXPLAIN, Logs oder Tabellenstatistiken untermauert.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="packages" class="services section service-packages-section">
       <div class="container section-title" data-aos="fade-up">
         <h2>Pakete</h2>
         <div class="title-shape">
@@ -214,26 +274,86 @@
         </div>
     </section>
 
-    <section class="service-details section">
+    <section class="service-process section light-background">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Ablauf</h2>
+        <div class="title-shape">
+          <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor"
+                  stroke-width="2" />
+          </svg>
+        </div>
+        <p>Die Analyse bleibt fokussiert: erst Kontext und Signale, dann Einordnung, dann eine klare technische Reihenfolge.</p>
+      </div>
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="row justify-content-center">
-          <div class="col-lg-11 col-xl-10">
-            <div class="content">
-              <h3>Ablauf</h3>
-              <ol>
-                <li>Kurzer Startabgleich zu Symptomen, Zielen, Systemkontext und verfügbaren Daten</li>
-                <li>Analyse von Queries, Indexen, Logs, Metriken und Lastmustern</li>
-                <li>Einordnung der Findings nach Wirkung, Betriebsrelevanz, Aufwand und Reihenfolge</li>
-                <li>Ergebnisgespräch mit klaren nächsten Schritten und optionalem Anschlussformat</li>
-              </ol>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-3">
+            <div class="service-process-card">
+              <span class="service-process-step">01</span>
+              <h3>Startabgleich</h3>
+              <p>Wir klären Symptome, Ziele, Systemkontext und verfügbare Daten. Dadurch bleibt die Analyse fokussiert.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="service-process-card">
+              <span class="service-process-step">02</span>
+              <h3>Datensichtung</h3>
+              <p>Queries, Indexe, Logs, Metriken und Lastmuster werden strukturiert ausgewertet.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="service-process-card">
+              <span class="service-process-step">03</span>
+              <h3>Einordnung</h3>
+              <p>Findings werden nach Wirkung, Betriebsrelevanz, Aufwand und Reihenfolge sortiert.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="service-process-card">
+              <span class="service-process-step">04</span>
+              <h3>Ergebnis</h3>
+              <p>Das Team erhält eine klare Entscheidungsgrundlage und einen Vorschlag für die nächsten Schritte.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-              <h3>Typisches Ergebnis</h3>
-              <p>Nach dem Audit kennt das Team die wichtigsten Performance-Treiber, versteht die Reihenfolge der Maßnahmen und kann gezielt entscheiden, welche Verbesserungen direkt angegangen werden.</p>
-              <ul>
-                <li>Priorisierte Findings mit technischer Begründung</li>
-                <li>Konkrete Quick Wins und belastbare nächste Schritte</li>
-                <li>Klarer Übergang in Stabilization Sprint oder Performance Care, wenn sinnvoll</li>
-              </ul>
+    <section class="service-outcome section">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Typisches Ergebnis</h2>
+        <div class="title-shape">
+          <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor"
+                  stroke-width="2" />
+          </svg>
+        </div>
+        <p>Nach dem Audit weiß das Team, wo PostgreSQL wirklich bremst und welche Maßnahmen zuerst sinnvoll sind. Das schafft Ruhe, weil aus diffusen Performance-Problemen eine konkrete technische Reihenfolge wird.</p>
+      </div>
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-3">
+            <div class="service-outcome-card">
+              <i class="bi bi-check2-circle" aria-hidden="true"></i>
+              <h3>Top-Findings mit Begründung</h3>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="service-outcome-card">
+              <i class="bi bi-list-check" aria-hidden="true"></i>
+              <h3>Priorisierte Maßnahmen</h3>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="service-outcome-card">
+              <i class="bi bi-lightning-charge" aria-hidden="true"></i>
+              <h3>Quick Wins und strukturelle Themen</h3>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="service-outcome-card">
+              <i class="bi bi-arrow-up-right-circle" aria-hidden="true"></i>
+              <h3>Übergang in Sprint oder Care</h3>
             </div>
           </div>
         </div>
