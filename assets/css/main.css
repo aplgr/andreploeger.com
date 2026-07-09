@@ -2331,6 +2331,11 @@ section,
 .service-feature-card,
 .service-process-card,
 .service-outcome-card {
+  display: grid;
+  grid-template-columns: 2.75rem minmax(0, 1fr);
+  column-gap: 1rem;
+  row-gap: .85rem;
+  align-content: start;
   height: 100%;
   padding: 1.75rem;
   border-radius: 1rem;
@@ -2345,7 +2350,7 @@ section,
   justify-content: center;
   width: 2.75rem;
   height: 2.75rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
   border-radius: 999px;
   background: color-mix(in srgb, var(--accent-color), transparent 88%);
   color: var(--accent-color);
@@ -2355,12 +2360,15 @@ section,
 .service-feature-card h3,
 .service-process-card h3,
 .service-outcome-card h3 {
-  margin-bottom: .75rem;
+  align-self: center;
+  margin-bottom: 0;
   font-size: 1.15rem;
+  line-height: 1.35;
 }
 
 .service-feature-card p,
 .service-process-card p {
+  grid-column: 1 / -1;
   margin-bottom: 0;
   color: color-mix(in srgb, var(--default-color), transparent 18%);
   line-height: 1.6;
@@ -2372,7 +2380,7 @@ section,
   justify-content: center;
   width: 2.75rem;
   height: 2.75rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
   border-radius: 999px;
   background: color-mix(in srgb, var(--accent-color), transparent 88%);
   color: var(--accent-color);
@@ -2380,9 +2388,7 @@ section,
 }
 
 .service-outcome-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  align-content: center;
   min-height: 12rem;
 }
 
