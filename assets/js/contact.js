@@ -1,3 +1,66 @@
+const AP_INQUIRY_CONTEXT_PATTERN = /^Anfragekontext\nService: [^\n]+(?:\nGewählter Einstieg: [^\n]+)?\n\n?/;
+
+function normalizeInquiryValue(value) {
+  return String(value || '')
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '_')
+    .replace(/^_+|_+$/g, '');
+}
+
+function getInquiryPayload() {
+  const context = window.apInquiryContext || {};
+  if (!context.service) {
+    return {};
+  }
+
+  const payload = {
+    service: normalizeInquiryValue(context.service),
+  };
+
+  if (context.option) {
+    payload.option = normalizeInquiryValue(context.option);
+  }
+
+  return payload;
+}
+
+function prependInquiryContext(form) {
+  const context = window.apInquiryContext || {};
+  if (!context.service) {
+    return {};
+  }
+
+  const message = form.querySelector('textarea[name="message"]');
+  if (!message) {
+    return getInquiryPayload();
+  }
+
+  const lines = [
+    'Anfragekontext',
+    `Service: ${context.service}`,
+  ];
+
+  if (context.option) {
+    lines.push(`Gewählter Einstieg: ${context.option}`);
+  }
+
+  const visitorMessage = message.value.replace(AP_INQUIRY_CONTEXT_PATTERN, '');
+  message.value = `${lines.join('\n')}\n\n${visitorMessage}`;
+
+  return getInquiryPayload();
+}
+
+document.addEventListener('click', (event) => {
+  const trigger = event.target.closest('[data-inquiry-service]');
+  if (!trigger) return;
+
+  window.apInquiryContext = {
+    service: trigger.dataset.inquiryService || '',
+    option: trigger.dataset.inquiryOption || '',
+  };
+});
+
 document.addEventListener('alpine:init', () => {
   Alpine.store('fg', { status: '' });
 
@@ -37,7 +100,8 @@ document.addEventListener('alpine:init', () => {
         if (hidden) hidden.value = String(elapsed);
         this.requestPending = true;
         this.requestOutcomeTracked = false;
-        trackUmami('contact_form_submit');
+        const inquiryPayload = prependInquiryContext(this.$el);
+        trackUmami('contact_form_submit', inquiryPayload);
       }, { capture: true });
 
       // Fallback: copy hx-post into action if empty
@@ -81,6 +145,7 @@ document.addEventListener('alpine:init', () => {
         this.trackRequestOutcome('contact_form_success');
         this.setState('sent');
         this.$el.reset();
+        window.apInquiryContext = null;
         this.start = Date.now();
         this.lastElapsed = 0;
       } else {
